@@ -1,5 +1,4 @@
 import React from 'react';
-
 import useStyles from '../styles';
 const About = () => {
     const classes = useStyles();
@@ -18,5 +17,4 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
         </main>
     );
 }
-
 export default About;
