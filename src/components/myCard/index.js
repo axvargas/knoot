@@ -7,11 +7,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import { Container, Tooltip } from '@material-ui/core';
+import { Container } from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Badge from '@material-ui/core/Badge';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles({
     root: {
@@ -49,25 +50,18 @@ const MediaCard = ({ title, description }) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                    <Tooltip title="Me Gusta">
-                        
-                            <IconButton aria-label="favorite">
-                                <Badge badgeContent={4} color="primary" anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'right',
-                            }}>
-                                    <FavoriteIcon />
-                                </Badge>
-                            </IconButton>
-                        
-                        
-                    </Tooltip>
-                    
-                <Tooltip title="Compartir">
-                    <IconButton aria-label="share">
-                        <ShareIcon />
+                <Tooltip title="Editar">
+                <IconButton aria-label="edit">
+                        <EditIcon />
                     </IconButton>
                 </Tooltip>
+                
+                <Tooltip title="Eliminar">
+                    <IconButton aria-label="delete">
+                        <DeleteIcon />
+                    </IconButton>
+                </Tooltip>
+                
                 <Container className={classes.views}>
                     <Tooltip title="Visualizaciones">
                         <IconButton aria-label="share">
