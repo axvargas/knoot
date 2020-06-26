@@ -16,21 +16,28 @@ import Desarrollador4 from '../../recursos/desarrollador4.jpg';
 const useStyle = makeStyles((theme) => ({
   avatars: {
     justifyContent:'center',
-    display: 'flex',
+    display:'flex',
+    flexDirection: 'row',
+    flexWrap:  'wrap',
     '& > *': {
       margin: theme.spacing(3),
-      width: '10%',
-      maxWidth: '100%',
+      width: '130px',
+      maxWidth: '20%',
       height:"130px",
-      maxheight:"20px",
+      maxheight:"130px",
     },
   },
+
+  center:{justifyContent:'center',
+alignItems: 'center',
+display: 'flex',},
 /*..*/
 //Acerca de
   root: {
     width: '100%',
     maxWidth: '100%',
     backgroundColor: theme.palette.background.paper,
+
   },
   chip: {
     margin: theme.spacing(0.5),
@@ -71,12 +78,12 @@ const About = () => {
             <div className={classe.root}>
                 <div className={classe.section1}>
                     <Grid container alignItems="center">
-                       <Grid item xs={3}>
+                       <Grid item xs={0} sm={3} md={4} lg={4}>
                           <Typography gutterBottom variant="h4">
                             Acerca de Knoot
                           </Typography>
                         </Grid>
-                        <Grid item xs={8}>
+                        <Grid item xs={12} sm={8} md={7} lg={7}>
                          <Typography color="textSecondary" variant="body2">
                           Lorem ipsum dolor sit amet consectetur adipiscing elit, dui nostra praesent 
                         tristique morbi eleifend proin penatibus, purus cum magna pellentesque vehicula
@@ -89,13 +96,15 @@ const About = () => {
             
             <div>
                 <Grid container alignItems="center">
-                       <Grid item xs={6}>
+                       <Grid item xs={0} sm={3} md={6} lg={4}>
                           <img src={logo} alt="logo" className={classe.imageStyl}/>
                         </Grid>
-                        <Grid item xs={6}>
-                        <h2>
-                          Misión
-                        </h2>
+                        <Grid item xs={12} sm={8} md={6} lg={7}>
+                        <div className={classe.center}  xs={12}>
+                          <h2>
+                            Misión
+                          </h2>
+                        </div>
                         <Typography color="textSecondary" variant="body2">
                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque 
                             laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi 
@@ -109,10 +118,14 @@ const About = () => {
             </div>
             
             <div>
+                <div className={classe.center}>
                 <h2>
+                <br/>
                 Nuestro Equipo
                 </h2>
-                <div className={classe.avatars}  xs={3}>
+                </div>
+                <div className={classe.avatars}  xs={12} sm={12} md={6} lg={3} >
+                    
                     <Avatar alt="Desarrollador 1" src={Desarrollador1} />
                     <Avatar alt="Desarrollador 2" src={Desarrollador2} />
                     <Avatar alt="Desarrollador 3" src={Desarrollador3} />
