@@ -3,8 +3,19 @@ import useStyles from '../styles';
 import MediaCard from "../../components/myCard";
 import { Grid } from '@material-ui/core';
 import MostrarAnuncio from "./MostrarAnuncio";
+import NewPost from "./NewPost";
+import Slide from '@material-ui/core/Slide';
+
+/*
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
+  */
+
 const Posts = () => {
     const classes = useStyles();
+
+    
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -14,6 +25,8 @@ const Posts = () => {
     const handleClose = () => {
         setOpen(false);
     };
+    
+
     const posts = [
         {
             title: "Titulo 1", description: `Cras mattis consectetur purus sit amet fermentum.
@@ -50,6 +63,9 @@ const Posts = () => {
             <h1>Mis Anuncios</h1>
 
             
+            {/*<NewPost onClick={handleClickOpen} open={open} onClose={handleClose} TransitionComponent={Transition}/> */}
+            <NewPost/>  
+
             {inSession &&
                     <Grid container spacing={2} >
                         {
