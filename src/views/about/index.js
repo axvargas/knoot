@@ -124,14 +124,14 @@ const About = () => {
                 Nuestro Equipo
                 </h2>
                 </div>
-                <div className={classe.avatars}  xs={12} sm={12} md={6} lg={3} >
+                <div className={classe.avatars}  >
                     
                     <Avatar alt="Desarrollador 1" src={Desarrollador1} />
                     <Avatar alt="Desarrollador 2" src={Desarrollador2} />
                     <Avatar alt="Desarrollador 3" src={Desarrollador3} />
                     <Avatar alt="Desarrollador 4" src={Desarrollador4} />
                 </div>
-                <div className={classe.avatars}  xs={3}>
+                <div className={classe.avatars} >
                     <h3>Andres Vargas</h3>
                     <h3>Jose Morales</h3>
                     <h3>Lilibeth Vargas</h3>

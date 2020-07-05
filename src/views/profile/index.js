@@ -7,7 +7,10 @@ import {Box,
         Button,
         makeStyles,
         Paper,
-        Avatar} from '@material-ui/core';
+        Avatar
+        Avatar,
+        Button} from '@material-ui/core';
+import EditarPerfil from "./EditP";
 import Fade from '@material-ui/core/Fade';
 import {Card, CardHeader, CardActions} from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
@@ -91,82 +94,22 @@ SmallAvatar: {
 }));
 
 
-import './style.css';
-import {Button,Modal,ModalHeader,ModalBody,ModalFooter,fromGroup,Input,Label} from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.css';
-import state from '@material-ui/core';
-import abrirModal from '@material-ui/core';
-class Favorites extends React.Component{
-    state={
-        abierto: false,
-    }
 
-    abrirModal=()=>{
-        this.setState({abierto: !this.state.abierto});
-    }
-    
-    render(){
-
-        const modalStyles={
-            position: "absolute",
-            top: '50%',
-            left:'50%',
-            transform: 'translate(-50%,-50%)'
-        }    
-    return (
-        <>
-        
-            <h1>Favoritos</h1>
-            <div className="principal">
-                <div className="secundario">
-                <Button color="success" onClick={this.abrirModal}>Editar Perfil</Button>
-                </div>
-            </div>
-            
-
-            <Modal isOpen={this.state.abierto} style={modalStyles}>
-            <ModalHeader>
-                Editar Perfil
-            
-            <ModalBody>
-                <fromGroup>
-                    <br/>
-                    <Input type="text"id="nom" value="Nombre"/>
-                </fromGroup>
-                <fromGroup>
-                    <br/>
-                    <Input type="text"id="ape" value="Apellido"/>
-                </fromGroup>
-                <fromGroup>
-                    <br/>
-                    <Input type="text"id="em" value="E-mail"/>
-                    
-                </fromGroup>
-                <fromGroup>
-                    <br/>
-                    <Input type="text"id="ci" value="Ciudad"/>
-                </fromGroup>
-                <fromGroup>
-                    <br/>
-                    <textarea id="des" row="5" cols="30">Descripción</textarea>
-                </fromGroup>
-            </ModalBody>
-            <ModalFooter>
-                <Button color='primary'>Editar</Button>
-                <Button color='secondary'  onClick={this.abrirModal}>Cancelar</Button>
-            </ModalFooter>
-            </ModalHeader>
-            </Modal>
-
-        </>
-    )
-}}
 
 
 const Profile = () => {
     const classes = useStyles();
     const classe = useStyle();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     return (
 
             <main className={classes.content}>
@@ -228,11 +171,11 @@ const Profile = () => {
 
                         </Grid>
             <footer/>
+            <EditarPerfil open={open} handleClose={handleClose}/> 
             </main>
 
 
 
         );
-}
-
+    }
 export default Profile;
