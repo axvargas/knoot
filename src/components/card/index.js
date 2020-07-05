@@ -10,9 +10,10 @@ import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import { Container, Tooltip } from '@material-ui/core';
+import { Container, Tooltip ,Chip} from '@material-ui/core';
 import Badge from '@material-ui/core/Badge';
 
+  
 const useStyles = makeStyles({
     root: {
         maxWidth: '100%',
@@ -28,8 +29,11 @@ const useStyles = makeStyles({
     }
 });
 
-const MediaCard = ({ title, description }) => {
+
+const MediaCard = ({ title, description,likes,views,tags }) => {
     const classes = useStyles();
+
+    const tagsSplit = tags.split(" ")
 
     return (
         <Card className={classes.root}>
@@ -46,13 +50,29 @@ const MediaCard = ({ title, description }) => {
                     <Typography variant="body2" color="textSecondary" component="p">
                         {description}
                     </Typography>
+                    <div>
+                        {
+                            tagsSplit.map((tag) => {
+                                return(
+                                    <Chip label={tag}></Chip>
+                                )
+                                
+                            })
+                        }
+                        
+                        
+                    </div>
+                    
+                    
+
+
                 </CardContent>
             </CardActionArea>
             <CardActions>
                     <Tooltip title="Me Gusta">
                         
                             <IconButton aria-label="favorite">
-                                <Badge badgeContent={4} color="primary" anchorOrigin={{
+                                <Badge badgeContent={likes} color="primary" anchorOrigin={{
                                 vertical: 'bottom',
                                 horizontal: 'right',
                             }}>
@@ -71,7 +91,7 @@ const MediaCard = ({ title, description }) => {
                 <Container className={classes.views}>
                     <Tooltip title="Visualizaciones">
                         <IconButton aria-label="share">
-                            <Badge badgeContent={10} color="primary" anchorOrigin={{
+                            <Badge badgeContent={views} color="primary" anchorOrigin={{
                                 vertical: 'bottom',
                                 horizontal: 'right',
                             }}>
