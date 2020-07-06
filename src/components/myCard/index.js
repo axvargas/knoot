@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -13,21 +12,8 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Badge from '@material-ui/core/Badge';
 import Tooltip from '@material-ui/core/Tooltip';
+import useStyles from './style';
 
-const useStyles = makeStyles({
-    root: {
-        maxWidth: '100%',
-    },
-    media: {
-        height: 140,
-    },
-    views: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        
-    }
-});
 
 const MediaCard = ({ title, description }) => {
     const classes = useStyles();

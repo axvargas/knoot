@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -12,22 +12,8 @@ import ShareIcon from '@material-ui/icons/Share';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { Container, Tooltip ,Chip} from '@material-ui/core';
 import Badge from '@material-ui/core/Badge';
+import useStyles from './styles';
 
-  
-const useStyles = makeStyles({
-    root: {
-        maxWidth: '100%',
-    },
-    media: {
-        height: 140,
-    },
-    views: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        
-    }
-});
 
 
 const MediaCard = ({ title, description,likes,views,tags }) => {

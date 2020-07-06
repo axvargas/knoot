@@ -1,24 +1,9 @@
 import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
-import { makeStyles } from '@material-ui/core/styles';
 import { Button,Box, Typography } from '@material-ui/core';
 import ChipInput from 'material-ui-chip-input'
+import useStyles from './style';
 
-const useStyles = makeStyles({
-    root: {
-        width: '50%',
-        
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-    },
-
-    search: {
-        marginBottom: '10',
-        display: 'flex',
-    }
-
-
-});
 
 
 
