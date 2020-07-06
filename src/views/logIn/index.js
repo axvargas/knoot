@@ -66,9 +66,13 @@ const LogIn = () => {
                             variant="contained"
                             color="primary"
                             className={classes.submit}
+                            href='../'
                         >
-                            Sign In
+                            Ingresar
+                            
             </Button>
+
+            
                         <Grid container>
                             <Grid item xs>
                                 <Link href="#" variant="body2">

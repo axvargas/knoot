@@ -1,9 +1,9 @@
 import React from 'react';
-
 import useStyles from '../styles';
 import MediaCard from "../../components/card";
 import { Grid } from '@material-ui/core';
 import SearchBar from '../../components/searchBar';
+import Footer from "../../components/footer";
 const Home = () => {
     const classes = useStyles();
 
@@ -46,7 +46,7 @@ const Home = () => {
             <main className={classes.content}>
                 <div className={classes.toolbar} id="back-to-top-anchor" />
                 <h1>Inicio</h1>
-                <SearchBar/>
+                <SearchBar />
                 
                 {inSession &&
                     <Grid container spacing={2}>
@@ -65,7 +65,7 @@ const Home = () => {
                     </Grid>
                 }
 
-
+            <Footer/>
             </main>
 
 

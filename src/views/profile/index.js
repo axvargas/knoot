@@ -17,6 +17,7 @@ import EditTwoToneIcon from '@material-ui/icons/EditTwoTone';
 import imgPerfil from '../../recursos/desarrollador2.jpg';
 import clsx from 'clsx';
 import Badge from '@material-ui/core/Badge';
+import Footer from "../../components/footer";
 
 const useStyle = makeStyles((theme) => ({
 /*..*/
@@ -43,7 +44,6 @@ imageStyl: {
 
   container: {
     paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
     display: "flex",
   },
 
@@ -170,7 +170,7 @@ const Profile = () => {
                 
 
             </Grid>
-            <footer/>
+            <Footer/>
             <EditarPerfil open={open} handleClose={handleClose}/> 
             </main>
 

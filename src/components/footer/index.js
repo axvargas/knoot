@@ -12,7 +12,7 @@ const Footer = () => {
             <Toolbar variant="dense">
                 <Box mt={2} display="flex" flexDirection="row" m={1} className={classes.typo}>
                     <Box mx={1} mb={0.5}>
-                        <Typography variant="h6" > MattuApp&copy; 2020 </Typography>
+                        <Typography variant="h6" > Knoot&copy; 2020 </Typography>
                     </Box>
                 </Box>
                 <Box mt={2} display="flex" flexDirection="row" m={1}>

@@ -13,12 +13,20 @@ import {
     Typography
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import Copyright from '../../components/copyright';
-
-//Styles
 import useStyles from './styles';
+import AddChip from '../../components/AddChip';
 const LogIn = () => {
+
+    const facultades = [
+  { facultad: 'FIEC'},
+  { facultad: 'FCNM'},
+  { facultad: 'EDCOM' },
+  { facultad: 'FICT' },
+  { facultad: 'FCNMBOR' },
+  { facultad: "FSCH"},
+  { facultad: 'CELEX' },];
     const classes = useStyles();
 
     return (
@@ -43,7 +51,7 @@ const LogIn = () => {
                                     required
                                     fullWidth
                                     id="firstName"
-                                    label="First Name"
+                                    label="Nombres"
                                     autoFocus
                                 />
                             </Grid>
@@ -53,7 +61,7 @@ const LogIn = () => {
                                     required
                                     fullWidth
                                     id="lastName"
-                                    label="Last Name"
+                                    label="Apellidos"
                                     name="lastName"
                                     autoComplete="lname"
                                 />
@@ -64,7 +72,7 @@ const LogIn = () => {
                                     required
                                     fullWidth
                                     id="email"
-                                    label="Email Address"
+                                    label="Correo ESPOL"
                                     name="email"
                                     autoComplete="email"
                                 />
@@ -75,16 +83,37 @@ const LogIn = () => {
                                     required
                                     fullWidth
                                     name="password"
-                                    label="Password"
+                                    label="Contraseña"
                                     type="password"
                                     id="password"
                                     autoComplete="current-password"
                                 />
                             </Grid>
+
+                            <Grid item xs={12}>
+                                <TextField
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    name="password"
+                                    label="Telefono"
+                                    type="number"
+                                    id="Telefono"
+                                    autoComplete="current-telefono"
+                                />
+                            </Grid>
+
+
+                           
+
+                            <Grid item xs={12}>
+                                <AddChip/>
+                            </Grid>
+
                             <Grid item xs={12}>
                                 <FormControlLabel
                                     control={<Checkbox value="allowExtraEmails" color="primary" />}
-                                    label="I want to receive inspiration, marketing promotions and updates via email."
+                                    label="Estoy de acuerdo a que me contacten para formar grupos de trabajo"
                                 />
                             </Grid>
                         </Grid>
@@ -94,13 +123,14 @@ const LogIn = () => {
                             variant="contained"
                             color="primary"
                             className={classes.submit}
+                            href='../'
                         >
-                            Sign Up
+                            Registrarse
           </Button>
                         <Grid container justify="flex-end">
                             <Grid item>
                                 <Link href="#" variant="body2">
-                                    Already have an account? Sign in
+                                    Ya tienes una cuenta? Ingresa
               </Link>
                             </Grid>
                         </Grid>

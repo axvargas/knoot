@@ -2,6 +2,7 @@ import React from 'react';
 import useStyles from '../styles';
 import MediaCard from "../../components/card";
 import { Grid } from '@material-ui/core';
+
 const Favorites = () => {
     const classes = useStyles();
 

@@ -165,7 +165,7 @@ const MostrarAnuncio= ({ open, handleClose}) => {
         
                 <DialogActions>
                     <Grid className={classe.pies}>
-                         <GitHubIcon className={classe.cont3}/>
+                    <GitHubIcon className={classe.cont3}/>
                     < WhatsAppIcon className={classe.cont3}/ >
                      <TelegramIcon/ >
                     </Grid>
