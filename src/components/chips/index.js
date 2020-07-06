@@ -14,11 +14,11 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   chip: {
-    margin: theme.spacing(0.5),
+    margin: theme.spacing(2),
   },
 }));
 
-export default function Chips() {
+export default function Chips(key,label) {
   const classes = useStyles();
   const [chipData, setChipData] = React.useState([
     { key: 0, label: 'Angular' },
@@ -33,7 +33,7 @@ export default function Chips() {
   };
 
   return (
-    <Paper component="ul" className={classes.root}>
+    <Paper component="ul" className={classes.root} elevation={0} >
       {chipData.map((data) => {
         let icon;
 

@@ -3,13 +3,11 @@ import useStyles from '../styles';
 import {Box,
         Typography,
         Grid,
-        Avatar,
-        Button,
         makeStyles,
         Paper,
-        Avatar
         Avatar,
-        Button} from '@material-ui/core';
+        Button
+        } from '@material-ui/core';
 import EditarPerfil from "./EditP";
 import Fade from '@material-ui/core/Fade';
 import {Card, CardHeader, CardActions} from '@material-ui/core';
@@ -50,18 +48,16 @@ imageStyl: {
   },
 
   container1: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
     display: "block",
   },
 
   cardStyle: {
     display: "block",
-    width: 'auto',
     transitionDuration: '0.3s',
-    height: 'auto',
-    minHeight: 'auto',
-    minWidth:'auto'
+    height: '517',
+    
 },
 cajaBox: {
     width:"45%",
@@ -110,6 +106,7 @@ const Profile = () => {
     const handleClose = () => {
         setOpen(false);
     };
+    
     return (
 
             <main className={classes.content}>
@@ -119,7 +116,7 @@ const Profile = () => {
             <Typography align="center" m={2} variant="h5"  component="p" spacing={3} > 
             Lo que las personas ven acerca de ti</Typography> 
             </Box>
-            <Grid container className={classe.container} direction="row-reverse" justify="space-evenly" alignItems="center" >
+            <Grid container className={classe.container} direction="row-reverse" justify="space-between" alignItems="center" >
                 <Grid items xs={12} sm={6} md={6} lg={6} style={{textAlign:"center"}}  >
                         <Card  className={classe.cardStyle}  >
                         <CardActions className={classe.colorCard}>
@@ -127,13 +124,12 @@ const Profile = () => {
                                      <EditTwoToneIcon/> Editar Perfil
                                     </Button>
                                 </CardActions>
-                        <CardContent>
-                                    <Grid  container className={classe.container1} justify="space-evenly" alignItems="center">
-                                        <Grid items style={{alignContent:"center"}}>
+                        <CardContent style={{ height: 517 }}>
+                                    <Grid  container className={classe.container1} justify="space-between" alignItems="center">
+                                        <Grid items >
+                                        <Paper  elevation={0} style={{alignContent:"center", alignItems:'center'}} >
                                         <img display="block" align="center" src={imgPerfil} alt="Perfil" className={classe.imageStyl}/>
-                                        </Grid>
-                                        <Paper  variant="outlined" square>
-                                        <Box  borderTop={0} style={{width: 400, height: 200}} display="flex" justifyContent="center" border={1} >
+                                        <Box  style={{width: 'auto', height:'auto'}} display="block" justifyContent="center"  >
                                         <h3>
                                                 Jose Morales Mendoza <br></br>
                                                          ESPOL <br></br>
@@ -143,33 +139,37 @@ const Profile = () => {
                                     </Box>
                                     </Paper>
                                     </Grid>
+                                    </Grid>
                             </CardContent>
                          </Card>
                 </Grid>
 
-                <Grid items xs={12} sm={6} md={6} lg={6}>
-                    <Grid container  className={classe.container} direction="column" justify="space-evenly" alignItems="flex-start">               
-                        <Card className={classe.cardStyle}  >
-                                <CardActions>
-                                    <Button variant="outlined" size="small" color="primary">
+                <Grid items xs={12} sm={6} md={6} lg={6} style={{textAlign:"center"}}  >
+                        <Card  className={classe.cardStyle}  >
+                        <CardActions className={classe.colorCard}>
+                                    <Button variant="outlined" size="small" color="inherit">
                                      <EditTwoToneIcon/> Editar
                                     </Button>
                                 </CardActions>
-                                <CardContent style={{ width: '100%', height: 400 }}>
-                                        <Typography variant="h6" color="primary" component="p" spacing={5}>
-                                                 Habilidades
-                                        </Typography>
-                                        <Chips/>
-                                        <Chips/>
-                                        <Chips/>
-                                        <Chips/>
-                                    </CardContent>
+                        <CardContent style={{ height: 517 }}>
+                                    <Grid  container className={classe.container1} justify="space-between" alignItems="center">
+                                        <Typography variant="h5" color="primary" component="p" spacing={5}>
+                                                         Habilidades
+                                                </Typography>
+                                            <div  className={classe.container} >
+                                                <Chips/>
+                                            </div>
+                                        
+                                        
+                                    </Grid>
+                            </CardContent>
+                         </Card>
+                </Grid>
 
-                            </Card>
-                            </Grid>
-                            </Grid>
 
-                        </Grid>
+                
+
+            </Grid>
             <footer/>
             <EditarPerfil open={open} handleClose={handleClose}/> 
             </main>
