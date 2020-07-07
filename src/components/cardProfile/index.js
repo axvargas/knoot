@@ -2,7 +2,6 @@ import React from 'react';
 
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
@@ -13,10 +12,11 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import { Container, Tooltip ,Chip,Grid} from '@material-ui/core';
 import Badge from '@material-ui/core/Badge';
 import useStyles from './styles';
+import imagenn from '../../recursos/pf_placeholder.png';
 
 
 
-const MediaCard = ({ title, description,likes,views,tags }) => {
+const ProfileCard = ({ title, description,tags,imagen}) => {
     const classes = useStyles();
 
     const tagsSplit = tags.split(" ")
@@ -24,10 +24,11 @@ const MediaCard = ({ title, description,likes,views,tags }) => {
     return (
         <Card className={classes.root}>
             <CardActionArea>
+                
                 <CardMedia
                     className={classes.media}
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    title="Contemplative Reptile"
+                    image= {imagenn}
+                    title="profile icon"
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
@@ -48,48 +49,11 @@ const MediaCard = ({ title, description,likes,views,tags }) => {
                         
                         
                     </Grid>
-                    
-                    
-
 
                 </CardContent>
             </CardActionArea>
-            <CardActions>
-                    <Tooltip title="Me Gusta">
-                        
-                            <IconButton aria-label="favorite">
-                                <Badge badgeContent={likes} color="primary" anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'right',
-                            }}>
-                                    <FavoriteIcon />
-                                </Badge>
-                            </IconButton>
-                        
-                        
-                    </Tooltip>
-                    
-                <Tooltip title="Compartir">
-                    <IconButton aria-label="share">
-                        <ShareIcon />
-                    </IconButton>
-                </Tooltip>
-                <Container className={classes.views}>
-                    <Tooltip title="Visualizaciones">
-                        <IconButton aria-label="share">
-                            <Badge badgeContent={views} color="primary" anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'right',
-                            }}>
-                                <VisibilityIcon/>
-                            </Badge>
-                        </IconButton>
-                        
-                    </Tooltip>
-                </Container>
-            </CardActions>
             
         </Card>
     );
 }
-export default MediaCard;
+export default ProfileCard;

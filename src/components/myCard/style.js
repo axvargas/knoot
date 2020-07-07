@@ -12,7 +12,12 @@ const useStyles = makeStyles({
         flexDirection: 'row',
         justifyContent: 'flex-end',
         
+    },
+
+    tagsContainer: {
+        marginTop: 10,
     }
+
 });
 
 export default useStyles;
