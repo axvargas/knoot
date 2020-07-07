@@ -3,8 +3,7 @@ import useStyles from '../styles';
 
 import SearchBar from '../../components/searchBar';
 import Footer from "../../components/footer";
-import Anuncios from './anuncios';
-import Perfiles from './perfiles';
+import VerticalTabs from '../../components/verticalTab';
 
 const Home = () => {
     const classes = useStyles();
@@ -14,15 +13,16 @@ const Home = () => {
         <>
             <main className={classes.content}>
                 <div className={classes.toolbar} id="back-to-top-anchor" />
-                <h1>Inicio</h1>
                 <SearchBar />
                 
 
                 {inSession &&
-                    <Perfiles/>
+                    <div>
+                        <VerticalTabs/>
+                    </div>
+                    
                 }
 
-            <Footer/>
             </main>
 
 
