@@ -7,7 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import { Container } from '@material-ui/core';
+import { Container,Chip } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Badge from '@material-ui/core/Badge';
@@ -15,8 +15,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import useStyles from './style';
 
 
-const MediaCard = ({ title, description }) => {
+const MediaCard = ({ title, description,views,tags }) => {
     const classes = useStyles();
+    const tagsSplit = tags.split(" ")
 
     return (
         <Card className={classes.root}>
@@ -33,6 +34,20 @@ const MediaCard = ({ title, description }) => {
                     <Typography variant="body2" color="textSecondary" component="p">
                         {description}
                     </Typography>
+
+                    <div>
+                        {
+                            tagsSplit.map((tag) => {
+                                return(
+                                    <Chip label={tag}></Chip>
+                                )
+                                
+                            })
+                        }
+                        
+                        
+                    </div>
+
                 </CardContent>
             </CardActionArea>
             <CardActions>
