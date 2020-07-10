@@ -23,7 +23,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -45,8 +45,9 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    flexGrow: 1,
     marginTop: 20,
-    padding:10,
+    padding: 10,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
   },
@@ -75,15 +76,15 @@ export default function VerticalTabs() {
       >
         <Tab label="Anuncios" {...a11yProps(0)} />
         <Tab label="Perfiles" {...a11yProps(1)} />
-        
+
       </Tabs>
       <TabPanel value={value} index={0}>
         <Anuncios/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Perfiles/>
+        <Perfiles />
       </TabPanel>
-      
+
     </div>
   );
 }

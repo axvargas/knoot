@@ -12,6 +12,7 @@ import Profile from '../views/profile';
 import About from '../views/about';
 import LogIn from '../views/logIn';
 import Register from '../views/register';
+import Contact from '../views/contact';
 
 
 const Router = () => {
@@ -21,6 +22,7 @@ const Router = () => {
             <Route exact path='/my-posts' component={Posts}></Route>
             <Route exact path='/favorites' component={Favorites}></Route>
             <Route exact path='/profile' component={Profile}></Route>
+            <Route exact path='/contact' component={Contact}></Route>
             <Route exact path='/about' component={About}></Route>
             <Route exact path='/log-in' component={LogIn}></Route>
             <Route exact path='/register' component={Register}></Route>
