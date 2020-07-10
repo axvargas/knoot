@@ -13,14 +13,38 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Badge from '@material-ui/core/Badge';
 import Tooltip from '@material-ui/core/Tooltip';
 import useStyles from './style';
+import { Steps} from 'intro.js-react';
 
 
 const MediaCard = ({ title, description,views,tags }) => {
     const classes = useStyles();
     const tagsSplit = tags.split(" ")
 
+    const stepsEnabled = true;
+    const initialStep= 0;
+    const steps = [
+        {
+            element: '.card',
+            intro: 'Aqui se muestran tus anuncios',
+        },
+        {
+            element: '.titulo',
+            intro: 'Titulo del anuncio',
+        },
+        {
+            element: '.descripcion',
+            intro: 'Descripcion del anuncio',
+        },
+        {
+            element: '.etiquetas',
+            intro: 'Aqui se muestran las etiquetas relacionadas con el anuncio',
+        },
+        
+      ];
+
     return (
-        <Card className={classes.root}>
+        <div className="card">
+            <Card className={classes.root}>
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
@@ -28,25 +52,33 @@ const MediaCard = ({ title, description,views,tags }) => {
                     title="Contemplative Reptile"
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {title}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {description}
-                    </Typography>
-
-                    <Grid container spacing={1} className={classes.tagsContainer}>
-                        {
-                            tagsSplit.map((tag) => {
-                                return(
-                                        <Grid item><Chip label={tag}></Chip></Grid>
-                                )
-                                
-                            })
-                        }
-                        
-                        
-                    </Grid>
+                    <div className="titulo">
+                        <Typography gutterBottom variant="h5" component="h2">
+                            {title}
+                        </Typography>
+                    </div>
+                    
+                    <div className="descripcion">
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            {description}
+                        </Typography>
+                    </div>
+                    
+                    <div className="etiquetas">
+                        <Grid container spacing={1} className={classes.tagsContainer}>
+                            {
+                                tagsSplit.map((tag) => {
+                                    return(
+                                            <Grid item><Chip label={tag}></Chip></Grid>
+                                    )
+                                    
+                                })
+                            }
+                            
+                            
+                        </Grid>
+                    </div>
+                    
 
                 </CardContent>
             </CardActionArea>
@@ -78,7 +110,18 @@ const MediaCard = ({ title, description,views,tags }) => {
                 </Container>
             </CardActions>
             
+            <Steps
+                    enabled={stepsEnabled}
+                    //enabled={false}
+                    steps={steps}
+                    initialStep={initialStep}
+                />
+             
+                    
+                
         </Card>
+        </div>
+        
     );
 }
 export default MediaCard;

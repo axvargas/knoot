@@ -4,8 +4,35 @@ import { Button,Box, Typography } from '@material-ui/core';
 import ChipInput from 'material-ui-chip-input'
 import useStyles from './style';
 
+const filterChips= () => {
+    var array = document.getElementsByClassName("WAMuiChipInput-chip-55 MuiChip-clickable MuiChip-deletable")
+    var arrayTags=[]
+    for(var element of array){
+        arrayTags.push(element.innerText)
+    }
+
+    var cards = document.getElementsByClassName("MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4 MuiGrid-grid-lg-3 MuiGrid-grid-xl-2")
+
+    if(arrayTags.length != 0){
+        for(var card of cards){
+            card.style.display="none"
+            var tags = card.getElementsByClassName("MuiChip-root")
+            for(var tag of tags){
+                if(arrayTags.includes(tag.textContent)){
+                    card.style.display=""
+                }
+            }
+        }
+    }
+    else{
+        for(var card of cards){
+            card.style.display=""
+        }
+    }
+    
 
 
+}
 
 const SearchBar= () => {
     const classes = useStyles();
@@ -21,10 +48,13 @@ const SearchBar= () => {
                         />
                     
                     <Button
+                        defaultValue={['foo']}
                         variant="contained"
                         color="secondary"
                         className={classes.button}
-                        startIcon={<SearchIcon/>}>
+                        startIcon={<SearchIcon/>}
+
+                        onClick={filterChips}>
                         Buscar
                     </Button>
 
@@ -38,7 +68,17 @@ const SearchBar= () => {
 
     );
 
+    
+
 }
+
+// onClick={() =>
+                        //     { 
+                        //         var array = document.getElementsByClassName("WAMuiChipInput-chip-55 MuiChip-clickable MuiChip-deletable")
+                        //         for(var element of array){
+                        //             console.log(element.innerText)
+                        //         }
+                        //          }}
 
 export default SearchBar;
 
