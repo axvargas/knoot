@@ -22,9 +22,8 @@ const LogIn = () => {
     const classes = useStyles();
 
     return (
-        <Grid container className={classes.root}>
-            <CssBaseline />
-            <Grid item xs={false} sm={4} md={7} className={classes.image} />
+                
+            <Grid container className={classes.root}>
             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                 <div className={classes.paper}>
                     <Avatar className={classes.avatar}>
@@ -81,7 +80,7 @@ const LogIn = () => {
                             </Grid>
                             <Grid item>
                                 <Link href="#" variant="body2">
-                                    {"Don't have an account? Sign Up"}
+                                    {"No tienes una cuenta? Registrate"}
                                 </Link>
                             </Grid>
                         </Grid>

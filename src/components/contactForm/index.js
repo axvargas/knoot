@@ -1,13 +1,15 @@
 import React from 'react';
 import useStyles from './style';
 import TextField from '@material-ui/core/TextField';
-import { Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
+import Icon from '@material-ui/core/Icon';
+import SendIcon from '@material-ui/icons/Send';
 
 
 const ContactForm = () => {
@@ -56,39 +58,16 @@ const ContactForm = () => {
                     placeholder="Escriba aqui su apellido"
                     variant="outlined"
                     />
+
                 </div>
                 
-
-                <FormControl variant="outlined" className={classes.formControl}>
-                    <InputLabel id="demo-simple-select-outlined-label">Lugar de origen</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-outlined-label"
-                        id="demo-simple-select-outlined"
-                        value={origen}
-                        onChange={handleChange}
-                        label="Origen"
-                    >
-
-                        {provincias.map((origen) => (
-                                    <MenuItem key={origen} value={origen}>
-                                    {origen}
-                                    </MenuItem>
-                                ))}
-                    </Select>
-                </FormControl>
-
-
                 <TextField
                     required
-                    id="date"
-                    label="Fecha de nacimiento"
-                    type="date"
+                    id="telefono"
+                    label="Telefono"
+                    placeholder="Escriba aqui su Telefono"
                     variant="outlined"
-                    className={classes.textField}
-                    InputLabelProps={{
-                    shrink: true,
-                    }}
-                />
+                    />
 
                 <TextField
                     required
@@ -108,6 +87,15 @@ const ContactForm = () => {
                     placeholder="Escriba su mensaje aqui"
                     variant="outlined"
                     />
+                <Button 
+                    textAlign="center"
+                    variant="contained"
+                    color="primary"
+                    className={classes.button}
+                    endIcon={<SendIcon/>}
+                    >
+                    ENVIAR
+                </Button>
 
 
 
