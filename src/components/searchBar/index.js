@@ -6,22 +6,26 @@ import useStyles from './style';
 
 const filterChips= () => {
     var array = document.getElementsByClassName("WAMuiChipInput-chip-55 MuiChip-clickable MuiChip-deletable")
+    var cards = document.getElementsByClassName("MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4 MuiGrid-grid-lg-3 MuiGrid-grid-xl-2")
+
     var arrayTags=[]
     for(var element of array){
         arrayTags.push(element.innerText)
     }
 
-    var cards = document.getElementsByClassName("MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4 MuiGrid-grid-lg-3 MuiGrid-grid-xl-2")
-
     if(arrayTags.length != 0){
         for(var card of cards){
-            card.style.display="none"
             var tags = card.getElementsByClassName("MuiChip-root")
+            var tagCards=[]
             for(var tag of tags){
-                if(arrayTags.includes(tag.textContent)){
-                    card.style.display=""
+                tagCards.push(tag.textContent)
+            }
+            for(var e of arrayTags){
+                if(!tagCards.includes(e)){
+                    card.style.display="none"
                 }
             }
+            
         }
     }
     else{
