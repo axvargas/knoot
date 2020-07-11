@@ -16,15 +16,7 @@ const Posts = () => {
     const classes = useStyles();
 
     
-    const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
+    
     
 
     const posts = [
@@ -33,32 +25,32 @@ const Posts = () => {
         Cras justo odio, dapibus ac facilisis in, egestas eget quam.
         Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
         Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-        views: "10", tags: "Texto3 Texto4"
+        views: "10", tags: "Texto3 Texto4", autor:"Usuario"
         },
         {
             title: "Titulo 2", description: `Cras mattis consectetur purus sit amet fermentum.
         Cras justo odio, dapibus ac facilisis in, egestas eget quam.
         Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
         Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-        views: "20", tags: "Texto3 Texto4"},
+        views: "20", tags: "Texto3 Texto4", autor:"Usuario"},
         {
             title: "Titulo 3", description: `Cras mattis consectetur purus sit amet fermentum.
         Cras justo odio, dapibus ac facilisis in, egestas eget quam.
         Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
         Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-        views: "101", tags: "Texto3 Texto4"},
+        views: "101", tags: "Texto3 Texto4", autor:"Usuario"},
         {
             title: "Titulo 4", description: `Cras mattis consectetur purus sit amet fermentum.
         Cras justo odio, dapibus ac facilisis in, egestas eget quam.
         Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
         Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-        views: "130", tags: "Texto3 Texto4"},
+        views: "130", tags: "Texto3 Texto4", autor:"Usuario"},
         {
             title: "Titulo 5", description: `Cras mattis consectetur purus sit amet fermentum.
         Cras justo odio, dapibus ac facilisis in, egestas eget quam.
         Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
         Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-        views: "120", tags: "Texto3 Texto4"},
+        views: "120", tags: "Texto3 Texto4", autor:"Usuario"},
     ]
 
     const inSession = true;
@@ -77,9 +69,9 @@ const Posts = () => {
                         {
                             posts.map((post, i) => {
                                 return (
-                                    <Grid item xs={12} sm={6} md={4} lg={3} xl={2} onClick={handleClickOpen} >
+                                    <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
                                         <MediaCard key={i} title={post.title} description={post.description}
-                                        views={post.views} tags={post.tags} />
+                                        views={post.views} tags={post.tags} autor={post.autor}/>
                                     </Grid>
                                 )
                             })
@@ -88,7 +80,7 @@ const Posts = () => {
                     </Grid>
                 }
 
-<MostrarAnuncio open={open} handleClose={handleClose}/>  
+            {/* <MostrarAnuncio open={open} handleClose={handleClose}/>   */}
         </main>
     );
 }

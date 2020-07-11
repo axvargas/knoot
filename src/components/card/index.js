@@ -14,19 +14,31 @@ import { Container, Tooltip, Chip, Grid } from '@material-ui/core';
 import Badge from '@material-ui/core/Badge';
 import useStyles from './styles';
 import { Steps } from 'intro.js-react';
+import MostrarAnuncio from '../../views/posts/MostrarAnuncio';
 
 
-
-const MediaCard = ({ title, description, likes, views, tags, anuncioSteps, setAnuncioSteps,key }) => {
+const MediaCard = ({ title, description, likes, views, tags,autor}) => {
     const classes = useStyles();
 
     const tagsSplit = tags.split(" ")
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
 
     return (
 
             <Card id="anuncio" className={classes.root}>
-                <CardActionArea>
+                <CardActionArea
+                    onClick={handleClickOpen}
+                >
                     <CardMedia
                         className={classes.media}
                         image="/static/images/cards/contemplative-reptile.jpg"
@@ -91,8 +103,11 @@ const MediaCard = ({ title, description, likes, views, tags, anuncioSteps, setAn
                         </Tooltip>
                     </Container>
                 </CardActions>
-
+                <MostrarAnuncio open={open} handleClose={handleClose} title={title} description={description}
+                    views={views} tags={tags} autor={autor}/>
             </Card>
+
+        
 
             
     );

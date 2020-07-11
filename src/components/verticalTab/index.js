@@ -79,7 +79,7 @@ export default function VerticalTabs() {
         <Anuncios/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Perfiles />
+        <Perfiles/>
       </TabPanel>
 
     </div>

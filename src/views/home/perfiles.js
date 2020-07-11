@@ -45,19 +45,19 @@ const Perfiles = () => {
 
     return (
         <Grid container spacing={2}>
-                        {
-                            posts.map((post, i) => {
-                                return (
-                                    <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-                                        <ProfileCard key={i} title={post.title} description={post.description}
-                                        likes={post.likes} views={post.views} tags={post.tags} imagen={post.imagen}
-                                        />
-                                    </Grid>
-                                )
-                            })
-                        }
+            {
+                posts.map((post, i) => {
+                    return (
+                        <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+                            <ProfileCard key={i} title={post.title} description={post.description}
+                            likes={post.likes} views={post.views} tags={post.tags} imagen={post.imagen}
+                            />
+                        </Grid>
+                    )
+                })
+            }
 
-                    </Grid>
+        </Grid>
     );
 }
 
