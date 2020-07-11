@@ -24,6 +24,7 @@ const LogIn = () => {
     return (
                 
             <Grid container className={classes.root}>
+            <Grid item xs={false} sm={4} md={7} className={classes.image} />
             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                 <div className={classes.paper}>
                     <Avatar className={classes.avatar}>
@@ -74,12 +75,9 @@ const LogIn = () => {
             
                         <Grid container>
                             <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link href= "../register" variant="body2">
                                     {"No tienes una cuenta? Registrate"}
                                 </Link>
                             </Grid>

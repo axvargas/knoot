@@ -18,14 +18,12 @@ const Contact = () => {
                 <div className={classes.toolbar} id="back-to-top-anchor" />
                 <h1> Contactanos </h1>
                 <Grid container className={classes.container} direction="row" justify="space-between" >
-                        <CssBaseline/>
-                        <Grid item xs={false} sm={6} md={6} lg={6} style={{textAlign:"center"}} >
-                            <img src={contact} alt="contact" className={classes.imagine} />
+                        <Grid  item xs={12} sm={6} md={6} lg={6}>
+                            <img src={contact} alt="contact" width="460" height="auto"/>
                         </Grid>
-                        <Grid items xs={12} sm={6} md={6} lg={6}  >
+                        <Grid items xs={12} sm={6} md={6} lg={6} >
                             <ContactForm/>
                         </Grid>
-
 
                 </Grid>
 

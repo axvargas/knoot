@@ -65,7 +65,7 @@ const MediaCard = ({ title, description, likes, views, tags, anuncioSteps, setAn
                                 vertical: 'bottom',
                                 horizontal: 'right',
                             }}>
-                                <FavoriteIcon />
+                                <FavoriteIcon/>
                             </Badge>
                         </IconButton>
 

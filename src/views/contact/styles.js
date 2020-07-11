@@ -8,27 +8,16 @@ const useStyles = makeStyles((theme) => ({
         },
     }
 
-    image: {
-        backgroundImage: '../../recursos/contact.jpg',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor: '#039be5',
-        theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-    },
-
-    imageStyl: {
-    flexGrow:1,
-    width:'100%',
-    height:"20%",
-    alignItems: 'center',
-    justifyContent:'center',
-  },
+	  decorediv: {
+	  backgroundColor: '#3A405A',
+	  width: 'auto',
+	  height: '100px',
+},
 
   container: {
     color: '#039be5',
   	paddingTop: theme.spacing(4),
-  display: "flex",
+  	display: "flex",
   }
 
 }));

@@ -20,6 +20,7 @@ const filterChips= () => {
             for(var tag of tags){
                 tagCards.push(tag.textContent)
             }
+            
             for(var e of arrayTags){
                 if(!tagCards.includes(e)){
                     card.style.display="none"
@@ -77,12 +78,12 @@ const SearchBar= () => {
 }
 
 // onClick={() =>
-                        //     { 
-                        //         var array = document.getElementsByClassName("WAMuiChipInput-chip-55 MuiChip-clickable MuiChip-deletable")
-                        //         for(var element of array){
-                        //             console.log(element.innerText)
-                        //         }
-                        //          }}
+                             //{/ 
+                              //   var array = document.getElementsByClassName("WAMuiChipInput-chip-55 MuiChip-clickable MuiChip-deletable")
+                              //  for(var element of array){
+                              //      console.log(element.innerText)
+                              // }
+                               //  }}
 
 export default SearchBar;
 
