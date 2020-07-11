@@ -71,6 +71,10 @@ paper: {
   alignItems: 'center',
   background: '#E5E9F2',
 },
+paper2: {
+  alignContent: 'center',
+  alignItems: 'center',
+},
 box: {
   padding: '10px',
   margin: '30px',
@@ -117,9 +121,8 @@ button: {
 
   imgicom:  {
     width:"30px",
-    position: 'relative',
     marginTop: '20px',
-    marginLeft: '80%',
+    marginLeft: '85%',
   },
 }));
 
@@ -181,18 +184,20 @@ const Profile = () => {
         </Grid>
 
       <Grid items xs={12} sm={6} md={6} lg={6}   >
-        <Card  className={classe.cardStyle} className={classe.paper} >
+        <Card  className={classe.cardStyle} className={classe.paper2} >
        
-            <div style={{position: 'absolute', display: 'flex', marginLeft: '20px'}}  >
-   
-              <Typography variant="h5"   spacing={5} style={{paddingTop:'20px'}}>
+            <div  style={{ position: 'relative',  background: '#E5E9F2'}} >
+              <div style={{ position: 'absolute',paddingTop:'20px',paddingLeft:'20px'}}>
+              <Typography variant="h5"   spacing={5} >
                 Habilidades          
               </Typography>
-
+              </div>
+              <div >
               <img   src={imgmedi} alt="Medalla" className={classe.imgicom}/>
+              </div>
             </div>
-            <div  className={classe.container} style={{paddingTop:'50px'}}>
-              <Chips/>
+            <div  style={{paddingTop:'50px', height: 'auto', alignItems: 'center',paddingLeft:'50px',paddingRight:'50px', paddingBottom:'50px'}}>
+              <Chips style={{ alignItems: 'center'}}/>
             </div>
          
         </Card>
