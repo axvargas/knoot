@@ -124,7 +124,7 @@ const About = () => {
                 Nuestro Equipo
                 </h2>
                 </div>
-                <div className={classe.avatars}  >
+                <div className={classe.avatars}   >
                     
                     <Avatar alt="Desarrollador 1" src={Desarrollador1} />
                     <Avatar alt="Desarrollador 2" src={Desarrollador2} />
@@ -141,11 +141,11 @@ const About = () => {
           
             <div>
                 <Grid container alignItems="center">
-                     <Grid item xs={8}>
+                     <Grid items xs={12} sm={12} md={8} lg={8} >
                          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.0144861497383!2d-79.9666771856702!3d-2.1481404377783284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902d72f925e5bfdb%3A0x327cdb9f7f4ba3b2!2sEscuela%20Superior%20Polit%C3%A9cnica%20del%20Litoral%20(ESPOL)!5e0!3m2!1ses-419!2sec!4v1593102534169!5m2!1ses-419!2sec" width="100%" height="450" frameborder="0"  allowfullscreen="" aria-hidden="false" tabindex="0">
                          </iframe>
                      </Grid>
-                     <Grid item xs={4}>
+                     <Grid items xs={12} sm={12} md={4} lg={4} >
                         <h2>Campus Gustavo Galindo Velasco</h2>
                         <Typography color="textSecondary" >
                             Km 30.5 via perimetral<br/>

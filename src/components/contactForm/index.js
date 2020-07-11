@@ -78,6 +78,38 @@ const ContactForm = () => {
                       variant="outlined"
                   />
 
+                <TextField
+                    required
+                    id="date"
+                    label="Fecha de nacimiento"
+                    type="date"
+                    id="fechaNacimiento"
+                    label="Fecha de nacimiento"
+                    placeholder="Escriba aqui su fecha de nacimiento"
+                    variant="outlined"
+                    className={classes.textField}
+                    InputLabelProps={{
+                    shrink: true,
+                    }}
+                />
+                   <FormControl variant="outlined" className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-outlined-label">Lugar de origen</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        value={origen}
+                        onChange={handleChange}
+                        label="Origen"
+                    >
+
+                        {provincias.map((origen) => (
+                                    <MenuItem key={origen} value={origen}>
+                                    {origen}
+                                    </MenuItem>
+                                ))}
+                    </Select>
+                </FormControl>
+
                   <TextField
                       id="outlined-multiline-static"
                       className={classes.textField}

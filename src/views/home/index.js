@@ -43,7 +43,7 @@ const Home = () => {
 
                 {inSession &&
                     <div className="verticaltab">
-                        <VerticalTabs anuncioSteps={anuncioSteps} setAnuncioSteps={setAnuncioSteps} />
+                        <VerticalTabs/>
                     </div>
 
                 }

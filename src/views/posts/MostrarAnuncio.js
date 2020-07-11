@@ -61,7 +61,7 @@ pies: {
 },
 
 }));
-const MostrarAnuncio= ({ open, handleClose}) => {
+const MostrarAnuncio= ({ open, handleClose,title, description, likes, views, tags,autor}) => {
     const classe = useStyle();
      const handleDelete = () => {
     console.info('You clicked the delete icon.');
@@ -78,7 +78,7 @@ const MostrarAnuncio= ({ open, handleClose}) => {
             aria-describedby="alert-dialog-description"
         >
             <div className={classe.cont1} >
-                <DialogTitle id="alert-dialog-title"  className={classe.textcenter}>{<h2>Titulo</h2>}</DialogTitle>
+                <DialogTitle id="alert-dialog-title"  className={classe.textcenter}>{<h2>{title}</h2>}</DialogTitle>
                 <DialogContent >
                   <Grid container alignItems="center">
                     <img src={banner} alt="banner" className={classe.imageStyl}/>
@@ -91,7 +91,7 @@ const MostrarAnuncio= ({ open, handleClose}) => {
                     </Grid>
                     <Grid >
                           <Typography gutterBottom variant="h7" className={classe.pies}>
-                            Creado por Usuario
+                            Creado por {autor}
                           </Typography>
                     </Grid>
                   </div>
@@ -154,9 +154,7 @@ const MostrarAnuncio= ({ open, handleClose}) => {
                    </div>
                    <Grid>
                          <Typography color="textSecondary" variant="body2" className={classe.cont2}>
-                          Lorem ipsum dolor sit amet consectetur adipiscing elit, dui nostra praesent 
-                        tristique morbi eleifend proin penatibus, purus cum magna pellentesque vehicula
-                         condimentum
+                          {description}
                          </Typography>
                     </Grid>
                     
@@ -167,7 +165,7 @@ const MostrarAnuncio= ({ open, handleClose}) => {
                     <Grid className={classe.pies}>
                     <GitHubIcon className={classe.cont3}/>
                     < WhatsAppIcon className={classe.cont3}/ >
-                     <TelegramIcon/ >
+                    <TelegramIcon className={classe.cont3}/ >
                     </Grid>
                 </DialogActions>
             
