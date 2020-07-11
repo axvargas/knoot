@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
     root: {
-        width: '50%',
+        width: '70%',
         
         flexDirection: 'row',
         justifyContent: 'flex-end',
