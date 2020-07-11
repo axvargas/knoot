@@ -25,7 +25,8 @@ const useStyle = makeStyles((theme) => ({
 
     },
     cont2: {
-       
+        alignItems: 'center',
+        textAlign: 'justify',
         margin: theme.spacing(5,0,5,0),
     },
     cont3: {
@@ -36,12 +37,13 @@ const useStyle = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent:'center',
         display: 'flex',
+        padding: 0,
 
     },
 imageStyl: {
     flexGrow:1,
     width:"50%",
-    height:"50%",
+    height:"420px",
     alignItems: 'center',
     justifyContent:'center',
 display: 'block',
@@ -83,10 +85,10 @@ const MostrarAnuncio= ({ open, handleClose,title, description, likes, views, tag
             <div className={classe.cont1} >
                 <DialogTitle id="alert-dialog-title"  className={classe.textcenter}>{<h2>{title}</h2>}</DialogTitle>
                 <DialogContent >
-                  <Grid container alignItems="center">
+                  <Grid container alignItems="center" style={{paddingLeft: '40px',paddingRight: '40px'}}>
                     <img src={banner} alt="banner" className={classe.imageStyl}/>
                   </Grid>
-                  <div>
+                  <div style={{paddingLeft: '40px',paddingRight: '40px'}}>
                     <Grid >
                           <Typography gutterBottom variant="h7">
                             Justo ahora
@@ -166,9 +168,9 @@ const MostrarAnuncio= ({ open, handleClose,title, description, likes, views, tag
         
                 <DialogActions>
                     <Grid className={classe.pies}>
-                    <GitHubIcon className={classe.cont3}/>
-                    < WhatsAppIcon className={classe.cont3}/ >
-                    <TelegramIcon className={classe.cont3}/ >
+                      <GitHubIcon className={classe.cont3}/>
+                      < WhatsAppIcon className={classe.cont3}/ >
+                      <TelegramIcon className={classe.cont3}/ >
                     </Grid>
                 </DialogActions>
             
