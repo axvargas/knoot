@@ -20,27 +20,27 @@ const MediaCard = ({ title, description,views,tags }) => {
     const classes = useStyles();
     const tagsSplit = tags.split(" ")
 
-    const stepsEnabled = true;
-    const initialStep= 0;
-    const steps = [
-        {
-            element: '.card',
-            intro: 'Aqui se muestran tus anuncios',
-        },
-        {
-            element: '.titulo',
-            intro: 'Titulo del anuncio',
-        },
-        {
-            element: '.descripcion',
-            intro: 'Descripcion del anuncio',
-        },
-        {
-            element: '.etiquetas',
-            intro: 'Aqui se muestran las etiquetas relacionadas con el anuncio',
-        },
+    // const stepsEnabled = true;
+    // const initialStep= 0;
+    // const steps = [
+    //     {
+    //         element: '.card',
+    //         intro: 'Aqui se muestran tus anuncios',
+    //     },
+    //     {
+    //         element: '.titulo',
+    //         intro: 'Titulo del anuncio',
+    //     },
+    //     {
+    //         element: '.descripcion',
+    //         intro: 'Descripcion del anuncio',
+    //     },
+    //     {
+    //         element: '.etiquetas',
+    //         intro: 'Aqui se muestran las etiquetas relacionadas con el anuncio',
+    //     },
         
-      ];
+    //   ];
 
     return (
         <div className="card">
@@ -110,12 +110,12 @@ const MediaCard = ({ title, description,views,tags }) => {
                 </Container>
             </CardActions>
             
-            <Steps
+            {/* <Steps
                     enabled={stepsEnabled}
                     //enabled={false}
                     steps={steps}
                     initialStep={initialStep}
-                />
+                /> */}
              
                     
                 
