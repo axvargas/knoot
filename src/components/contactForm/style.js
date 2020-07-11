@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     div: {
+        
         display: 'flex',
         width: '71%',
     },

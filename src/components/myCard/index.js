@@ -83,7 +83,7 @@ const MediaCard = ({ title, description,views,tags }) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Tooltip title="Editar">
+                <Tooltip title="Editar" arrow placement="bottom">
                 <IconButton aria-label="edit">
                         <EditIcon />
                     </IconButton>
@@ -96,7 +96,7 @@ const MediaCard = ({ title, description,views,tags }) => {
                 </Tooltip>
                 
                 <Container className={classes.views}>
-                    <Tooltip title="Visualizaciones">
+                    <Tooltip title="Visualizaciones" arrow placement="bottom">
                         <IconButton aria-label="share">
                             <Badge badgeContent={10} color="primary" anchorOrigin={{
                                 vertical: 'bottom',

@@ -1,7 +1,5 @@
 import React from 'react';
 import useStyles from '../styles';
-import TextField from '@material-ui/core/TextField';
-import { Typography } from '@material-ui/core';
 import ContactForm from '../../components/contactForm';
 
 const Contact = () => {
@@ -17,6 +15,7 @@ const Contact = () => {
                 <h1>Contáctanos</h1>
 
                 <ContactForm/>
+                
 
 
                 

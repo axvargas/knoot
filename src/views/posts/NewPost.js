@@ -13,6 +13,7 @@ import TextField from '@material-ui/core/TextField';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import imagen from '../../recursos/placeholder.png';
 import Chip from '@material-ui/core/Chip';
+import ChipInput from 'material-ui-chip-input';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;

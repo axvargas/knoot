@@ -58,7 +58,7 @@ const MediaCard = ({ title, description, likes, views, tags, anuncioSteps, setAn
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Tooltip title="Me Gusta">
+                    <Tooltip title="Agregar a favorito" arrow placement="bottom">
 
                         <IconButton aria-label="favorite">
                             <Badge badgeContent={likes} color="primary" anchorOrigin={{
@@ -72,13 +72,13 @@ const MediaCard = ({ title, description, likes, views, tags, anuncioSteps, setAn
 
                     </Tooltip>
 
-                    <Tooltip title="Compartir">
+                    <Tooltip title="Compartir" arrow placement="bottom">
                         <IconButton aria-label="share">
                             <ShareIcon />
                         </IconButton>
                     </Tooltip>
                     <Container className={classes.views}>
-                        <Tooltip title="Visualizaciones">
+                        <Tooltip title="Visualizaciones" arrow placement="bottom">
                             <IconButton aria-label="share">
                                 <Badge badgeContent={views} color="primary" anchorOrigin={{
                                     vertical: 'bottom',
