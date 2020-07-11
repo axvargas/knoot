@@ -72,6 +72,9 @@ const MostrarAnuncio= ({ open, handleClose,title, description, likes, views, tag
   };
     return (
         <Dialog 
+          fullWidth="true"
+          maxWidth="lg"
+          
             open={open}
             onClose={handleClose}
             aria-labelledby="alert-dialog-title"
