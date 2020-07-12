@@ -16,6 +16,10 @@ import useStyles from './style';
 import { Steps} from 'intro.js-react';
 import MostrarAnuncio from '../../views/posts/MostrarAnuncio';
 import EditCard from './EditCard';
+import {Alert, AlertTitle} from '@material-ui/lab';
+
+
+
 
 
 const MediaCard = ({ title, description,views,tags,autor }) => {
@@ -31,6 +35,20 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const deleteRow = () => {
+
+        return(
+                <button
+                  onClick={() => {
+                    alert.show('Estas seguro de eliminar?')
+                  }}
+                >
+                  Borrar Anuncio
+                </button>
+              
+            )
+    }
 
     // const stepsEnabled = true;
     // const initialStep= 0;
@@ -68,7 +86,7 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
                 <CardContent>
                     <div className="titulo">
                         <Typography gutterBottom variant="h5" component="h2">
-                            {title}
+                            Titulo
                         </Typography>
                     </div>
                     

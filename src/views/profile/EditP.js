@@ -10,6 +10,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import ChipInput from 'material-ui-chip-input'
 const useStyle = makeStyles((theme) => ({
     cont1: {
         backgroundColor: '#E5E9F2',
@@ -35,7 +36,13 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 const EditarPerfil = ({ open, handleClose}) => {
+    const defaultProps = {
+          options: facultades,
+          getOptionLabel: (option) => option.Facultad
+        };
     const classe = useStyle();
+    const [value, setValue] = React.useState(null);
+
     return (
         <Dialog 
             open={open}
@@ -46,7 +53,7 @@ const EditarPerfil = ({ open, handleClose}) => {
             <div className={classe.cont1} >
                 <DialogTitle id="alert-dialog-title"  className={classe.textcenter}>{<h2>Editar Perfil</h2>}</DialogTitle>
                 <DialogContent>
-                    <div className={classe.cont2} >
+                    <div justifyContent='left' >
                         <h3>Informacion Personal</h3> 
                         <div className={classe.cont3} >
                             <fromGroup> 
@@ -89,33 +96,41 @@ const EditarPerfil = ({ open, handleClose}) => {
                                     fullWidth
                                 /> 
 
+                                 <Autocomplete
+                                    {...defaultProps}
+                                    id="controlled-demo"
+                                    value={value}
+                                    onChange={(event, newValue) => {
+                                      setValue(newValue);
+                                    }}
+                                    renderInput={(params) =>
+                                     <TextField {...params} 
+                                        label="Facultad" 
+                                        margin="normal" />}
+                                  />
+
                                  <TextField
                                       id="standard-multiline-static"
                                       label="Descripción"
                                       multiline
                                       fullWidth
                                       rows={4}
-                                />
+                                />  
                                
                             </fromGroup>
                         </div>
-                        <h3>Habilidades</h3> 
-                        <div className={classe.autocom}>
-                            <Autocomplete
-                                multiple
-                                id="tags-outlined"
-                                options={top100Films}
-                                getOptionLabel={(option) => option.title}
-                                defaultValue={[top100Films[13]]}
-                                renderInput={(params) => (
-                                  <TextField
-                                    {...params}
-                                    variant="outlined"
-                                    label="Selecciona tus Habilidades"
-                                    placeholder="Buscar"
-                                  />
-                                )}
-                            />
+                            <h3>Habilidades</h3> 
+
+                        <div>
+                          
+                           
+                            <ChipInput
+                              fullWidth
+                              defaultValue={['Angular', 'jQuery', 'Polymer', 'React', 'Vue.js']}
+                              placeholder='Ingrese tus habilidades'
+                                />
+
+
                         </div>  
                     </div>
                 </DialogContent>
@@ -125,7 +140,7 @@ const EditarPerfil = ({ open, handleClose}) => {
                         Cancelar
                     </Button>
                     <Button onClick={handleClose} color="primary" autoFocus>
-                        Editar
+                        Guardar
                     </Button>
                 </DialogActions>
             
@@ -135,47 +150,32 @@ const EditarPerfil = ({ open, handleClose}) => {
 }
 export default EditarPerfil;
 const top100Films = [
-  { title: 'The Shawshank Redemption', year: 1994 },
-  { title: 'The Godfather', year: 1972 },
-  { title: 'The Godfather: Part II', year: 1974 },
-  { title: 'The Dark Knight', year: 2008 },
-  { title: '12 Angry Men', year: 1957 },
-  { title: "Schindler's List", year: 1993 },
-  { title: 'Pulp Fiction', year: 1994 },
-  { title: 'The Lord of the Rings: The Return of the King', year: 2003 },
-  { title: 'The Good, the Bad and the Ugly', year: 1966 },
-  { title: 'Fight Club', year: 1999 },
-  { title: 'The Lord of the Rings: The Fellowship of the Ring', year: 2001 },
-  { title: 'Star Wars: Episode V - The Empire Strikes Back', year: 1980 },
-  { title: 'Forrest Gump', year: 1994 },
-  { title: 'Inception', year: 2010 },
-  { title: 'The Lord of the Rings: The Two Towers', year: 2002 },
-  { title: "One Flew Over the Cuckoo's Nest", year: 1975 },
-  { title: 'Goodfellas', year: 1990 },
-  { title: 'The Matrix', year: 1999 },
-  { title: 'Seven Samurai', year: 1954 },
-  { title: 'Star Wars: Episode IV - A New Hope', year: 1977 },
-  { title: 'City of God', year: 2002 },
-  { title: 'Se7en', year: 1995 },
-  { title: 'The Silence of the Lambs', year: 1991 },
-  { title: "It's a Wonderful Life", year: 1946 },
-  { title: 'Life Is Beautiful', year: 1997 },
-  { title: 'The Usual Suspects', year: 1995 },
-  { title: 'Léon: The Professional', year: 1994 },
-  { title: 'Spirited Away', year: 2001 },
-  { title: 'Saving Private Ryan', year: 1998 },
-  { title: 'Once Upon a Time in the West', year: 1968 },
-  { title: 'American History X', year: 1998 },
-  { title: 'Interstellar', year: 2014 },
-  { title: 'Casablanca', year: 1942 },
-  { title: 'City Lights', year: 1931 },
-  { title: 'Psycho', year: 1960 },
-  { title: 'The Green Mile', year: 1999 },
-  { title: 'The Intouchables', year: 2011 },
-  { title: 'Modern Times', year: 1936 },
-  { title: 'Raiders of the Lost Ark', year: 1981 },
-  { title: 'Rear Window', year: 1954 },
-  { title: 'The Pianist', year: 2002 },
-  { title: 'The Departed', year: 2006 },
-  { title: 'Terminator 2: Judgment Day', year: 1991 },
+  { title: 'Programacion en Java'},
+  { title: 'Programacion de Servicios' },
+  { title: 'Postgradel' },
+  { title: 'Manejo de Idiomas' },
+  { title: 'AutoCad'},
+  { title: 'Windows' },
+  { title: 'Diseno Grafico' },
+  { title: 'E-commerce' },
+  { title: 'Dashboard' },
+  { title: 'Circuitos' },
+  { title: 'Conocimientos Canvas' },
+  { title: 'Manejo de Algoritmos' },
+  { title: 'Robotica' },
+  { title: 'Ajedres'},
+  { title: 'MongoDB'},
+  { title: 'Fisica Cuantica' },
+  { title: 'Estadisticas' },
+  { title: 'Scout' },
 ];
+
+const facultades = [
+  { Facultad: 'Facultad de Ingenieria Electrica y Computacion', acronimo: 'FIEC' },
+  { Facultad: 'Facultad de Ciencias Naturales y Matematicas', acronimo: 'FCNM'},
+  { Facultad: 'Facultad de Ingenieria de Ciencias de la Tierra', acronimo: 'FICT' },
+  { Facultad: 'Escuela de Diseno y Comunicacion', acronimo: 'EDCOM' },
+  { Facultad: 'Facultad de Ingenieria Maritima y Ciencias del Mar', acronimo: 'FICMBOR' },
+  { Facultad: 'Facultad de Ciencias Sociales y Humanisticas', acronimo: 'FSCH' },
+  { Facultad: 'Facultad de Ciencias de la Vida', acronimo: 'fCV' },
+  ];
