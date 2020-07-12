@@ -15,6 +15,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import useStyles from './style';
 import { Steps} from 'intro.js-react';
 import MostrarAnuncio from '../../views/posts/MostrarAnuncio';
+import EditCard from './EditCard';
 
 
 const MediaCard = ({ title, description,views,tags,autor }) => {
@@ -96,11 +97,9 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Tooltip title="Editar" arrow placement="bottom">
-                <IconButton aria-label="edit">
-                        <EditIcon />
-                    </IconButton>
-                </Tooltip>
+
+                <EditCard title={title} description={description}
+                    views={views} tags={tags} autor={autor}/>
                 
                 <Tooltip title="Eliminar">
                     <IconButton aria-label="delete">

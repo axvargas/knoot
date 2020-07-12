@@ -57,7 +57,7 @@ const Home = () => {
                             ...intro,
                             stepsEnabled: false
                         })
-                        setAnuncioSteps(true);
+                        //setAnuncioSteps(true);
 
                     }}
 
