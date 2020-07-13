@@ -19,7 +19,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box p={2}>
           {children}
         </Box>
       )}
@@ -42,16 +42,19 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
     marginTop: 20,
     padding: 10,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
   },
   tabs: {
+    flexGrow: 1,
     borderRight: `1px solid ${theme.palette.divider}`,
-    width: 1000,
   },
+  panel: {
+    width: "90%",
+  }
+
 }));
 
 export default function VerticalTabs() {
@@ -68,17 +71,17 @@ export default function VerticalTabs() {
         orientation="vertical"
         value={value}
         onChange={handleChange}
-        aria-label="Vertical tabs"
+        //aria-label="Vertical tabs"
         className={classes.tabs}
       >
         <Tab label="Anuncios" {...a11yProps(0)} />
         <Tab label="Perfiles" {...a11yProps(1)} />
 
       </Tabs>
-      <TabPanel value={value} index={0}>
+      <TabPanel className={classes.panel} value={value} index={0}>
         <Anuncios/>
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel className={classes.panel} value={value} index={1}>
         <Perfiles />
       </TabPanel>
 
