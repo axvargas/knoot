@@ -133,11 +133,11 @@ const Profile = () => {
   const [open, setOpen] = React.useState(false);
   const post = 
         {
-            nombre: "Titulo 1", apellido: `Cras mattis consectetur purus sit amet fermentum.
+            nombre: "Jose Francisco Morales Mendoza", apellido: `Cras mattis consectetur purus sit amet fermentum.
         Cras justo odio, dapibus ac facilisis in, egestas eget quam.
         Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
         Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-        email: "10", ciudad: "Texto3 Texto4", decripcion:"Usuario"
+        email: "ltvargas@espol.edu.ec ",numero:"0934682738", ciudad: "Guayaquil", descripcion:"Desarrollo de Aplicaciones Web y Moviles. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,totam rem aperiam, eaque ipsa "
         };
         
     
@@ -174,14 +174,11 @@ const Profile = () => {
                     <div  className={classe.box} >
                       <h2>{post.nombre}</h2>
                       <h3>
-                        ltvargas@espol.edu.ec <br/>
-                        0934682738<br/>
-                        Guayaquil
+                        {post.email}<br/>
+                        {post.numero}<br/>
+                        {post.ciudad}
                         <p style={{textAlign:"justify", padding:'20px'}}>
-                          Desarrollo de Aplicaciones Web y Moviles <br/>
-                          Sed ut perspiciatis unde omnis iste natus error
-                          sit voluptatem accusantium doloremque laudantium,
-                          totam rem aperiam, eaque ipsa 
+                          {post.descripcion}
                         </p>
                       </h3>
                     </div>
