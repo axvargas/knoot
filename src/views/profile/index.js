@@ -13,7 +13,6 @@ import EditTwoToneIcon from '@material-ui/icons/EditTwoTone';
 import imgPerfil from '../../recursos/desarrollador2.jpg';
 import imgmedi from '../../recursos/medalla.png';
 import clsx from 'clsx';
-import EditP from './EditP';
 import Footer from "../../components/footer";
 
 const useStyle = makeStyles((theme) => ({
@@ -133,11 +132,8 @@ const Profile = () => {
   const [open, setOpen] = React.useState(false);
   const post = 
         {
-            nombre: "Jose Francisco Morales Mendoza", apellido: `Cras mattis consectetur purus sit amet fermentum.
-        Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-        Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-        email: "ltvargas@espol.edu.ec ",numero:"0934682738", ciudad: "Guayaquil", descripcion:"Desarrollo de Aplicaciones Web y Moviles. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,totam rem aperiam, eaque ipsa "
+            nombres: "Jose Francisco", apellidos:"Morales Mendoza",
+        email: "ltvargas@espol.edu.ec ",numero:"0934682738", ciudad: "Guayaquil", facultad:"Facultad de Ingenieria Electrica y Computacion", descripcion:"Desarrollo de Aplicaciones Web y Moviles. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,totam rem aperiam, eaque ipsa "
         };
         
     
@@ -172,11 +168,12 @@ const Profile = () => {
                 <div  elevation={0} className={classe.paper} >
                   <img   src={imgPerfil} alt="Perfil" className={classe.imageStyl}/>
                     <div  className={classe.box} >
-                      <h2>{post.nombre}</h2>
+                      <h2>{post.nombres}{post.apellidos}</h2>
                       <h3>
                         {post.email}<br/>
                         {post.numero}<br/>
-                        {post.ciudad}
+                        {post.ciudad}<br/>
+                         {post.facultad}
                         <p style={{textAlign:"justify", padding:'20px'}}>
                           {post.descripcion}
                         </p>
@@ -209,10 +206,11 @@ const Profile = () => {
 
     </Grid>
    
-    <EditP nombre={post.nombre} apellido={post.apellido}
-        email={post.tags} ciudad={post.ciudad}  descripcion={post.descripcion}/>
+    
     <Footer/>
-    <EditarPerfil open={open} handleClose={handleClose} />
+    
+    <EditarPerfil open={open} handleClose={handleClose} nombres={post.nombres} apellidos={post.apellidos}
+        email={post.email} numero={post.numero} ciudad={post.ciudad} facultad={post.facultad} descripcion={post.descripcion}/>
     </main>
 
     );

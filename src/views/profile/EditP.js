@@ -33,19 +33,20 @@ const useStyle = makeStyles((theme) => ({
     },
   },
 }));
-const EditarPerfil = ({ open, handleClose,nombre,apellido,email,ciudad,descripcion}) => {
+const EditarPerfil = ({ open, handleClose,nombres,apellidos,email,ciudad,facultad,descripcion}) => {
     const defaultProps = {
           options: facultades,
           getOptionLabel: (option) => option.Facultad
         };
     const classe = useStyle();
     const [value, setValue] = React.useState(null);
-    console.log(nombre);
+    
     return (
     
         <Dialog 
             open={open}
             onClose={handleClose}
+            
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
         >
@@ -64,9 +65,11 @@ const EditarPerfil = ({ open, handleClose,nombre,apellido,email,ciudad,descripci
                                     margin="dense"
                                     id="nombre"
                                     label="Nombre"
-                                    type="text"
-                                     defaultValue={nombre}
-                                    fullWidth
+                                   placeholder="Escriba sus nombres aqui"
+                                   type="text"
+                                     defaultValue={nombres}
+                                    
+                                     fullWidth
                                 />            
 
                                 <TextField
@@ -76,6 +79,8 @@ const EditarPerfil = ({ open, handleClose,nombre,apellido,email,ciudad,descripci
                                     id="apellido"
                                     label="Apellido"
                                     type="text"
+                                   placeholder="Escriba sus apellidos aqui"
+                                     defaultValue={apellidos}
                                     fullWidth
                                 /> 
 
@@ -86,6 +91,8 @@ const EditarPerfil = ({ open, handleClose,nombre,apellido,email,ciudad,descripci
                                     id="email"
                                     label="E-mail"
                                     type="email"
+                                    placeholder="Escriba su correo aqui"
+                                    defaultValue={email}
                                     fullWidth
                                 /> 
 
@@ -95,25 +102,34 @@ const EditarPerfil = ({ open, handleClose,nombre,apellido,email,ciudad,descripci
                                     id="ciudad"
                                     label="Ciudad"
                                     type="text"
+                                    placeholder="Escriba su ciudad aqui"
+                                    defaultValue={ciudad}
                                     fullWidth
                                 /> 
 
                                  <Autocomplete
                                     {...defaultProps}
                                     id="controlled-demo"
+                               
                                     value={value}
+
                                     onChange={(event, newValue) => {
                                       setValue(newValue);
                                     }}
+                                    
                                     renderInput={(params) =>
                                      <TextField {...params} 
                                         label="Facultad" 
-                                        margin="normal" />}
+                                        margin="normal"
+                                        placeholder="Seleccione sus facultad"
+                                        />}
                                   />
 
                                  <TextField
                                       id="standard-multiline-static"
                                       label="Descripción"
+                                      placeholder="Escriba su descripcion aqui"
+                                    defaultValue={descripcion}
                                       multiline
                                       fullWidth
                                       rows={4}
