@@ -7,7 +7,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import ChipInput from 'material-ui-chip-input'
+import ChipInput from 'material-ui-chip-input';
+
 const useStyle = makeStyles((theme) => ({
     cont1: {
         backgroundColor: '#E5E9F2',
@@ -32,15 +33,16 @@ const useStyle = makeStyles((theme) => ({
     },
   },
 }));
-const EditarPerfil = ({ open, handleClose}) => {
+const EditarPerfil = ({ open, handleClose,nombre,apellido,email,ciudad,descripcion}) => {
     const defaultProps = {
           options: facultades,
           getOptionLabel: (option) => option.Facultad
         };
     const classe = useStyle();
     const [value, setValue] = React.useState(null);
-
+    console.log(nombre);
     return (
+    
         <Dialog 
             open={open}
             onClose={handleClose}
@@ -53,7 +55,9 @@ const EditarPerfil = ({ open, handleClose}) => {
                     <div justifyContent='left' >
                         <h3>Informacion Personal</h3> 
                         <div className={classe.cont3} >
-                            <fromGroup> 
+
+                            <fromGroup>
+
                                 <TextField
                                     required
                                     variant="outlined"
@@ -61,6 +65,7 @@ const EditarPerfil = ({ open, handleClose}) => {
                                     id="nombre"
                                     label="Nombre"
                                     type="text"
+                                     defaultValue={nombre}
                                     fullWidth
                                 />            
 

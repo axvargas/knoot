@@ -11,6 +11,7 @@ import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import imagen from '../../recursos/placeholder.png';
+import edimage from '../../recursos/edibanner.jpg';
 import Chip from '@material-ui/core/Chip';
 import EditIcon from '@material-ui/icons/Edit';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -170,6 +171,7 @@ const EditCard= (title,description) => {
               label="Agregue el número de vacantes:"
               placeholder="Escriba un número aqui"
               type="number"
+              defaultValue={title.views}
               InputLabelProps={{
                 shrink: true,
               }}
@@ -192,7 +194,7 @@ const EditCard= (title,description) => {
               Subir imagen
             </Button>
           </label>
-          <input accept="image/*" className={classee.input} id="icon-button-file" type="file" />
+          <input accept="image/*" className={classee.input} id="icon-button-file" type="file"  />
           <label htmlFor="icon-button-file">
             <IconButton color="primary" aria-label="upload picture" component="span">
               <PhotoCamera />
@@ -200,7 +202,7 @@ const EditCard= (title,description) => {
           </label>
           
           <div>
-          <img src={imagen} alt="imagen" className={classee.imageStyl}/>
+          <img src={imagen} alt="imagen" className={classee.imageStyl} defaultValue={edimage}/>
           </div>
           
         </div>
