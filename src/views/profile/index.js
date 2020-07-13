@@ -4,20 +4,15 @@ import {Box,
   Typography,
   Grid,
   makeStyles,
-  Paper,
-  Avatar,
   Button
 } from '@material-ui/core';
 import EditarPerfil from "./EditP";
-import Fade from '@material-ui/core/Fade';
-import {Card, CardHeader, CardActions} from '@material-ui/core';
-import CardContent from '@material-ui/core/CardContent';
+import {Card,} from '@material-ui/core';
 import Chips from "../../components/chips";
 import EditTwoToneIcon from '@material-ui/icons/EditTwoTone';
 import imgPerfil from '../../recursos/desarrollador2.jpg';
 import imgmedi from '../../recursos/medalla.png';
 import clsx from 'clsx';
-import Badge from '@material-ui/core/Badge';
 import Footer from "../../components/footer";
 
 const useStyle = makeStyles((theme) => ({

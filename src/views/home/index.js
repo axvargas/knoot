@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import useStyles from '../styles';
 
 import SearchBar from '../../components/searchBar';
-import Footer from "../../components/footer";
 import VerticalTabs from '../../components/verticalTab';
 import { Steps } from 'intro.js-react';
 
@@ -48,7 +47,7 @@ const Home = () => {
 
                 }
 
-                {/* <Steps
+                <Steps
                     enabled={intro.stepsEnabled}
                     steps={intro.steps}
                     initialStep={intro.initialStep}
@@ -61,7 +60,7 @@ const Home = () => {
 
                     }}
 
-                /> */}
+                />
 
 
 

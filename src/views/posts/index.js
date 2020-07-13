@@ -2,22 +2,10 @@ import React from 'react';
 import useStyles from '../styles';
 import MediaCard from "../../components/myCard";
 import { Grid } from '@material-ui/core';
-import MostrarAnuncio from "./MostrarAnuncio";
 import NewPost from "./NewPost";
-import Slide from '@material-ui/core/Slide';
-
-/*
-const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
-  */
 
 const Posts = () => {
     const classes = useStyles();
-
-    
-    
-    
 
     const posts = [
         {

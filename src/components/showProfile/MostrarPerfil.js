@@ -1,26 +1,19 @@
 import React from 'react';
-import Input from '@material-ui/core/Input';
 import Dialog from '@material-ui/core/Dialog';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
-import FaceIcon from '@material-ui/icons/Face';
-import DoneIcon from '@material-ui/icons/Done';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import banner from '../../recursos/public.jpg';
 import { Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import TelegramIcon from '@material-ui/icons/Telegram';
-// import Disponible from '../../components/AvailableChip/Disponible'
-// import NoDisponible from '../../components/AvailableChip/NoDisponible'
+import Disponible from '../AvailableChip/Disponible'
+import NoDisponible from '../AvailableChip/NoDisponible'
+
 
 
 const useStyle = makeStyles((theme) => ({
@@ -80,13 +73,6 @@ const MostrarPerfil= ({ open, handleClose, nombre,description,tags}) => {
 
     const tagsSplit = tags.split(" ")
 
-     const handleDelete = () => {
-    console.info('You clicked the delete icon.');
-  };
-
-  const handleClick = () => {
-    console.info('You clicked the Chip.');
-  };
     return (
         <Dialog 
           fullWidth="true"
@@ -108,7 +94,7 @@ const MostrarPerfil= ({ open, handleClose, nombre,description,tags}) => {
                     
                 </DialogTitle>
                 <DialogContent >
-                  {/* <Disponible/> */}
+                  <Disponible/>
                   <div className={classe.etiquetas}>
                     <Typography gutterBottom variant="h6">
                             Etiquetas:

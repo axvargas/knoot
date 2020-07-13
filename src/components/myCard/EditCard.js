@@ -8,12 +8,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
-import AddIcon from '@material-ui/icons/Add';
 import TextField from '@material-ui/core/TextField';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import imagen from '../../recursos/placeholder.png';
 import Chip from '@material-ui/core/Chip';
-import ChipInput from 'material-ui-chip-input';
 import EditIcon from '@material-ui/icons/Edit';
 import Tooltip from '@material-ui/core/Tooltip';
 
@@ -41,7 +39,6 @@ const useStylee = makeStyles((theme) => ({
     flexWrap: 'wrap',
     width: '50%',
     display: 'flex',
-    flexWrap: 'wrap',
   },
   textField: {
 

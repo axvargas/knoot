@@ -1,5 +1,4 @@
 import React from 'react';
-// @Material UI imports
 import {
     Divider,
     Hidden,

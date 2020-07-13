@@ -12,7 +12,6 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import { Container, Tooltip, Chip, Grid } from '@material-ui/core';
 import Badge from '@material-ui/core/Badge';
 import useStyles from './styles';
-import { Steps } from 'intro.js-react';
 import MostrarAnuncio from '../../views/posts/MostrarAnuncio';
 
 

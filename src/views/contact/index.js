@@ -1,10 +1,8 @@
 import React from 'react';
 import useStyles from '../styles';
-import TextField from '@material-ui/core/TextField';
-import { Typography, Grid,  CssBaseline } from '@material-ui/core';
+import {Grid} from '@material-ui/core';
 import ContactForm from '../../components/contactForm';
 import contact from '../../recursos/contact1.png';
-import { makeStyles } from '@material-ui/core/styles';
 
 
 const Contact = () => {

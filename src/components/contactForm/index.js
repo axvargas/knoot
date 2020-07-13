@@ -6,8 +6,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Input from '@material-ui/core/Input';
-import Icon from '@material-ui/core/Icon';
 import SendIcon from '@material-ui/icons/Send';
 
 
@@ -80,8 +78,6 @@ const ContactForm = () => {
 
                 <TextField
                     required
-                    id="date"
-                    label="Fecha de nacimiento"
                     type="date"
                     id="fechaNacimiento"
                     label="Fecha de nacimiento"

@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import useStyles from '../styles';
-import { CardMedia } from '@material-ui/core';
 import logo from '../../recursos/logo.png';
 import Desarrollador1 from '../../recursos/desarrollador1.jpg';
 import Desarrollador2 from '../../recursos/desarrollador2.jpg';

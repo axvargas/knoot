@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
           margin: theme.spacing(1),
           width: '25ch',
         },
-    }
+    },
 
 	  decorediv: {
 	  backgroundColor: '#3A405A',

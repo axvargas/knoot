@@ -13,7 +13,6 @@ import {
     Typography
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import Copyright from '../../components/copyright';
 import useStyles from './styles';
 import AddChip from '../../components/AddChip';
