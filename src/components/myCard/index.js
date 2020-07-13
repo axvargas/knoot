@@ -14,6 +14,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import useStyles from './style';
 import MostrarAnuncio from '../../views/posts/MostrarAnuncio';
 import EditCard from './EditCard';
+import DeleteOpcion from './delete';
+import Alert from '@material-ui/lab/Alert';
 
 
 
@@ -32,20 +34,6 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
     const handleClose = () => {
         setOpen(false);
     };
-
-    const deleteRow = () => {
-
-        return(
-                <button
-                  onClick={() => {
-                    alert.show('Estas seguro de eliminar?')
-                  }}
-                >
-                  Borrar Anuncio
-                </button>
-              
-            )
-    }
 
 
     return (
@@ -97,12 +85,9 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
 
                 <EditCard title={title} description={description}
                     views={views} tags={tags} autor={autor}/>
+                    
+                <DeleteOpcion/>
                 
-                <Tooltip title="Eliminar">
-                    <IconButton aria-label="delete">
-                        <DeleteIcon />
-                    </IconButton>
-                </Tooltip>
                 
                 <Container className={classes.views}>
                     <Tooltip title="Visualizaciones" arrow placement="bottom">
