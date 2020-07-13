@@ -13,6 +13,7 @@ import EditTwoToneIcon from '@material-ui/icons/EditTwoTone';
 import imgPerfil from '../../recursos/desarrollador2.jpg';
 import imgmedi from '../../recursos/medalla.png';
 import clsx from 'clsx';
+import EditP from './EditP';
 import Footer from "../../components/footer";
 
 const useStyle = makeStyles((theme) => ({
@@ -130,6 +131,17 @@ const Profile = () => {
   const classe = useStyle();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const [open, setOpen] = React.useState(false);
+  const post = 
+        {
+            nombre: "Jose Francisco Morales Mendoza", apellido: `Cras mattis consectetur purus sit amet fermentum.
+        Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+        Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
+        email: "ltvargas@espol.edu.ec ",numero:"0934682738", ciudad: "Guayaquil", descripcion:"Desarrollo de Aplicaciones Web y Moviles. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,totam rem aperiam, eaque ipsa "
+        };
+        
+    
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -160,16 +172,13 @@ const Profile = () => {
                 <div  elevation={0} className={classe.paper} >
                   <img   src={imgPerfil} alt="Perfil" className={classe.imageStyl}/>
                     <div  className={classe.box} >
-                      <h2>Jose Morales Mendoza</h2>
+                      <h2>{post.nombre}</h2>
                       <h3>
-                        ltvargas@espol.edu.ec <br/>
-                        0934682738<br/>
-                        Guayaquil
+                        {post.email}<br/>
+                        {post.numero}<br/>
+                        {post.ciudad}
                         <p style={{textAlign:"justify", padding:'20px'}}>
-                          Desarrollo de Aplicaciones Web y Moviles <br/>
-                          Sed ut perspiciatis unde omnis iste natus error
-                          sit voluptatem accusantium doloremque laudantium,
-                          totam rem aperiam, eaque ipsa 
+                          {post.descripcion}
                         </p>
                       </h3>
                     </div>
@@ -199,6 +208,9 @@ const Profile = () => {
       </Grid>
 
     </Grid>
+   
+    <EditP nombre={post.nombre} apellido={post.apellido}
+        email={post.tags} ciudad={post.ciudad}  descripcion={post.descripcion}/>
     <Footer/>
     <EditarPerfil open={open} handleClose={handleClose} />
     </main>
