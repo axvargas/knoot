@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -51,11 +50,14 @@ const MediaCard = ({ title, description, likes, views, tags,autor}) => {
                         <Typography variant="body2" color="textSecondary" component="p">
                             {description}
                         </Typography>
-                        <Grid container spacing={1} className={classes.tagsContainer}>
+                        <Grid container className={classes.tagsContainer}>
                             {
                                 tagsSplit.map((tag) => {
                                     return (
-                                        <Grid item><Chip label={tag}></Chip></Grid>
+                                        <Grid item><Chip 
+                                        color="secondary" 
+                                        variant="outlined"
+                                        label={tag}/></Grid>
                                     )
 
                                 })

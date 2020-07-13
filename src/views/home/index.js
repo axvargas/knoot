@@ -48,7 +48,7 @@ const Home = () => {
 
                 }
 
-                <Steps
+                {/* <Steps
                     enabled={intro.stepsEnabled}
                     steps={intro.steps}
                     initialStep={intro.initialStep}
@@ -61,7 +61,7 @@ const Home = () => {
 
                     }}
 
-                />
+                /> */}
 
 
 

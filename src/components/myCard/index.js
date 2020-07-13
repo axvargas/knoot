@@ -50,27 +50,6 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
             )
     }
 
-    // const stepsEnabled = true;
-    // const initialStep= 0;
-    // const steps = [
-    //     {
-    //         element: '.card',
-    //         intro: 'Aqui se muestran tus anuncios',
-    //     },
-    //     {
-    //         element: '.titulo',
-    //         intro: 'Titulo del anuncio',
-    //     },
-    //     {
-    //         element: '.descripcion',
-    //         intro: 'Descripcion del anuncio',
-    //     },
-    //     {
-    //         element: '.etiquetas',
-    //         intro: 'Aqui se muestran las etiquetas relacionadas con el anuncio',
-    //     },
-        
-    //   ];
 
     return (
         <div className="card">
@@ -86,7 +65,7 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
                 <CardContent>
                     <div className="titulo">
                         <Typography gutterBottom variant="h5" component="h2">
-                            Titulo
+                            {title}
                         </Typography>
                     </div>
                     
@@ -97,11 +76,14 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
                     </div>
                     
                     <div className="etiquetas">
-                        <Grid container spacing={1} className={classes.tagsContainer}>
+                        <Grid container className={classes.tagsContainer}>
                             {
                                 tagsSplit.map((tag) => {
                                     return(
-                                            <Grid item><Chip label={tag}></Chip></Grid>
+                                            <Grid item><Chip 
+                                            color="secondary" 
+                                            variant="outlined"
+                                            label={tag}/></Grid>
                                     )
                                     
                                 })

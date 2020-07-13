@@ -5,7 +5,7 @@ const useStyles = makeStyles({
         maxWidth: '100%',
     },
     media: {
-        height: 140,
+        height: 150,
     },
     views: {
         display: 'flex',

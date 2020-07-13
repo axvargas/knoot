@@ -31,7 +31,8 @@ const useStylee = makeStyles((theme) => ({
   appBar: {
     position: 'relative',
   },
-  title: {
+
+  titulo: {
     marginLeft: theme.spacing(2),
     flex: 1,
   },
@@ -75,7 +76,7 @@ const useStylee = makeStyles((theme) => ({
 }));
 
 
-const EditCard= (title, description,views,tags,autor) => {
+const EditCard= (title,description) => {
   const classee = useStylee();
 
   const [open, setOpen] = React.useState(false);
@@ -92,6 +93,7 @@ const EditCard= (title, description,views,tags,autor) => {
     console.info('You clicked the delete icon.');
   };
 
+  console.log(title)
   
   return (
     <Fragment>
@@ -107,7 +109,7 @@ const EditCard= (title, description,views,tags,autor) => {
               <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
                 <CloseIcon />
               </IconButton>
-              <Typography variant="h6" className={classee.title} align="center">
+              <Typography variant="h6" className={classee.titulo} align="center">
                 Editar Anuncio
               </Typography>
               <Button autoFocus color="inherit" onClick={handleClose}>
@@ -118,15 +120,15 @@ const EditCard= (title, description,views,tags,autor) => {
           
 
       <div className={classee.root}>
-      
         <div className={classee.form}>
+
           <TextField
             style={{ margin: 10 }}
               className={classee.textField}
               id="standard-textarea"
               label="Título del anuncio:"
               placeholder="Escriba el título aqui"
-              defaultValue={title}
+              defaultValue={title.title}
               fullWidth
               multiline
               variant="outlined"
@@ -136,7 +138,7 @@ const EditCard= (title, description,views,tags,autor) => {
             className={classee.textField}
             id="standard-textarea"
             label="Descripción del Anuncio:"
-            defaultValue={description}
+            defaultValue={title.description}
             placeholder="Escriba la descripción del anuncio aqui"
             fullWidth
             variant="outlined"

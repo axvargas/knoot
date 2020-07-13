@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: '100%',
+        //maxWidth: '100%',
     },
     media: {
         height: 140,
@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 
     tagsContainer: {
         marginTop: 10,
-    }
+    },
 
 });
 
