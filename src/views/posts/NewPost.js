@@ -68,6 +68,10 @@ const useStylee = makeStyles((theme) => ({
     '& > *': {
       margin: theme.spacing(0.5),
     },
+  },
+
+  button: {
+    marginBottom: 15,
   }
 
 }));
@@ -97,7 +101,10 @@ const NewPost= () => {
           onClick={handleClickOpen}
           variant="contained"
           color="primary"
-          startIcon={<AddIcon />}>
+          startIcon={<AddIcon />}
+          className={classee.button}
+          >
+          
           Nuevo Anuncio
       </Button>
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>

@@ -13,35 +13,56 @@ import { Container, Tooltip ,Chip,Grid} from '@material-ui/core';
 import Badge from '@material-ui/core/Badge';
 import useStyles from './styles';
 import imagenn from '../../recursos/pf_placeholder.png';
+import MostrarPerfil from'../showProfile/MostrarPerfil';
+import Avatar from '@material-ui/core/Avatar';
 
 
 
-const ProfileCard = ({ title, description,tags,imagen}) => {
+const ProfileCard = ({ nombre, description,tags,imagen}) => {
     const classes = useStyles();
 
     const tagsSplit = tags.split(" ")
 
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     return (
         <Card className={classes.root}>
-            <CardActionArea>
-                
+            <CardActionArea
+                onClick={handleClickOpen}
+            >
                 <CardMedia
-                    className={classes.media}
-                    image= {imagenn}
-                    title="profile icon"
-                />
+                        className={classes.media}
+                        image="/static/images/cards/contemplative-reptile.jpg"
+                        title={nombre}
+                    />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {title}
-                    </Typography>
+                    <div className={classes.nombre}>
+                        <Avatar/>
+                        <Typography gutterBottom variant="h5" component="h2">
+                        
+                        {nombre}
+                        </Typography>
+                    </div>
+                    
                     <Typography variant="body2" color="textSecondary" component="p">
                         {description}
                     </Typography>
-                    <Grid container spacing={1} className={classes.tagsContainer}>
+                    <Grid container className={classes.tagsContainer}>
                         {
                             tagsSplit.map((tag) => {
                                 return(
-                                        <Grid item><Chip label={tag}></Chip></Grid>
+                                        <Grid item><Chip 
+                                        color="secondary" 
+                                        variant="outlined"
+                                        label={tag}></Chip></Grid>
                                 )
                                 
                             })
@@ -52,6 +73,9 @@ const ProfileCard = ({ title, description,tags,imagen}) => {
 
                 </CardContent>
             </CardActionArea>
+
+            <MostrarPerfil open={open} handleClose={handleClose} nombre={nombre} description={description}
+                    tags={tags}/>
             
         </Card>
     );

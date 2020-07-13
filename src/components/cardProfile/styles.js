@@ -17,6 +17,10 @@ const useStyles = makeStyles({
     tagsContainer: {
         marginTop: 10,
         marginBottom: 10,
+    },
+
+    nombre: {
+        display: 'flex',
     }
 });
 

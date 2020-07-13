@@ -19,8 +19,8 @@ import Typography from '@material-ui/core/Typography';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import TelegramIcon from '@material-ui/icons/Telegram';
-import Disponible from '../../components/AvailableChip/Disponible'
-import NoDisponible from '../../components/AvailableChip/NoDisponible'
+// import Disponible from '../../components/AvailableChip/Disponible'
+// import NoDisponible from '../../components/AvailableChip/NoDisponible'
 
 
 const useStyle = makeStyles((theme) => ({
@@ -69,9 +69,13 @@ const useStyle = makeStyles((theme) => ({
     width: theme.spacing(3),
     height: theme.spacing(3),
   },
+  nombres: {
+    display: 'flex',
+    alignItems: 'center',
+  }
 
 }));
-const MostrarAnuncio= ({ open, handleClose,title, description, likes, views, tags,autor}) => {
+const MostrarPerfil= ({ open, handleClose, nombre,description,tags}) => {
     const classe = useStyle();
 
     const tagsSplit = tags.split(" ")
@@ -94,25 +98,17 @@ const MostrarAnuncio= ({ open, handleClose,title, description, likes, views, tag
             aria-describedby="alert-dialog-description"
         >
             <div className={classe.cont1} >
-                <DialogTitle id="alert-dialog-title"  className={classe.textcenter}>{<h2>{title}</h2>}</DialogTitle>
+                <DialogTitle id="alert-dialog-title"  className={classe.textcenter}>
+                    <div className={classe.nombres} > 
+                        <Avatar/>
+                        {<h2>{nombre}</h2>}
+                    </div>
+                
+                    
+                    
+                </DialogTitle>
                 <DialogContent >
-                  <Grid container alignItems="center" style={{paddingLeft: '40px',paddingRight: '40px'}}>
-                    <img src={banner} alt="banner" className={classe.imageStyl}/>
-                  </Grid>
-                  <div style={{paddingLeft: '40px',paddingRight: '40px'}}>
-                    <Grid >
-                          <Typography gutterBottom variant="h7">
-                            Justo ahora
-                          </Typography>
-                    </Grid>
-                    <Grid >
-                          <Typography gutterBottom variant="h7" className={classe.pies}>
-                            Creado por {autor}
-                            {/* <Avatar className={classe.small}>H</Avatar> */}
-                          </Typography>
-                    </Grid>
-                  </div>
-                  <Disponible/>
+                  {/* <Disponible/> */}
                   <div className={classe.etiquetas}>
                     <Typography gutterBottom variant="h6">
                             Etiquetas:
@@ -156,4 +152,4 @@ const MostrarAnuncio= ({ open, handleClose,title, description, likes, views, tag
         </Dialog>
     )
 }
-export default MostrarAnuncio;
+export default MostrarPerfil;
