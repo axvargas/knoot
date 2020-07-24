@@ -10,7 +10,7 @@ import useStyles from './styles';
 import imagenn from '../../recursos/pf_placeholder.png';
 import MostrarPerfil from'../showProfile/MostrarPerfil';
 import Avatar from '@material-ui/core/Avatar';
-import imgcarta from '../../recursos/public.jpg';
+import imgcarta from '../../recursos/p.jpg';
 
 
 const ProfileCard = ({ nombre, description,tags,imagen}) => {
@@ -35,19 +35,19 @@ const ProfileCard = ({ nombre, description,tags,imagen}) => {
             >
                 <CardMedia
                         className={classes.media}
-                        image={imgcarta}
+                        image={imagenn}
                         title={nombre}
                     />
                 <CardContent>
                     <div className={classes.nombre}>
                         <Avatar/>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography gutterBottom variant="h5" component="h2" className={classes.typography}>
                         
                         {nombre}
                         </Typography>
                     </div>
                     
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography variant="body2" component="p" className={classes.typography}>
                         {description}
                     </Typography>
                     <Grid container className={classes.tagsContainer}>
@@ -55,8 +55,8 @@ const ProfileCard = ({ nombre, description,tags,imagen}) => {
                             tagsSplit.map((tag) => {
                                 return(
                                         <Grid item><Chip 
-                                        color="secondary" 
-                                        variant="outlined"
+                                        //color="secondary" 
+                                        //variant="outlined"
                                         label={tag}></Chip></Grid>
                                 )
                                 

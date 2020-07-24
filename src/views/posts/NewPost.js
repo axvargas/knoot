@@ -27,6 +27,7 @@ const useStylee = makeStyles((theme) => ({
 
   appBar: {
     position: 'relative',
+    backgroundColor: '#3A405A',
   },
   title: {
     marginLeft: theme.spacing(2),
@@ -98,9 +99,11 @@ const NewPost= () => {
       <Button
           onClick={handleClickOpen}
           variant="contained"
-          color="primary"
+          //color="primary"
+          size="large"
           startIcon={<AddIcon />}
           className={classee.button}
+          
           >
           
           Nuevo Anuncio
@@ -192,7 +195,7 @@ const NewPost= () => {
             type="file"
           />
           <label htmlFor="contained-button-file">
-            <Button variant="contained" color="primary" component="span">
+            <Button variant="contained" component="span">
               Subir imagen
             </Button>
           </label>
