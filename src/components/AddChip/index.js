@@ -36,7 +36,6 @@ const AddChip= () => {
                         />
                     <Button
                         variant="contained"
-                        color="secondary"
                         className={classes.button}
                         startIcon={<AddCircleOutlineIcon/>}>
                         Agregar

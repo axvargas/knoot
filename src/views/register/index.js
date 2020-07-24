@@ -120,7 +120,6 @@ const LogIn = () => {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            color="primary"
                             className={classes.submit}
                             href='../'
                         >
