@@ -27,6 +27,7 @@ const useStylee = makeStyles((theme) => ({
 
   appBar: {
     position: 'relative',
+    backgroundColor: '#3A405A',
   },
   title: {
     marginLeft: theme.spacing(2),
@@ -193,13 +194,13 @@ const NewPost= () => {
             type="file"
           />
           <label htmlFor="contained-button-file">
-            <Button variant="contained" color="primary" component="span">
+            <Button variant="contained" component="span">
               Subir imagen
             </Button>
           </label>
           <input accept="image/*" className={classee.input} id="icon-button-file" type="file" />
           <label htmlFor="icon-button-file">
-            <IconButton color="primary" aria-label="upload picture" component="span">
+            <IconButton aria-label="upload picture" component="span">
               <PhotoCamera />
             </IconButton>
           </label>
