@@ -36,6 +36,9 @@ const useStyle = makeStyles((theme) => ({
       width: '50%',
       height: '70%',
     },
+    white: {
+      color: 'white',
+  },
 }));
 
 
@@ -60,7 +63,7 @@ export default function DeleteOpcion() {
     <div>
 
       <Tooltip title="Eliminar">
-                    <IconButton aria-label="delete" onClick={handleClickOpen}>
+                    <IconButton aria-label="delete" className={classe.white}  onClick={handleClickOpen}>
                         <DeleteIcon />
                     </IconButton>
         </Tooltip>

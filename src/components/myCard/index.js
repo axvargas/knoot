@@ -49,13 +49,13 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
                 />
                 <CardContent>
                     <div className="titulo">
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography gutterBottom variant="h5" component="h2" className={classes.typography}>
                             {title}
                         </Typography>
                     </div>
                     
                     <div className="descripcion">
-                        <Typography variant="body2" color="textSecondary" component="p">
+                        <Typography variant="body2" component="p" className={classes.typography}>
                             {description}
                         </Typography>
                     </div>
@@ -66,8 +66,8 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
                                 tagsSplit.map((tag) => {
                                     return(
                                             <Grid item><Chip 
-                                            color="secondary" 
-                                            variant="outlined"
+                                            //color="secondary" 
+                                            //variant="outlined"
                                             label={tag}/></Grid>
                                     )
                                     
@@ -91,7 +91,7 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
                 
                 <Container className={classes.views}>
                     <Tooltip title="Visualizaciones" arrow placement="bottom">
-                        <IconButton aria-label="share">
+                        <IconButton aria-label="share" className={classes.white}>
                             <Badge badgeContent={10} color="primary" anchorOrigin={{
                                 vertical: 'bottom',
                                 horizontal: 'right',
