@@ -44,6 +44,7 @@ const useStyle = makeStyles((theme) => ({
 
 
 export default function DeleteOpcion() {
+  
   const [open, setOpen] = React.useState(false);
   const classe = useStyle();
   const handleClickOpen = () => {
@@ -57,6 +58,42 @@ export default function DeleteOpcion() {
   const handleDelete = () => {
     console.info('Eliminando...');
   };
+
+  const eliminar =()=>{
+      var array = document.getElementsByClassName("MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2")
+      var cards = document.getElementsByClassName("MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4 MuiGrid-grid-lg-3 MuiGrid-grid-xl-2")
+
+      var arrayTags=[]
+     for(var element of array){
+        arrayTags.push(element.innerText)
+    }
+
+    if(arrayTags.length != 0){
+        for(var card of cards){
+            var titulo = card.getElementsByClassName("MuiCardContent-root")
+            var tagCards=[]
+            for(var titul of titulo){
+              if (titul.textContent === 'Titulo 1'){
+                  tagCards.push(titul.textContent)
+                }
+            }
+            for(var e of arrayTags){
+                if(!tagCards.includes(e)){
+                        card.style.display="none"
+                        break;
+                    }
+                } 
+            }
+            
+        }
+    else{
+        for(var card of cards){
+            card.style.display=""
+        }
+    }
+    handleClose();
+  }
+
 
 
   return (
@@ -92,7 +129,7 @@ export default function DeleteOpcion() {
                     <Button onClick={handleClose} color="primary">
                         Cancelar
                     </Button>
-                    <Button onClick={handleClose} color="primary" autoFocus>
+                    <Button onClick={eliminar} color="primary" autoFocus>
                         Eliminar
                     </Button>
                 </DialogActions>
