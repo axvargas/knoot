@@ -9,8 +9,20 @@ import Desarrollador1 from '../../recursos/desarrollador1.jpg';
 import Desarrollador2 from '../../recursos/desarrollador2.jpg';
 import Desarrollador3 from '../../recursos/desarrollador3.jpg';
 import Desarrollador4 from '../../recursos/desarrollador4.jpg';
-
-
+import IconButton from '@material-ui/core/IconButton';
+import Slide from '@material-ui/core/Slide';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import CloseIcon from '@material-ui/icons/Close';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItem from '@material-ui/core/ListItem';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import { Alert, AlertTitle } from '@material-ui/lab';
+import Fab from '@material-ui/core/Fab';
+import NavigationIcon from '@material-ui/icons/Navigation';
 
 const useStyle = makeStyles((theme) => ({
   avatars: {
@@ -27,6 +39,13 @@ const useStyle = makeStyles((theme) => ({
     },
   },
 
+  appBar: {
+    position: 'relative',
+  },
+  title: {
+    marginLeft: theme.spacing(2),
+    flex: 1,
+  },
   center:{justifyContent:'center',
 alignItems: 'center',
 display: 'flex',},
@@ -52,11 +71,17 @@ imageStyl: {
     alignItems: 'center',
     justifyContent:'center',
   },
-
-
-
+bnoticias: {
+  display: "flex",
+    right: 0,
+    position: "absolute",
+},
 }));
 /*..*/
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
  const posts = [
         {
             title: "Titulo 1", description: `Cras mattis consectetur purus sit amet fermentum.
@@ -66,13 +91,75 @@ imageStyl: {
         ]
 const About = () => {
 
+    const [open, setOpen] = React.useState(false);
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
     const classes = useStyles();
     const classe = useStyle();
     return (
         <main className={classes.content}>
             <div className={classes.toolbar} id="back-to-top-anchor"/>
-        
+            <Fab variant="extended" variant="outlined"  onClick={handleClickOpen} >
+        <NavigationIcon className={classes.extendedIcon}  />
+        Noticias
+      </Fab>
+          
+      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} className={classes.content}>
+        <AppBar className={classes.appBar} >
+          <Toolbar>
+              
+            <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+              <CloseIcon />
+            </IconButton>
+            <Typography variant="h6" className={classes.title}>
+              Noticias
+            </Typography>
+            <Button autoFocus color="inherit" onClick={handleClose}>
+              cerrar
+            </Button>
+
+          </Toolbar>
+        </AppBar>
+        <div className={classes.toolbar} id="back-to-top-anchor"/>
+        <List>
+          <Alert severity="info">
+          <AlertTitle>Tienes una nueva notificación</AlertTitle>
+          Hemos cambiado las políticas de seguridad — <strong>check it out!</strong>
+        </Alert>
+         <Divider />
+        <Alert severity="info">
+          <AlertTitle>Tienes una nueva notificación</AlertTitle>
+          Ahora tienes una nueva funcionalidad — <strong>check it out!</strong>
+        </Alert>
+         <Divider />
+          <ListItem button>
+            <ListItemText primary="No olvides que puedes informanos cualquier inconveniente" secondary="Administrador knoot" />
+          </ListItem>
+          <Divider />
+          <ListItem button>
+            <ListItemText primary="Ahora exite una nueva categoria" secondary="Administrador knoot" />
+          </ListItem>
+          <Divider />
+          <ListItem button>
+            <ListItemText primary="Notificacion por defecto knoot" secondary="Administrador knoot" />
+          </ListItem>
+          <Divider />
+          <ListItem button>
+            <ListItemText primary="Notificacion por defecto knoot" secondary="Administrador knoot" />
+          </ListItem>
+          <Divider />
+          <ListItem button>
+            <ListItemText primary="Tenemos un nuevo contacto" secondary="Administrador knoot" />
+          </ListItem>
+        </List>
+      </Dialog>
+    
       
             <div className={classe.root}>
                 <div className={classe.section1}>
