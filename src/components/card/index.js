@@ -13,7 +13,7 @@ import { Container, Tooltip, Chip, Grid } from '@material-ui/core';
 import Badge from '@material-ui/core/Badge';
 import useStyles from './styles';
 import MostrarAnuncio from '../../views/posts/MostrarAnuncio';
-
+import imgcarta from '../../recursos/p.jpg';
 
 const MediaCard = ({ title, description, likes, views, tags,autor}) => {
     const classes = useStyles();
@@ -39,14 +39,14 @@ const MediaCard = ({ title, description, likes, views, tags,autor}) => {
                 >
                     <CardMedia
                         className={classes.media}
-                        image="/static/images/cards/contemplative-reptile.jpg"
+                        image={imgcarta}
                         title="Contemplative Reptile"
                     />
                     <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography gutterBottom variant="h5" component="h2" className={classes.typography}>
                             {title}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
+                        <Typography variant="body2" component="p" className={classes.typography}>
                             {description}
                         </Typography>
                         <Grid container className={classes.tagsContainer}>
@@ -54,8 +54,8 @@ const MediaCard = ({ title, description, likes, views, tags,autor}) => {
                                 tagsSplit.map((tag) => {
                                     return (
                                         <Grid item><Chip 
-                                        color="secondary" 
-                                        variant="outlined"
+                                        //className={classes.bgWhite}
+                                        //variant="outlined"
                                         label={tag}/></Grid>
                                     )
 
@@ -73,7 +73,7 @@ const MediaCard = ({ title, description, likes, views, tags,autor}) => {
                 <CardActions>
                     <Tooltip title="Agregar a favorito" arrow placement="bottom">
 
-                        <IconButton aria-label="favorite">
+                        <IconButton aria-label="favorite" className={classes.white}>
                             <Badge badgeContent={likes} color="primary" anchorOrigin={{
                                 vertical: 'bottom',
                                 horizontal: 'right',
@@ -87,7 +87,7 @@ const MediaCard = ({ title, description, likes, views, tags,autor}) => {
 
                     <Tooltip title="Compartir" arrow placement="bottom">
                         <IconButton aria-label="share">
-                            <ShareIcon />
+                            <ShareIcon className={classes.white}/>
                         </IconButton>
                     </Tooltip>
                     <Container className={classes.views}>
@@ -97,7 +97,7 @@ const MediaCard = ({ title, description, likes, views, tags,autor}) => {
                                     vertical: 'bottom',
                                     horizontal: 'right',
                                 }}>
-                                    <VisibilityIcon />
+                                    <VisibilityIcon className={classes.white}/>
                                 </Badge>
                             </IconButton>
 

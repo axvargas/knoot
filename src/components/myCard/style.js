@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
     root: {
         //maxWidth: '100%',
+        backgroundColor: '#3A405A',
     },
     media: {
         height: 140,
@@ -13,9 +14,14 @@ const useStyles = makeStyles({
         justifyContent: 'flex-end',
         
     },
-
+    typography: {
+        color: 'white',
+    },
     tagsContainer: {
         marginTop: 10,
+    },
+    white: {
+        color: 'white',
     },
 
 });

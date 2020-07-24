@@ -61,7 +61,9 @@ const useStylee = makeStyles((theme) => ({
     width:"50%",
     height:"50%",
   },
-
+  white: {
+    color: 'white',
+},
   chips: {
     display: 'flex',
     justifyContent: 'center',
@@ -69,6 +71,7 @@ const useStylee = makeStyles((theme) => ({
     '& > *': {
       margin: theme.spacing(0.5),
     },
+    
   }
 
 }));
@@ -97,7 +100,7 @@ const EditCard= (title,description) => {
     <Fragment>
 
         <Tooltip title="Editar" arrow placement="bottom">
-            <IconButton aria-label="edit" onClick={handleClickOpen}>
+            <IconButton aria-label="edit" className={classee.white} onClick={handleClickOpen}>
                     <EditIcon />
                 </IconButton>
             </Tooltip>
