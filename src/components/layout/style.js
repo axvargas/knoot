@@ -67,10 +67,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	fab:{
 		zIndex: '9999'
-	},
-	bgcolor: {
-        backgroundColor: '#3A405A'
-    },
+	}
 
 }));
 

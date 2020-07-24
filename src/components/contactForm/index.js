@@ -117,8 +117,7 @@ const ContactForm = () => {
                       />
                     <Button
                     variant="contained"
-                    //color="primary"
-                    size="large"
+                    color="primary"
                     className={classes.button}
                     endIcon={<SendIcon/>}
                     >

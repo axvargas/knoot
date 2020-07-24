@@ -4,7 +4,6 @@ const useStyles = makeStyles({
     root: {
         width: '70%',
         
-        
         flexDirection: 'row',
         justifyContent: 'flex-end',
     },
@@ -12,9 +11,6 @@ const useStyles = makeStyles({
     search: {
         marginBottom: '10',
         display: 'flex',
-    },
-    dark: {
-        color: '#0D1321',
     }
 
 
