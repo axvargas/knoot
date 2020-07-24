@@ -13,7 +13,7 @@ import { Container, Tooltip, Chip, Grid } from '@material-ui/core';
 import Badge from '@material-ui/core/Badge';
 import useStyles from './styles';
 import MostrarAnuncio from '../../views/posts/MostrarAnuncio';
-
+import imgcarta from '../../recursos/public.jpg';
 
 const MediaCard = ({ title, description, likes, views, tags,autor}) => {
     const classes = useStyles();
@@ -39,7 +39,7 @@ const MediaCard = ({ title, description, likes, views, tags,autor}) => {
                 >
                     <CardMedia
                         className={classes.media}
-                        image="/static/images/cards/contemplative-reptile.jpg"
+                        image={imgcarta}
                         title="Contemplative Reptile"
                     />
                     <CardContent>

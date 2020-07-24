@@ -10,7 +10,7 @@ import useStyles from './styles';
 import imagenn from '../../recursos/pf_placeholder.png';
 import MostrarPerfil from'../showProfile/MostrarPerfil';
 import Avatar from '@material-ui/core/Avatar';
-
+import imgcarta from '../../recursos/public.jpg';
 
 
 const ProfileCard = ({ nombre, description,tags,imagen}) => {
@@ -35,7 +35,7 @@ const ProfileCard = ({ nombre, description,tags,imagen}) => {
             >
                 <CardMedia
                         className={classes.media}
-                        image="/static/images/cards/contemplative-reptile.jpg"
+                        image={imgcarta}
                         title={nombre}
                     />
                 <CardContent>

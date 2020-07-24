@@ -16,7 +16,7 @@ import MostrarAnuncio from '../../views/posts/MostrarAnuncio';
 import EditCard from './EditCard';
 import DeleteOpcion from './delete';
 import Alert from '@material-ui/lab/Alert';
-
+import imgcarta from '../../recursos/challenge.png';
 
 
 
@@ -44,7 +44,7 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
             >
                 <CardMedia
                     className={classes.media}
-                    image="/static/images/cards/contemplative-reptile.jpg"
+                    image={imgcarta}
                     title="Contemplative Reptile"
                 />
                 <CardContent>
