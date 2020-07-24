@@ -2,7 +2,7 @@ import React from 'react';
 import useStyles from '../styles';
 import MediaCard from "../../components/card";
 import { Grid } from '@material-ui/core';
-
+import Footer from "../../components/footer";
 const Favorites = () => {
     const classes = useStyles();
 
@@ -49,7 +49,7 @@ const Favorites = () => {
                     </Grid>
                 }
 
-
+                <Footer/>
             </main>
 
 

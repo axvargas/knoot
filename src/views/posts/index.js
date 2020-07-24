@@ -3,7 +3,7 @@ import useStyles from '../styles';
 import MediaCard from "../../components/myCard";
 import { Grid } from '@material-ui/core';
 import NewPost from "./NewPost";
-
+import Footer from "../../components/footer";
 const Posts = () => {
     const classes = useStyles();
 
@@ -61,7 +61,7 @@ const Posts = () => {
 
                     </Grid>
                 }
-
+                <Footer/>
             {/* <MostrarAnuncio open={open} handleClose={handleClose}/>   */}
         </main>
     );

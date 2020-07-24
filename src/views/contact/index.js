@@ -3,7 +3,7 @@ import useStyles from '../styles';
 import {Grid} from '@material-ui/core';
 import ContactForm from '../../components/contactForm';
 import contact from '../../recursos/contact1.png';
-
+import Footer from "../../components/footer";
 
 const Contact = () => {
     const classes = useStyles();
@@ -25,7 +25,7 @@ const Contact = () => {
                         </Grid>
 
                 </Grid>
-
+                <Footer/>
             </main>
         </>
     );

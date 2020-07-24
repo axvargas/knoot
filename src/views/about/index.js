@@ -23,6 +23,7 @@ import Divider from '@material-ui/core/Divider';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
+import Footer from "../../components/footer";
 
 const useStyle = makeStyles((theme) => ({
   avatars: {
@@ -41,6 +42,7 @@ const useStyle = makeStyles((theme) => ({
 
   appBar: {
     position: 'relative',
+    backgroundColor: '#3A405A',
   },
   title: {
     marginLeft: theme.spacing(2),
@@ -111,8 +113,8 @@ const About = () => {
       </Fab>
           
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} className={classes.content}>
-        <AppBar className={classes.appBar} >
-          <Toolbar>
+        <AppBar className={classe.appBar} >
+          <Toolbar >
               
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
               <CloseIcon />
@@ -126,7 +128,7 @@ const About = () => {
 
           </Toolbar>
         </AppBar>
-        <div className={classes.toolbar} id="back-to-top-anchor"/>
+        
         <List>
           <Alert severity="info">
           <AlertTitle>Tienes una nueva notificación</AlertTitle>
@@ -242,7 +244,7 @@ const About = () => {
                     </Grid>
                  </Grid>
             </div>
-            
+             <Footer/>
         </main>
     )
 } 

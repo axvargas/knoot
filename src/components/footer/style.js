@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     appBar: {
-        
+        backgroundColor: '#3A405A',
         marginTop: 'calc(5% + 60px)',
         bottom: 0
     },
@@ -11,5 +11,6 @@ const useStyles = makeStyles((theme) => ({
     redSocImg: {
         width: '5vmin',
     },
+    
 }));
 export default useStyles;

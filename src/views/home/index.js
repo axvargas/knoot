@@ -4,7 +4,7 @@ import useStyles from '../styles';
 import SearchBar from '../../components/searchBar';
 import VerticalTabs from '../../components/verticalTab';
 import { Steps } from 'intro.js-react';
-
+import Footer from "../../components/footer";
 const Home = () => {
     const classes = useStyles();
     const [anuncioSteps, setAnuncioSteps] = useState(false);
@@ -66,7 +66,7 @@ const Home = () => {
 
 
 
-
+                <Footer/>
             </main>
 
 
