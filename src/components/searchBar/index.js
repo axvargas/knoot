@@ -55,7 +55,8 @@ const SearchBar= () => {
                     <Button
                         defaultValue={['foo']}
                         variant="contained"
-                        color="secondary"
+                        //color="secondary"
+                        size="large"
                         className={classes.button}
                         startIcon={<SearchIcon/>}
 

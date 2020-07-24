@@ -98,7 +98,8 @@ const NewPost= () => {
       <Button
           onClick={handleClickOpen}
           variant="contained"
-          color="primary"
+          //color="primary"
+          size="large"
           startIcon={<AddIcon />}
           className={classee.button}
           >
