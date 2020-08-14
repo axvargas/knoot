@@ -20,7 +20,6 @@ const filterChips= () => {
             for(var tag of tags){
                 tagCards.push(tag.textContent)
             }
-            
             for(var e of arrayTags){
                 if(!tagCards.includes(e)){
                     card.style.display="none"
@@ -55,7 +54,6 @@ const SearchBar= () => {
                     <Button
                         defaultValue={['foo']}
                         variant="contained"
-                        //color="secondary"
                         size="large"
                         className={classes.button}
                         startIcon={<SearchIcon/>}

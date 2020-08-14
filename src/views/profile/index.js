@@ -205,10 +205,7 @@ const Profile = () => {
       </Grid>
 
     </Grid>
-   
-    
-    <Footer/>
-    
+       
     <EditarPerfil open={open} handleClose={handleClose} nombres={post.nombres} apellidos={post.apellidos}
         email={post.email} numero={post.numero} ciudad={post.ciudad} facultad={post.facultad} descripcion={post.descripcion}/>
     </main>
