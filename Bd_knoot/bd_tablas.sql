@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS Persona(
 	persona_ID INT  AUTO_INCREMENT PRIMARY KEY,
 	nombre VARCHAR(50),
 	apellido VARCHAR(50),
+    email VARCHAR(30),
 	telefono VARCHAR(10),
 	fecha_nacimiento date,
     lugar_origen VARCHAR(50)
@@ -13,9 +14,10 @@ CREATE TABLE IF NOT EXISTS Persona(
 
 CREATE TABLE IF NOT EXISTS Usuario(
 	usuario_ID INT AUTO_INCREMENT PRIMARY KEY,
-	email VARCHAR(30),
 	link_foto VARCHAR(30),
-	pass VARCHAR(30)
+	pass VARCHAR(30),
+    persona_ID INT,
+    FOREIGN KEY (persona_ID) REFERENCES Persona(persona_ID)
 );
 
 CREATE TABLE IF NOT EXISTS Habilidad(
@@ -30,10 +32,8 @@ CREATE TABLE IF NOT EXISTS Facultad(
 CREATE TABLE IF NOT EXISTS Consumidor(
 	consumidor_ID INT AUTO_INCREMENT PRIMARY KEY,
 	descripcion VARCHAR(150),
-    habilidad_ID INT,
     facultad_ID INT,
     FOREIGN KEY (consumidor_ID) REFERENCES Usuario(usuario_ID),
-    FOREIGN KEY (habilidad_ID) REFERENCES Habilidad(habilidad_ID),
     FOREIGN KEY (facultad_ID) REFERENCES Facultad(facultad_ID)
 );
 
@@ -99,9 +99,7 @@ CREATE TABLE IF NOT EXISTS Sugerencia(
 	sugerencia_ID INT  AUTO_INCREMENT PRIMARY KEY,
     link_detalle VARCHAR(150),
     persona_ID INT,
-    administrador_ID INT,
-    FOREIGN KEY (persona_ID) REFERENCES Persona(persona_ID),
-    FOREIGN KEY (administrador_ID) REFERENCES Administrador(administrador_ID)
+    FOREIGN KEY (persona_ID) REFERENCES Persona(persona_ID)
 );
 
 CREATE TABLE IF NOT EXISTS Noticia(
