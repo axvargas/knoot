@@ -13,9 +13,9 @@ import { Container, Tooltip, Chip, Grid } from '@material-ui/core';
 import Badge from '@material-ui/core/Badge';
 import useStyles from './styles';
 import MostrarAnuncio from '../../views/posts/MostrarAnuncio';
-import imgcarta from '../../recursos/p.jpg';
 
-const MediaCard = ({ title, description, likes, views, tags,autor}) => {
+
+const MediaCard = ({ title, description, banner,vacantes,likes, tags,fecha_inicio,fecha_termino}) => {
     const classes = useStyles();
 
     const tagsSplit = tags.split(" ")
@@ -39,14 +39,14 @@ const MediaCard = ({ title, description, likes, views, tags,autor}) => {
                 >
                     <CardMedia
                         className={classes.media}
-                        image={imgcarta}
+                        image={banner}
                         title="Contemplative Reptile"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2" className={classes.typography}>
                             {title}
                         </Typography>
-                        <Typography variant="body2" component="p" className={classes.typography}>
+                        <Typography variant="body2" component="p" className={classes.descripcion}>
                             {description}
                         </Typography>
                         <Grid container className={classes.tagsContainer}>
@@ -84,13 +84,16 @@ const MediaCard = ({ title, description, likes, views, tags,autor}) => {
 
 
                     </Tooltip>
-
+                    <Container className={classes.views}>
                     <Tooltip title="Compartir" arrow placement="bottom">
-                        <IconButton aria-label="share">
-                            <ShareIcon className={classes.white}/>
+                        <IconButton aria-label="share" >
+                        
+                            <ShareIcon className={classes.white} />
+                          
                         </IconButton>
                     </Tooltip>
-                    <Container className={classes.views}>
+                    </Container>
+                 {/*   <Container className={classes.views}>
                         <Tooltip title="Visualizaciones" arrow placement="bottom">
                             <IconButton aria-label="share">
                                 <Badge badgeContent={views} color="primary" anchorOrigin={{
@@ -102,10 +105,10 @@ const MediaCard = ({ title, description, likes, views, tags,autor}) => {
                             </IconButton>
 
                         </Tooltip>
-                    </Container>
+                    </Container>*/}
                 </CardActions>
-                <MostrarAnuncio open={open} handleClose={handleClose} title={title} description={description}
-                    views={views} tags={tags} autor={autor}/>
+                <MostrarAnuncio open={open} handleClose={handleClose} title={title} description={description} banner={banner}
+                    vacantes={vacantes} likes={likes} tags={tags} fecha_inicio={fecha_inicio} fecha_termino={fecha_termino} />
             </Card>
 
         

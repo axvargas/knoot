@@ -5,13 +5,13 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Chip from '@material-ui/core/Chip';
-import banner from '../../recursos/public.jpg';
 import { Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Disponible from '../../components/AvailableChip/Disponible'
 import GitHubIcon from '@material-ui/icons/GitHub';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import TelegramIcon from '@material-ui/icons/Telegram';
-import Disponible from '../../components/AvailableChip/Disponible'
 import NoDisponible from '../../components/AvailableChip/NoDisponible'
 
 
@@ -63,7 +63,7 @@ const useStyle = makeStyles((theme) => ({
   },
 
 }));
-const MostrarAnuncio= ({ open, handleClose,title, description, likes, views, tags,autor}) => {
+const MostrarAnuncio= ({ open, handleClose,title, description,banner, vacantes,likes, tags,fecha_inicio,fecha_termino}) => {
     const classe = useStyle();
 
     const tagsSplit = tags.split(" ")
@@ -92,15 +92,25 @@ const MostrarAnuncio= ({ open, handleClose,title, description, likes, views, tag
                     <img src={banner} alt="banner" className={classe.imageStyl}/>
                   </Grid>
                   <div style={{paddingLeft: '40px',paddingRight: '40px'}}>
-                    <Grid >
-                          <Typography gutterBottom variant="h7">
-                            Justo ahora
+                  <Grid >
+                          <Typography gutterBottom variant="h7" >
+                          A {likes} les gusta esta publicación
                           </Typography>
                     </Grid>
                     <Grid >
                           <Typography gutterBottom variant="h7" className={classe.pies}>
-                            Creado por {autor}
+                          Fecha Inicio: {fecha_inicio}
+                          </Typography>
+                    </Grid>
+                    <Grid >
+                          <Typography gutterBottom variant="h7" className={classe.pies}>
+                            Fecha termino: {fecha_termino}
                             {/* <Avatar className={classe.small}>H</Avatar> */}
+                          </Typography>
+                    </Grid>
+                    <Grid >
+                          <Typography gutterBottom variant="h7" className={classe.pies}>
+                            Se solicitan: {vacantes}
                           </Typography>
                     </Grid>
                   </div>
@@ -138,9 +148,12 @@ const MostrarAnuncio= ({ open, handleClose,title, description, likes, views, tag
         
                 <DialogActions>
                     <Grid className={classe.pies}>
-                      <GitHubIcon className={classe.cont3}/>
+                     {/* <GitHubIcon className={classe.cont3}/>
                       < WhatsAppIcon className={classe.cont3}/ >
-                      <TelegramIcon className={classe.cont3}/ >
+                    <TelegramIcon className={classe.cont3}/ >*/}
+                      <Button variant="contained" color="primary" disableElevation>
+                      Interesado
+                    </Button>
                     </Grid>
                 </DialogActions>
             
