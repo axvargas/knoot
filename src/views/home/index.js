@@ -8,7 +8,7 @@ import Footer from "../../components/footer";
 const Home = () => {
     const classes = useStyles();
     const [anuncioSteps, setAnuncioSteps] = useState(false);
-    const [intro, setIntro] = useState({
+  /*  const [intro, setIntro] = useState({
         stepsEnabled: true,
         initialStep: 0,
         steps: [
@@ -22,7 +22,7 @@ const Home = () => {
             },
        
         ]
-    });
+    });*/
     const [inSession, setInSession] = useState(true);
 
     useEffect(() => {
@@ -47,7 +47,7 @@ const Home = () => {
 
                 }
 
-                <Steps
+               {/* <Steps
                     enabled={intro.stepsEnabled}
                     steps={intro.steps}
                     initialStep={intro.initialStep}
@@ -60,7 +60,7 @@ const Home = () => {
 
                     }}
 
-                />
+                />*/}
 
 
 

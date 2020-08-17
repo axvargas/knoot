@@ -13,6 +13,15 @@ const useStyles = makeStyles({
     },
     typography: {
         color: 'white',
+        maxHeight: '30px',
+        overflow: 'hidden',
+        fontSize:'20px',
+    },
+    
+    descripcion: {
+        color: 'white',
+        maxHeight: '100px',
+        overflow: 'hidden',
     },
     views: {
         display: 'flex',
@@ -23,6 +32,8 @@ const useStyles = makeStyles({
 
     tagsContainer: {
         marginTop: 10,
+        height: '70px',
+        overflow: 'hidden',
     }
 
 });
