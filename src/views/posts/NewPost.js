@@ -27,7 +27,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const useStylee = makeStyles((theme) => ({
   root: {
-    margin: theme.spacing(2),
+    margin: theme.spacing(5),
     display: 'flex',
     flexDirection: 'row',
   },
@@ -54,9 +54,8 @@ const useStylee = makeStyles((theme) => ({
 
   right: {
     width: '50%',
-    '& > *': {
-      margin: theme.spacing(1),
-    },
+    marginLeft: theme.spacing(5)
+
   },
   input: {
     display: 'none',
@@ -65,6 +64,10 @@ const useStylee = makeStyles((theme) => ({
   imageStyl: {
     width:"50%",
     height:"50%",
+  },
+
+  dates: {
+    marginTop: theme.spacing(4),
   },
 
   button: {
@@ -137,6 +140,7 @@ const NewPost= () => {
       <div className={classee.root}>
       
         <div className={classee.form}>
+        <Typography variant="h6">Información del anuncio: </Typography>
           <TextField
             style={{ margin: 10 }}
               className={classee.textField}
@@ -198,12 +202,10 @@ const NewPost= () => {
 
         </div>
         
-        <div className={classee.right}>
+        <div className={classee.right} >
           
           <div>
-            <Typography>
-              Banner del anuncio:
-            </Typography>
+            <Typography variant="h6">Banner del anuncio:</Typography>
             <img src={imagen} alt="imagen" className={classee.imageStyl}/>
           </div>
           
@@ -228,36 +230,38 @@ const NewPost= () => {
             </label>
           </div>
           
-          <div>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <Grid container>
-            {/* justify="space-around" */}
-              <KeyboardDatePicker
-                margin="10"
-                id="start-date"
-                label="Fecha de inicio: "
-                format="dd/MM/yyyy"
-                value={selectedDate}
-                onChange={handleDateChange}
-                KeyboardButtonProps={{
-                  'aria-label': 'change date',
-                }}
-              />
+          <div className={classee.dates}>
+          <Typography variant="h6">Fecha de inicio y fin: </Typography>
 
-              <KeyboardDatePicker
-                margin="10"
-                id="deadline"
-                label="Fecha de termino"
-                format="dd/MM/yyyy"
-                value={selectedDeadLineDate}
-                onChange={handleDateChange}
-                KeyboardButtonProps={{
-                  'aria-label': 'change date',
-                }}
-              />
-              
-            </Grid>
-          </MuiPickersUtilsProvider>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <Grid container>
+              {/* justify="space-around" */}
+                <KeyboardDatePicker
+                  className={classee.textField}
+                  id="start-date"
+                  label="Fecha de inicio: "
+                  format="dd/MM/yyyy"
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
+                />
+
+                <KeyboardDatePicker
+                  className={classee.textField}
+                  id="deadline"
+                  label="Fecha de termino"
+                  format="dd/MM/yyyy"
+                  value={selectedDeadLineDate}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
+                />
+                
+              </Grid>
+            </MuiPickersUtilsProvider>
 
           </div>
 
