@@ -1,0 +1,17 @@
+Cuando se requiera hacer un POST- este es el formato.
+
+{
+    "nombre": "Comp",
+    "descripcion": "Este era una prueba para el post",
+    "habilidad": [
+        {"nombre":"Deportistas"},
+        {"nombre":"Fisica"}
+      ],
+    "banner": "http://EstoEsUnBanner",
+    "estado": false,
+    "fecha_termino": "2020-08-02",
+    "vacantes": 4,
+    "cant_interesados": 0,
+    "categoria": 1
+}
+
