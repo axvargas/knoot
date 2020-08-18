@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useStyles from './style';
 import TextField from '@material-ui/core/TextField';
-import { Typography, Box, Button } from '@material-ui/core';
+import { Typography, Box, Button, Backdrop, CircularProgress } from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -11,8 +11,8 @@ import SendIcon from '@material-ui/icons/Send';
 
 const ContactForm = () => {
     const classes = useStyles();
-
-    const [origen, setOrigen] = React.useState('');
+    const [loading, setLoading] = useState(false);
+    const [origen, setOrigen] = useState('');
     const [form, setForm] = useState({});
     const handleChange = (event) => {
         setOrigen(event.target.value);
@@ -28,6 +28,7 @@ const ContactForm = () => {
     }
 
     const handleSendEmail = async (e) => {
+        setLoading(true);
         console.log("Sending email")
         const url = "http://localhost:4000/send-email";
         const response = await fetch(url, {
@@ -38,6 +39,9 @@ const ContactForm = () => {
             }
         });
         const data = await response.json();
+        setForm({});
+        setOrigen("");
+        setLoading(false);
         console.log(data);
     }
 
@@ -55,6 +59,9 @@ const ContactForm = () => {
 
     return (
         <Box className={classes.root} mx="auto">
+            <Backdrop className={classes.backdrop} open={loading}>
+                <CircularProgress color="inherit" />
+            </Backdrop>
             <form className={classes.root} noValidate autoComplete="off" >
                 <Typography>
                     Nuestra unidad de atención al cliente se encuentra a su disposición para realizar reclamos, consultas y sugerencias. Por favor, llene el siguiente formulario:
@@ -63,6 +70,7 @@ const ContactForm = () => {
                 <div className={classes.div}>
                     <TextField
                         className={classes.textField}
+                        value={form.nombre || ""}
                         required
                         name="nombre"
                         id="nombre"
@@ -74,6 +82,7 @@ const ContactForm = () => {
                     />
                     <TextField
                         className={classes.textField}
+                        value={form.apellido || ""}
                         required
                         id="apellido"
                         name="apellido"
@@ -86,6 +95,7 @@ const ContactForm = () => {
                 <TextField
                     required
                     id="email"
+                    value={form.email || ""}
                     name="email"
                     className={classes.textField}
                     label="Correo electrónico de contacto"
@@ -97,6 +107,7 @@ const ContactForm = () => {
                 <TextField
                     required
                     id="telefono"
+                    value={form.telefono || ""}
                     name="telefono"
                     className={classes.textField}
                     label="Telefono"
@@ -108,6 +119,7 @@ const ContactForm = () => {
                 <TextField
                     required
                     type="date"
+                    value={form.nombre || ""}
                     name="fechaNacimiento"
                     id="fechaNacimiento"
                     label="Fecha de nacimiento"
@@ -142,6 +154,7 @@ const ContactForm = () => {
                     className={classes.textField}
                     label="Detalle"
                     name="detalle"
+                    value={form.detalle || ""}
                     multiline
                     rows={4}
                     placeholder="Escriba su mensaje aqui"
