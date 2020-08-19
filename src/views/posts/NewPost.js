@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -12,7 +12,10 @@ import AddIcon from '@material-ui/icons/Add';
 import TextField from '@material-ui/core/TextField';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import imagen from '../../recursos/placeholder.png';
-import Chip from '@material-ui/core/Chip';
+import ChipInput from 'material-ui-chip-input'
+import { MuiPickersUtilsProvider,KeyboardDatePicker} from '@material-ui/pickers';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -20,7 +23,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const useStylee = makeStyles((theme) => ({
   root: {
-    margin: theme.spacing(2),
+    margin: theme.spacing(5),
     display: 'flex',
     flexDirection: 'row',
   },
@@ -45,11 +48,10 @@ const useStylee = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
 
-  upload: {
+  right: {
     width: '50%',
-    '& > *': {
-      margin: theme.spacing(1),
-    },
+    marginLeft: theme.spacing(5)
+
   },
   input: {
     display: 'none',
@@ -60,13 +62,8 @@ const useStylee = makeStyles((theme) => ({
     height:"50%",
   },
 
-  chips: {
-    display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-    '& > *': {
-      margin: theme.spacing(0.5),
-    },
+  dates: {
+    marginTop: theme.spacing(4),
   },
 
   button: {
@@ -80,18 +77,66 @@ const NewPost= () => {
   const classee = useStylee();
 
   const [open, setOpen] = React.useState(false);
+  const [post, setPost] = useState({});
+  const today = new Date()
+
+  const deadline = new Date(today.getFullYear(),today.getMonth()+1, today.getDate())
+
+  const [selectedDate, setSelectedDate] = React.useState(Date.now());
+  const [selectedDeadLineDate, setSelectedDeadLineDate] = React.useState(deadline);
+
 
   const handleClickOpen = () => {
-    setOpen(true);
+      setOpen(true);
+    setPost({
+    ...post,
+    ["fecha_inicio"]: new Date(),
+    ["fecha_termino"]: deadline
+    });
   };
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleDelete = () => {
-    console.info('You clicked the delete icon.');
-  };
+  const handleChangePost = (e) => {
+    setPost({
+        ...post,
+        [e.target.id]: e.target.value
+        
+    })
+
+  }
+
+  const handleChangeChip = (e) => {
+    setPost({
+      ...post,
+      ["habilidad"]: e
+  })
+
+  }
+
+  const handleNewPost = (e) => {
+    console.log("NuevoPost")
+    console.log(post)
+    console.log(JSON.stringify(post))
+    handleClose()
+  }
+
+  
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setPost({
+      ...post,
+      ["fecha_inicio"]: date
+  })}
+
+  const handleDeadLineDateChange = (date) => {
+    setSelectedDeadLineDate(date);
+    setPost({
+      ...post,
+      ["fecha_termino"]: date
+  })}
 
   
   return (
@@ -114,9 +159,10 @@ const NewPost= () => {
                 <CloseIcon />
               </IconButton>
               <Typography variant="h6" className={classee.title} align="center">
-                Crear nuevo Anuncio
+                Crear Nuevo Anuncio
               </Typography>
-              <Button autoFocus color="inherit" onClick={handleClose}>
+              {/* onChange={handleNewPost} */}
+              <Button autoFocus color="inherit" onClick={handleNewPost}>
                 Crear
               </Button>
             </Toolbar>
@@ -126,88 +172,127 @@ const NewPost= () => {
       <div className={classee.root}>
       
         <div className={classee.form}>
+        <Typography variant="h6">Información del anuncio: </Typography>
           <TextField
             style={{ margin: 10 }}
               className={classee.textField}
-              id="standard-textarea"
+              id="nombre"
               label="Título del anuncio:"
               placeholder="Escriba el título aqui"
               fullWidth
+              required
               multiline
               variant="outlined"
+              onChange={handleChangePost}
             />
 
           <TextField
           style={{ margin: 10 }}
             className={classee.textField}
-            id="standard-textarea"
+            id="descripcion"
             label="Descripción del Anuncio:"
             placeholder="Escriba la descripción del anuncio aqui"
             fullWidth
             variant="outlined"
+            required
             multiline
             rows={10}
+            onChange={handleChangePost}
           />
 
-          <TextField
+          <ChipInput
             style={{ margin: 10 }}
-              className={classee.textField}
-              id="standard-textarea"
-              label="Agregue las habilidades requeridas:"
-              placeholder="Escriba el texto aqui"
-              fullWidth
-              multiline
-              variant="outlined"
+            className={classee.textField}
+            label="Agregue las habilidades requeridas:"
+            placeholder='Escriba las habilidades aqui'
+            required
+            variant="outlined"
+            fullWidth
+            onChange={handleChangeChip}
             />
-
-          <div className={classee.chips}>
-                <Chip
-              color="primary"
-              variant="outlined"
-              label="Texto 1"
-              onDelete={handleDelete}
-            />
-          </div>
 
           <TextField
             style={{ margin: 10 }}
               className={classee.textField}
-              id="standard-textarea"
+              id="vacantes"
               label="Agregue el número de vacantes:"
               placeholder="Escriba un número aqui"
               type="number"
+              required
               InputLabelProps={{
                 shrink: true,
               }}
               fullWidth
               variant="outlined"
+              onChange={handleChangePost}
             />
 
 
         </div>
-        <div className={classee.upload}>
-          <input
-            accept="image/*"
-            className={classee.input}
-            id="contained-button-file"
-            multiple
-            type="file"
-          />
-          <label htmlFor="contained-button-file">
-            <Button variant="contained" component="span">
-              Subir imagen
-            </Button>
-          </label>
-          <input accept="image/*" className={classee.input} id="icon-button-file" type="file" />
-          <label htmlFor="icon-button-file">
-            <IconButton aria-label="upload picture" component="span">
-              <PhotoCamera />
-            </IconButton>
-          </label>
+        
+        <div className={classee.right} >
           
           <div>
-          <img src={imagen} alt="imagen" className={classee.imageStyl}/>
+            <Typography variant="h6">Banner del anuncio:</Typography>
+            <img src={imagen} alt="imagen" className={classee.imageStyl}/>
           </div>
+          
+          <div >
+            <input
+              accept="image/*"
+              className={classee.input}
+              id="contained-button-file"
+              multiple
+              type="file"
+            />
+            <label htmlFor="contained-button-file">
+              <Button variant="contained" component="span">
+                Subir imagen
+              </Button>
+            </label>
+            <input accept="image/*" className={classee.input} id="icon-button-file" type="file" />
+            <label htmlFor="icon-button-file">
+              <IconButton aria-label="upload picture" component="span">
+                <PhotoCamera />
+              </IconButton>
+            </label>
+          </div>
+          
+          <div className={classee.dates}>
+          <Typography variant="h6">Fecha de inicio y fin: </Typography>
+
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <Grid container>
+              {/* justify="space-around" */}
+                <KeyboardDatePicker
+                  className={classee.textField}
+                  id="fecha_inicio"
+                  label="Fecha de inicio: "
+                  format="dd/MM/yyyy"
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
+                />
+
+                <KeyboardDatePicker
+                  className={classee.textField}
+                  id="fecha_termino"
+                  label="Fecha de termino"
+                  format="dd/MM/yyyy"
+                  value={selectedDeadLineDate}
+                  onChange={handleDeadLineDateChange}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
+                />
+                
+              </Grid>
+            </MuiPickersUtilsProvider>
+
+          </div>
+
           
         </div>
       
