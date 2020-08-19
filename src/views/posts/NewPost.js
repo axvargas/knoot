@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -13,11 +13,7 @@ import TextField from '@material-ui/core/TextField';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import imagen from '../../recursos/placeholder.png';
 import ChipInput from 'material-ui-chip-input'
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
-// import 'date-fns';
+import { MuiPickersUtilsProvider,KeyboardDatePicker} from '@material-ui/pickers';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 
@@ -81,31 +77,66 @@ const NewPost= () => {
   const classee = useStylee();
 
   const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleDelete = () => {
-    console.info('You clicked the delete icon.');
-  };
-
+  const [post, setPost] = useState({});
   const today = new Date()
-
-  console.log(today)
 
   const deadline = new Date(today.getFullYear(),today.getMonth()+1, today.getDate())
 
   const [selectedDate, setSelectedDate] = React.useState(Date.now());
   const [selectedDeadLineDate, setSelectedDeadLineDate] = React.useState(deadline);
 
+
+  const handleClickOpen = () => {
+      setOpen(true);
+    setPost({
+    ...post,
+    ["fecha_inicio"]: new Date(),
+    ["fecha_termino"]: deadline
+    });
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleChangePost = (e) => {
+    setPost({
+        ...post,
+        [e.target.id]: e.target.value
+        
+    })
+
+  }
+
+  const handleChangeChip = (e) => {
+    setPost({
+      ...post,
+      ["habilidad"]: e
+  })
+
+  }
+
+  const handleNewPost = (e) => {
+    console.log("NuevoPost")
+    console.log(post)
+    console.log(JSON.stringify(post))
+    handleClose()
+  }
+
+  
   const handleDateChange = (date) => {
     setSelectedDate(date);
-  };
+    setPost({
+      ...post,
+      ["fecha_inicio"]: date
+  })}
+
+  const handleDeadLineDateChange = (date) => {
+    setSelectedDeadLineDate(date);
+    setPost({
+      ...post,
+      ["fecha_termino"]: date
+  })}
 
   
   return (
@@ -130,7 +161,8 @@ const NewPost= () => {
               <Typography variant="h6" className={classee.title} align="center">
                 Crear Nuevo Anuncio
               </Typography>
-              <Button autoFocus color="inherit" onClick={handleClose}>
+              {/* onChange={handleNewPost} */}
+              <Button autoFocus color="inherit" onClick={handleNewPost}>
                 Crear
               </Button>
             </Toolbar>
@@ -144,59 +176,55 @@ const NewPost= () => {
           <TextField
             style={{ margin: 10 }}
               className={classee.textField}
-              id="standard-textarea"
+              id="nombre"
               label="Título del anuncio:"
               placeholder="Escriba el título aqui"
               fullWidth
+              required
               multiline
               variant="outlined"
+              onChange={handleChangePost}
             />
 
           <TextField
           style={{ margin: 10 }}
             className={classee.textField}
-            id="standard-textarea"
+            id="descripcion"
             label="Descripción del Anuncio:"
             placeholder="Escriba la descripción del anuncio aqui"
             fullWidth
             variant="outlined"
+            required
             multiline
             rows={10}
+            onChange={handleChangePost}
           />
 
           <ChipInput
             style={{ margin: 10 }}
             className={classee.textField}
-            //defaultValue={['clown fish', 'whale', 'shark']}
             label="Agregue las habilidades requeridas:"
             placeholder='Escriba las habilidades aqui'
+            required
             variant="outlined"
             fullWidth
+            onChange={handleChangeChip}
             />
-
-            {/* <TextField
-            style={{ margin: 10 }}
-              className={classee.textField}
-              id="standard-textarea"
-              label="Agregue las habilidades requeridas:"
-              placeholder="Escriba el texto aqui"
-              fullWidth
-              multiline
-              variant="outlined"
-            /> */}
 
           <TextField
             style={{ margin: 10 }}
               className={classee.textField}
-              id="standard-textarea"
+              id="vacantes"
               label="Agregue el número de vacantes:"
               placeholder="Escriba un número aqui"
               type="number"
+              required
               InputLabelProps={{
                 shrink: true,
               }}
               fullWidth
               variant="outlined"
+              onChange={handleChangePost}
             />
 
 
@@ -238,7 +266,7 @@ const NewPost= () => {
               {/* justify="space-around" */}
                 <KeyboardDatePicker
                   className={classee.textField}
-                  id="start-date"
+                  id="fecha_inicio"
                   label="Fecha de inicio: "
                   format="dd/MM/yyyy"
                   value={selectedDate}
@@ -250,11 +278,11 @@ const NewPost= () => {
 
                 <KeyboardDatePicker
                   className={classee.textField}
-                  id="deadline"
+                  id="fecha_termino"
                   label="Fecha de termino"
                   format="dd/MM/yyyy"
                   value={selectedDeadLineDate}
-                  onChange={handleDateChange}
+                  onChange={handleDeadLineDateChange}
                   KeyboardButtonProps={{
                     'aria-label': 'change date',
                   }}
