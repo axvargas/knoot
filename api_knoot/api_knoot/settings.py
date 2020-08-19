@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'api_knoot.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'api_db',
+        'NAME': 'api_dbapp',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
