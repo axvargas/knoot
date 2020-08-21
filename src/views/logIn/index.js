@@ -17,17 +17,10 @@ import Copyright from '../../components/copyright';
 
 //Styles
 import useStyles from './styles';
-const LogIn = (props) => {
+const LogIn = () => {
     const classes = useStyles();
-    {
-        this.props.isAuthenticated ?
-
-
-    }
 
     return (
-
-        
                 
             <Grid container className={classes.root}>
             <Grid item xs={false} sm={4} md={7} className={classes.image} />
