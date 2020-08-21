@@ -4,13 +4,25 @@ import './index.css';
 import 'intro.js/introjs.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import reducer from './storage/reduces/auth';
+import { Provider } from 'react-redux';
+const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const storage = createStore (reducer, composeEnhances(
+    applyMiddleware(thunk)  )
 );
+
+const app = (
+
+    <Provider store={storage}>
+        <App />
+    </Provider>
+
+    )
+
+ReactDOM.render(app, document.getElementById('root'));
 
 
 // If you want your app to work offline and load faster, you can change
