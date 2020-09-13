@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-
+import clienteAxios from '../../config/axios'
 import AnuncioContext from './context';
 import AnuncioReducer from './reducer';
 
@@ -17,18 +17,9 @@ import { useSnackbar } from 'notistack';
 const AnuncioState = props => {
     const { enqueueSnackbar } = useSnackbar();
 
-    // Vienen de la DB
-    const anuncios = [
-        { id: 1, descripcion: "Anuncio 1" },
-        { id: 2, descripcion: "Anuncio 2" },
-        { id: 3, descripcion: "Anuncio 3" },
-        { id: 4, descripcion: "Anuncio 4" },
-    ]
-
     const initialState = {
         anuncios: [],
         anunciosDeUsuario: [],
-        anuncioActual: null,
         msg: null
     }
     // Dispatch para ejecutar las acciones mediante types
@@ -37,9 +28,10 @@ const AnuncioState = props => {
     // CRUD
 
     // Obtener los anuncios 
-    const obtenerAnunciosFn = async (anuncios) => {
+    const obtenerAnunciosFn = async () => {
         try {
-            const respuesta = await clienteAxios.get('/anuncio', anuncio);
+            const respuesta = await clienteAxios.get('/Anuncios/');
+           
             dispatch({
                 type: OBTENER_ANUNCIOS,
                 payload: respuesta.data
@@ -57,7 +49,7 @@ const AnuncioState = props => {
     // Obtener los anuncios del usuario
     const obtenerAnunciosDeUsuarioFn = async (usuarioId) => {
         try {
-            const respuesta = await clienteAxios.get('/anuncio', { params: { usuarioId } });
+            const respuesta = await clienteAxios.get('/Anuncios/userId/', { params: { usuarioId } });
             dispatch({
                 type: OBTENER_ANUNCIOS_USUARIO,
                 payload: respuesta.data.anunciosDeUsuario
