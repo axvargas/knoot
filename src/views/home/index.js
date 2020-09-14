@@ -21,12 +21,11 @@ const Home = () => {
         <>
             <main className={classes.content}>
                 <div className={classes.toolbar} id="back-to-top-anchor" />
-                <div>
+                <div >
                     <Button onClick={() => signOut()}>
-                        <ExitToAppIcon/>
+                        <ExitToAppIcon />
                         Salir
-                        </Button>
-
+                    </Button>
                 </div>
                 <div className="search">
                     <SearchBar />

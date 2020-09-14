@@ -20,34 +20,25 @@ import Copyright from '../../components/copyright';
 //Styles
 import useStyles from './styles';
 
-const LogIn = () => {
+const LogIn = ({ history }) => {
     const classes = useStyles();
     const { signIn } = React.useContext(AuthContext);
-    const [data, setData] = React.useState({
-        userName: '',
-        password: '',
-        check_textInputChange: false,
-        secureTextEntry: true,
-        isValidUser: true,
-        isValidPassword: true,
 
-    })
+    const [username, setUserName] = React.useState(null)
+    const [password, setPassword] = React.useState(null)
 
-    const loginHandle = (userName, password) => {
-      //  console.log(data.userName, data.password)
-       signIn(userName, password)
+    const loginHandle = async (e) => {
+        e.preventDefault()
+        await signIn(username, password)
+        history.push("./")
     }
 
      const handleUserName = (e) => {
-        setData({
-            userName: e.target.value
-        });
+        setUserName(e.target.value);
     }
 
-     const handlePass =(e) => {
-        setData({
-            password: e.target.value
-        });
+    const handlePass = (e) => {
+        setPassword(e.target.value);
     }
     return (
                 
@@ -67,12 +58,12 @@ const LogIn = () => {
                             margin="normal"
                             required
                             fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
+                            id="userName"
+                            label="email"
+                            name="userName"
                             autoComplete="email"
                             autoFocus
-                            value={data.userName}
+                          //  value={data.userName}
                             onChange={handleUserName}
                         />
                         <TextField
@@ -85,7 +76,7 @@ const LogIn = () => {
                             type="password"
                             id="password"
                             autoComplete="current-password"
-                            value={data.password}
+                           // value={data.password}
                             onChange={handlePass}
                         />
                         <FormControlLabel
@@ -97,7 +88,7 @@ const LogIn = () => {
                             fullWidth
                             variant="contained"
                             className={classes.submit}
-                            onClick={() => loginHandle('press','press')}
+                            onClick={(e) => loginHandle(e)}
                         >
                             Ingresar
                             
