@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState,useEffect,useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -16,11 +16,15 @@ import ChipInput from 'material-ui-chip-input'
 import { MuiPickersUtilsProvider,KeyboardDatePicker} from '@material-ui/pickers';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
+import AnuncioContext from '../../context/anuncios/context'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+
+    
+    
 const useStylee = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(5),
@@ -74,10 +78,36 @@ const useStylee = makeStyles((theme) => ({
 
 
 const NewPost= () => {
+  const anuncioContext = useContext(AnuncioContext);
+
+  const { anuncios, agregarAnuncioFn } = anuncioContext;
   const classee = useStylee();
+  
+  const j= {fecha_inicio:"2020-09-14",fecha_termino:"2020-10-24",usuario:"5",
+  nombre:"Prueba mugrosa",descripcion:"alskdsald",categoria:"1",
+  habilidad:[{id:1,nombre:"Programación"}],vacantes:"30"}
 
   const [open, setOpen] = React.useState(false);
   const [post, setPost] = useState({});
+
+
+    const agregarAnuncios = async(anuncios) => {
+        await agregarAnuncioFn(anuncios) 
+        console.log(anuncios) 
+        handleClose()
+    }
+    // agregarAnuncios(j)  
+    
+
+//   {/* useEffect(() => {
+//     const j={"fecha_inicio":"2020-09-14","fecha_termino":"2020-10-14","usuario":"5","nombre":"skdlkskzldskdl","descripcion":"alskdsald","categoria":"1","habilidad":[{"id":1,"nombre":"Programación"}],"vacantes":"30"}
+//     const agregarAnuncios = async(json) => {
+//         await agregarAnuncioFn(json)  
+//     }
+//     agregarAnuncios(j)  
+//     handleClose()
+ 
+// }, []);*/}
   const today = new Date()
 
   const deadline = new Date(today.getFullYear(),today.getMonth()+1, today.getDate())
@@ -90,8 +120,8 @@ const NewPost= () => {
       setOpen(true);
     setPost({
     ...post,
-    ["fecha_inicio"]: new Date(),
-    ["fecha_termino"]: deadline
+    ["fecha_inicio"]: "2020-09-14",
+    ["fecha_termino"]: "2020-09-14"
     });
   };
 
@@ -111,15 +141,18 @@ const NewPost= () => {
   const handleChangeChip = (e) => {
     setPost({
       ...post,
-      ["habilidad"]: e
+      ["habilidad"]: [{"id":1, "nombre": "Programación"}]
   })
 
   }
 
-  const handleNewPost = (e) => {
+  
+
+ const handleNewPost = (e) => {
     console.log("NuevoPost")
-    console.log(post)
-    console.log(JSON.stringify(post))
+    // console.log(post)
+   
+    // console.log(JSON.stringify(post))
     handleClose()
   }
 
@@ -162,7 +195,7 @@ const NewPost= () => {
                 Crear Nuevo Anuncio
               </Typography>
               {/* onChange={handleNewPost} */}
-              <Button autoFocus color="inherit" onClick={handleNewPost}>
+              <Button autoFocus color="inherit" onClick={() => agregarAnuncios(j)}>
                 Crear
               </Button>
             </Toolbar>
@@ -173,6 +206,19 @@ const NewPost= () => {
       
         <div className={classee.form}>
         <Typography variant="h6">Información del anuncio: </Typography>
+        <TextField
+            style={{ margin: 10 }}
+              className={classee.textField}
+              id="usuario"
+              label="Usuario:"
+              placeholder="Usuario5"
+              fullWidth
+              required
+              multiline
+              variant="outlined"
+              onChange={handleChangePost}
+            />
+
           <TextField
             style={{ margin: 10 }}
               className={classee.textField}
@@ -199,6 +245,22 @@ const NewPost= () => {
             rows={10}
             onChange={handleChangePost}
           />
+         
+         <TextField
+            style={{ margin: 10 }}
+              className={classee.textField}
+              id="categoria"
+              label="Agregue el número de categoria:"
+              placeholder="Escriba un número aqui"
+              type="number"
+              required
+              InputLabelProps={{
+                shrink: true,
+              }}
+              fullWidth
+              variant="outlined"
+              onChange={handleChangePost}
+            />
 
           <ChipInput
             style={{ margin: 10 }}
@@ -234,10 +296,22 @@ const NewPost= () => {
           
           <div>
             <Typography variant="h6">Banner del anuncio:</Typography>
-            <img src={imagen} alt="imagen" className={classee.imageStyl}/>
+            {/*<img src={imagen} alt="imagen" className={classee.imageStyl}/>*/}
+            <TextField
+            style={{ margin: 3 }}
+              className={classee.textField}
+              id="nombre"
+              label="banner de anuncio URL:"
+              placeholder="URL"
+              fullWidth
+              required
+              multiline
+              variant="outlined"
+              onChange={handleChangePost}
+            />
           </div>
           
-          <div >
+         {/* <div >
             <input
               accept="image/*"
               className={classee.input}
@@ -256,7 +330,7 @@ const NewPost= () => {
                 <PhotoCamera />
               </IconButton>
             </label>
-          </div>
+         </div>*/}
           
           <div className={classee.dates}>
           <Typography variant="h6">Fecha de inicio y fin: </Typography>
