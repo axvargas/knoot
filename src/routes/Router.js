@@ -19,13 +19,11 @@ const Router = () => {
     return (
         <Switch>
             <Route exact path='/' component={Home}></Route>
+            <Route exact path='/home' component={Home}></Route>
             <Route exact path='/my-posts' component={Posts}></Route>
             <Route exact path='/favorites' component={Favorites}></Route>
             <Route exact path='/profile' component={Profile}></Route>
             <Route exact path='/contact' component={Contact}></Route>
-            <Route exact path='/about' component={About}></Route>
-            <Route exact path='/log-in' component={LogIn}></Route>
-            <Route exact path='/register' component={Register}></Route>
             {/* <Redirect from="/" to="/sign-in" /> */}
             {/*
             <Route component={NotFound}></Route> */}

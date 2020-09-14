@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import {
     Avatar,
     Button,
@@ -9,16 +9,33 @@ import {
     Paper,
     Box,
     Grid,
-    Typography
+    Typography,
+    Input,
+    
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-
+import AuthContext from '../../context/auth/context';
 import Copyright from '../../components/copyright';
 
 //Styles
 import useStyles from './styles';
+
 const LogIn = () => {
     const classes = useStyles();
+    const { signIn } = React.useContext(AuthContext);
+    const [data, setData] = React.useState({
+        userName: '',
+        password: '',
+        check_textInputChange: false,
+        secureTextEntry: true,
+        isValidUser: true,
+        isValidPassword: true,
+
+    })
+
+    const loginHandle = (userName, password) => {
+        signIn(userName, password)
+    }
 
     return (
                 
@@ -64,7 +81,8 @@ const LogIn = () => {
                             fullWidth
                             variant="contained"
                             className={classes.submit}
-                            href='../'
+                            onClick={() => loginHandle('pres', 'press') }
+                          // onClick={loginHandle(data.userName, data.password)}
                         >
                             Ingresar
                             

@@ -16,6 +16,8 @@ import ListItemLink from './ListItemLink';
 export const NavBar = () => {
     const classes = useStyles();
     return (
+
+        
         <nav className={classes.nav}>
             {
                 routes.map((route, i) => {
@@ -27,8 +29,10 @@ export const NavBar = () => {
                             key={i + route.text + route.link}
                             to={route.link}
                         >
+                            
                             {route.text}
                         </Button>
+
                     );
                 })
             }

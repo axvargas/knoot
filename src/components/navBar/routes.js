@@ -1,13 +1,14 @@
 export const routes = [
-    {text: "Inicio", link: "/"},
+    {text: "Inicio", link: "/home"},
     {text: "Mis anuncios", link: "/my-posts"},
     {text: "Favoritos", link: "/favorites"},
     {text: "Mi perfil", link: "/profile"},
-    {text: "Contactanos", link: "/contact"},
-    {text: "Acerca de", link: "/about"},
+    { text: "Contactános", link: "/contact" },
+    
 ]
 
 export const routesSession = [
     {text: "Ingresar", link: "/log-in"},
-    {text: "Regístrate", link: "/register"}
+    { text: "Regístrate", link: "/register" },
+    { text: "Acerca", link: "/about" },
 ]
