@@ -9,6 +9,7 @@ import { SnackbarProvider } from 'notistack';
 import Router from './routes/Router';
 import AuthContext  from './context/auth/context';
 import BaseRouter from './routes/BaseRouter';
+import clienteAxios from './config/axios'
 const App =()=> {
 	const notistackRef = React.createRef();
 	const sessionStorage = window.localStorage;
@@ -55,19 +56,25 @@ const App =()=> {
 
 	const authContext = React.useMemo(() => ({
 		signIn: async (userName, password) => {
-			console.log(userName);
 			let userToken = null;
-			if (userName == 'press' && password == 'press') {
-				try {
-					userToken = "sdfsf";
-					userToken = await sessionStorage.setItem('userToken', userToken)
+			const data= {
+				username: userName,
+				email: userName,
+				password: password
+			}
+
+			const respuesta = await clienteAxios.post('/credenciales/login/', data); 
+			console.log(respuesta)
+			try {
+
+				userToken = respuesta.data.key
+				userToken = await sessionStorage.setItem('userToken', userToken)
 				} catch (e) {
 					console.log(e)
 				}
-				
-			}
 			dispatch({ type: 'LOGIN', id: userName, token: userToken })
 		},
+
 		signOut: async () => {
 			try {
 				await sessionStorage.removeItem('userToken')
@@ -77,8 +84,8 @@ const App =()=> {
 			dispatch({ type: 'LOGOUT' })
 		},
 		signUp: () => {
-			//setUsertoken("dffsd");
-			//setLoading(false);
+
+
 		},
 		changeNav: () => {
 			let userToken = sessionStorage.getItem('userToken')
