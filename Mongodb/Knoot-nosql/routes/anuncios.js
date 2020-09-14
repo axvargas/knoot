@@ -30,6 +30,42 @@ router.get('/fecha_inicio/:fecha_inicio', async (req, res, next) => {
         res.send({ error: "No hay anuncios con esa fecha" })
     }
 });
+
+
+router.get('/popular_tags', async (req, res, next) => {
+    try {
+        const anuncios = await Anuncio.aggregate([
+            {$unwind: "$categoria"},
+            {$group: {
+                _id: "$categoria",
+                cantidad: { $sum: 1}
+            }}]).sort({cantidad:-1}).limit(5).exec()
+        res.send(anuncios)
+    } 
+    catch {
+        res.status(404)
+        res.send({ error: "Error" })
+    }
+});
+
+
+// router.get('/numero_anuncios', async (req, res, next) => {
+//     try {
+//         const anuncios = await Anuncio.aggregate([
+//             {$unwind: "$fecha_inicio"},
+//             {$group: {
+//                 _id: "$fecha_inicio",
+//                 cantidad: { $sum: 1}
+//             }}]).exec()
+//         res.send(anuncios)
+//     } 
+//     catch {
+//         res.status(404)
+//         res.send({ error: "Error" })
+//     }
+// });
+
+
 /*
 router.get('/fecha_inicio/:fecha_inicio', async (req, res, next) => {
     
