@@ -55,7 +55,7 @@ router.get('/numero_anuncios', async (req, res, next) => {
             {$group: {
                 _id: {year:{$year: "$fecha_inicio"}, month:{$month: "$fecha_inicio"}},
                 cantidad: { $sum: 1}
-            }}]).sort({_id: {year:'desc' }}).limit(6).exec()
+            }}]).sort({year:'desc' }).limit(6).exec()
         res.send(anuncios)
     } 
     catch {
