@@ -79,11 +79,35 @@ const useStylee = makeStyles((theme) => ({
 
 const NewPost= () => {
   const anuncioContext = useContext(AnuncioContext);
-    const { anuncios, agregarAnuncioFn } = anuncioContext;
+
+  const { anuncios, agregarAnuncioFn } = anuncioContext;
   const classee = useStylee();
+  
+  const j= {fecha_inicio:"2020-09-14",fecha_termino:"2020-10-24",usuario:"5",
+  nombre:"Prueba mugrosa",descripcion:"alskdsald",categoria:"1",
+  habilidad:[{id:1,nombre:"Programación"}],vacantes:"30"}
 
   const [open, setOpen] = React.useState(false);
   const [post, setPost] = useState({});
+
+
+    const agregarAnuncios = async(anuncios) => {
+        await agregarAnuncioFn(anuncios) 
+        console.log(anuncios) 
+        handleClose()
+    }
+    // agregarAnuncios(j)  
+    
+
+//   {/* useEffect(() => {
+//     const j={"fecha_inicio":"2020-09-14","fecha_termino":"2020-10-14","usuario":"5","nombre":"skdlkskzldskdl","descripcion":"alskdsald","categoria":"1","habilidad":[{"id":1,"nombre":"Programación"}],"vacantes":"30"}
+//     const agregarAnuncios = async(json) => {
+//         await agregarAnuncioFn(json)  
+//     }
+//     agregarAnuncios(j)  
+//     handleClose()
+ 
+// }, []);*/}
   const today = new Date()
 
   const deadline = new Date(today.getFullYear(),today.getMonth()+1, today.getDate())
@@ -123,20 +147,12 @@ const NewPost= () => {
   }
 
   
-  {/* useEffect(() => {
-    const j={"fecha_inicio":"2020-09-14","fecha_termino":"2020-10-14","usuario":"5","nombre":"skdlkskzldskdl","descripcion":"alskdsald","categoria":"1","habilidad":[{"id":1,"nombre":"Programación"}],"vacantes":"30"}
-    const agregarAnuncios = async(json) => {
-        await agregarAnuncioFn(json)  
-    }
-    agregarAnuncios(j)  
-    handleClose()
- 
-}, []);*/}
+
  const handleNewPost = (e) => {
     console.log("NuevoPost")
-    console.log(post)
+    // console.log(post)
    
-    console.log(JSON.stringify(post))
+    // console.log(JSON.stringify(post))
     handleClose()
   }
 
@@ -179,7 +195,7 @@ const NewPost= () => {
                 Crear Nuevo Anuncio
               </Typography>
               {/* onChange={handleNewPost} */}
-              <Button autoFocus color="inherit" onClick={handleNewPost}>
+              <Button autoFocus color="inherit" onClick={() => agregarAnuncios(j)}>
                 Crear
               </Button>
             </Toolbar>
