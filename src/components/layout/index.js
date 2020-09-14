@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import {
 	AppBar,
@@ -17,8 +17,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import MenuIcon from '@material-ui/icons/Menu';
 // import AccountCircle from '@material-ui/icons/AccountCircle';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-
 import DrawerContent from '../drawerContent';
 
 import { NavBar, NavBarSession, NavBarMenu } from '../navBar'
@@ -28,6 +26,7 @@ import useStyles from './style';
 import { useTheme } from '@material-ui/core/styles';
 
 import ScrollTop from '../scrollTop';
+import AuthContext from '../../context/auth/context';
 
 const ResponsiveDrawer = ({ children, window }) => {
 
@@ -51,11 +50,9 @@ const ResponsiveDrawer = ({ children, window }) => {
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
-	// const handleSignOut = () => {
-	// 	handleClose();
-	// 	//signOutUser();
-	// }
 
+	const { changeNav } = React.useContext(AuthContext)
+	
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
@@ -77,57 +74,10 @@ const ResponsiveDrawer = ({ children, window }) => {
           			</Typography>
 
 
-
-					<NavBar />
-					{/* <nav className={classes.nav}>
-						{
-							categories.map((cat, i) => {
-								return (
-									<Button className={classes.btn} color="inherit" key={i}>{cat}</Button>
-								);
-							})
-						}
-
-					</nav> */}
-					<section className={classes.rightToolbar}>
-
-						<NavBarSession />
-						{/* <nav className={classes.hideDown}>
-							<Button className={classes.btn} color="inherit" >{"Ingresar"}</Button>
-							<Button className={classes.btn} color="inherit" >{"Registrarse"}</Button>
-						</nav> */}
-
-						<IconButton
-							aria-label="account of current user"
-							aria-controls="menu-appbar"
-							aria-haspopup="true"
-							onClick={handleMenu}
-							color="inherit"
-							className={classes.hideUp}
-						>
-							<MoreVertIcon />
-						</IconButton>
-						<Menu
-							id="menu-appbar"
-							anchorEl={anchorEl}
-							anchorOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							open={open}
-							onClose={handleClose}
-						>
-							<NavBarMenu handleClose={handleClose} />
-							{/* <MenuItem onClick={handleClose}>Iniciar</MenuItem>
-							<MenuItem onClick={handleClose}>Registrarse</MenuItem> */}
-
-						</Menu>
-					</section>
+					{changeNav()!=null ? <NavBar /> : <NavBarSession />}
+						
+					
+					
 				</Toolbar>
 			</AppBar>
 			<Hidden lgUp implementation="css">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import {
     Avatar,
     Button,
@@ -9,17 +9,46 @@ import {
     Paper,
     Box,
     Grid,
-    Typography
+    Typography,
+    Input,
+    
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-
+import AuthContext from '../../context/auth/context';
 import Copyright from '../../components/copyright';
 
 //Styles
 import useStyles from './styles';
+
 const LogIn = () => {
     const classes = useStyles();
+    const { signIn } = React.useContext(AuthContext);
+    const [data, setData] = React.useState({
+        userName: '',
+        password: '',
+        check_textInputChange: false,
+        secureTextEntry: true,
+        isValidUser: true,
+        isValidPassword: true,
 
+    })
+
+    const loginHandle = (userName, password) => {
+      //  console.log(data.userName, data.password)
+       signIn(userName, password)
+    }
+
+     const handleUserName = (e) => {
+        setData({
+            userName: e.target.value
+        });
+    }
+
+     const handlePass =(e) => {
+        setData({
+            password: e.target.value
+        });
+    }
     return (
                 
             <Grid container className={classes.root}>
@@ -43,6 +72,8 @@ const LogIn = () => {
                             name="email"
                             autoComplete="email"
                             autoFocus
+                            value={data.userName}
+                            onChange={handleUserName}
                         />
                         <TextField
                             variant="outlined"
@@ -54,6 +85,8 @@ const LogIn = () => {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            value={data.password}
+                            onChange={handlePass}
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
@@ -64,7 +97,7 @@ const LogIn = () => {
                             fullWidth
                             variant="contained"
                             className={classes.submit}
-                            href='../'
+                            onClick={() => loginHandle('press','press')}
                         >
                             Ingresar
                             

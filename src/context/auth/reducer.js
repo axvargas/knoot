@@ -10,7 +10,8 @@ export default (state, action) => {
     switch (type) {
         case LOGIN_EXITOSO:
             return {
-                ...state
+                ...state,
+                token:null
             }
             break;
         case LOGIN_ERROR:

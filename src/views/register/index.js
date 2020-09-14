@@ -121,7 +121,7 @@ const LogIn = () => {
                             fullWidth
                             variant="contained"
                             className={classes.submit}
-                            href='../'
+                            href='../home/index'
                         >
                             Registrarse
           </Button>
