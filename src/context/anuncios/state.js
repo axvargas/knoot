@@ -25,7 +25,7 @@ const AnuncioState = props => {
     // Dispatch para ejecutar las acciones mediante types
     const [state, dispatch] = useReducer(AnuncioReducer, initialState);
 
-    // CRUD
+    // CRUD 
 
     // Obtener los anuncios 
     const obtenerAnunciosFn = async () => {
@@ -75,7 +75,7 @@ const AnuncioState = props => {
     // Agregar un anuncio
     const agregarAnuncioFn = async (anuncio) => {
         try {
-            const respuesta = await clienteAxios.post('/anuncio', anuncio);
+            const respuesta = await clienteAxios.post('/Anuncio', anuncio);
             dispatch({
                 type: AGREGAR_ANUNCIO,
                 payload: respuesta.data
