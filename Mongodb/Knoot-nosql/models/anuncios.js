@@ -21,13 +21,13 @@ const anunciosSchema = new mongoose.Schema({
         type: String
     },
     vacantes: {
-        type: String,
+        type: Number,
     },
     fecha_inicio: {
-        type: String
+        type: Date
     },
     fecha_termino: {
-        type: String
+        type: Date
     }
 });
 
