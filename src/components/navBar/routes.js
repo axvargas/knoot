@@ -1,5 +1,5 @@
 export const routes = [
-    {text: "Inicio", link: "/home"},
+    {text: "Inicio", link: "/"},
     {text: "Mis anuncios", link: "/my-posts"},
     {text: "Favoritos", link: "/favorites"},
     {text: "Mi perfil", link: "/profile"},

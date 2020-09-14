@@ -74,7 +74,7 @@ const ResponsiveDrawer = ({ children, window }) => {
           			</Typography>
 
 
-					{changeNav==null ? <NavBar /> : <NavBarSession />}
+					{changeNav()!=null ? <NavBar /> : <NavBarSession />}
 						
 					
 					

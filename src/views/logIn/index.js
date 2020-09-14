@@ -34,9 +34,21 @@ const LogIn = () => {
     })
 
     const loginHandle = (userName, password) => {
-        signIn(userName, password)
+      //  console.log(data.userName, data.password)
+       signIn(userName, password)
     }
 
+     const handleUserName = (e) => {
+        setData({
+            userName: e.target.value
+        });
+    }
+
+     const handlePass =(e) => {
+        setData({
+            password: e.target.value
+        });
+    }
     return (
                 
             <Grid container className={classes.root}>
@@ -60,6 +72,8 @@ const LogIn = () => {
                             name="email"
                             autoComplete="email"
                             autoFocus
+                            value={data.userName}
+                            onChange={handleUserName}
                         />
                         <TextField
                             variant="outlined"
@@ -71,6 +85,8 @@ const LogIn = () => {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            value={data.password}
+                            onChange={handlePass}
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
@@ -81,8 +97,7 @@ const LogIn = () => {
                             fullWidth
                             variant="contained"
                             className={classes.submit}
-                            onClick={() => loginHandle('pres', 'press') }
-                          // onClick={loginHandle(data.userName, data.password)}
+                            onClick={() => loginHandle('press','press')}
                         >
                             Ingresar
                             

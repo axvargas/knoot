@@ -55,6 +55,7 @@ const App =()=> {
 
 	const authContext = React.useMemo(() => ({
 		signIn: async (userName, password) => {
+			console.log(userName);
 			let userToken = null;
 			if (userName == 'press' && password == 'press') {
 				try {
@@ -68,7 +69,6 @@ const App =()=> {
 			dispatch({ type: 'LOGIN', id: userName, token: userToken })
 		},
 		signOut: async () => {
-
 			try {
 				await sessionStorage.removeItem('userToken')
 			} catch (e) {
@@ -80,8 +80,8 @@ const App =()=> {
 			//setUsertoken("dffsd");
 			//setLoading(false);
 		},
-		changeNav: async () => {
-			let userToken = await sessionStorage.getItem('userToken')
+		changeNav: () => {
+			let userToken = sessionStorage.getItem('userToken')
 			return userToken;
         }
 	}), []);
@@ -122,12 +122,17 @@ const App =()=> {
 			>
 				<AuthContext.Provider value={authContext}>
 					<AnuncioState>
-						<ResponsiveDrawer>
-						{loginState.userToken !== null ? (
-								<Router />
-							):<BaseRouter />
+							{loginState.userToken !== null ? (
+								<ResponsiveDrawer>
+									<Router />
+								</ResponsiveDrawer>
+						) : (
+								<ResponsiveDrawer>
+									<BaseRouter />
+								</ResponsiveDrawer>
+								)
 							}
-						</ResponsiveDrawer>
+						
 					</AnuncioState>
 				</AuthContext.Provider>
 			</SnackbarProvider>
