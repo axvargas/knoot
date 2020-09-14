@@ -19,7 +19,7 @@ import DeleteOpcion from './delete';
 
 
 
-const MediaCard = ({ views,autor,title, description, banner,vacantes,likes, tags,fecha_inicio,fecha_termino}) => {
+const MediaCard = ({ views,autor,title,id, description, banner,vacantes,likes, tags,habilidad,fecha_inicio,fecha_termino}) => {
     const classes = useStyles();
     const tagsSplit = tags.split(" ")
 
@@ -79,10 +79,10 @@ const MediaCard = ({ views,autor,title, description, banner,vacantes,likes, tags
             </CardActionArea>
             <CardActions>
 
-                <EditCard title={title} description={description}
+                <EditCard id={id} title={title} habilidad={habilidad} description={description}
                     views={views} tags={tags} autor={autor}/>
                     
-                <DeleteOpcion/>
+                <DeleteOpcion id={id}/>
                 
                 
                 <Container className={classes.views}>
@@ -102,7 +102,7 @@ const MediaCard = ({ views,autor,title, description, banner,vacantes,likes, tags
             
   
                     
-             <MostrarMisAnuncio open={open} handleClose={handleClose} title={title} description={description} banner={banner}
+             <MostrarMisAnuncio open={open} handleClose={handleClose} id={id} title={title} description={description} banner={banner}
                     vacantes={vacantes} likes={likes} tags={tags} fecha_inicio={fecha_inicio} fecha_termino={fecha_termino} />
         </Card>
         </div>

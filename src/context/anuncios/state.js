@@ -91,14 +91,15 @@ const AnuncioState = props => {
     }
 
     // Editar un anuncio
-    const editarAnuncioFn = async (anuncio) => {
-        const { id } = anuncio;
+    const editarAnuncioFn = async (id,anuncio) => {
         try {
-            const respuesta = await clienteAxios.put(`/anuncio${id}`, anuncio);
+            const respuesta = await clienteAxios.put(`/Anuncios/${id}/`, anuncio);
             dispatch({
                 type: EDITAR_ANUNCIO,
-                payload: anuncio
-            })
+                payload: respuesta.data
+            }) 
+            enqueueSnackbar("Anuncio editado",
+            { variant: 'success', preventDuplicate: true });
         } catch (error) {
             console.log(error);
             enqueueSnackbar("Error al editar anuncio",
@@ -110,11 +111,13 @@ const AnuncioState = props => {
     // Eliminar un anuncio
     const eliminarAnuncioFn = async (anuncioId) => {
         try {
-            const respuesta = await clienteAxios.put(`/anuncio${anuncioId}`);
+            await clienteAxios.delete(`/Anuncios/${anuncioId}/`);
             dispatch({
                 type: ELIMINAR_ANUNCIO,
                 payload: anuncioId
             })
+            enqueueSnackbar("Anuncio eliminado",
+            { variant: 'success', preventDuplicate: true });
         } catch (error) {
             console.log(error);
             enqueueSnackbar("Error al eliminar anuncio",

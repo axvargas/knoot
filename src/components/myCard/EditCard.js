@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment,useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -15,6 +15,7 @@ import edimage from '../../recursos/edibanner.jpg';
 import Chip from '@material-ui/core/Chip';
 import EditIcon from '@material-ui/icons/Edit';
 import Tooltip from '@material-ui/core/Tooltip';
+import AnuncioContext from '../../context/anuncios/context'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -78,7 +79,12 @@ const useStylee = makeStyles((theme) => ({
 }));
 
 
-const EditCard= (title,description) => {
+const EditCard= ({id,tags,title,description,habilidad}) => {
+  const j= {
+  nombre:"Prueba mugrosa"}
+  const anuncioContext = useContext(AnuncioContext);
+
+  const { anuncios, editarAnuncioFn } = anuncioContext;
   const classee = useStylee();
 
   const [open, setOpen] = React.useState(false);
@@ -94,7 +100,13 @@ const EditCard= (title,description) => {
   const handleDelete = () => {
     console.info('You clicked the delete icon.');
   };
-
+  const editarAnuncio = async(anuncio) => {
+    console.log(habilidad)
+    anuncio.habilidad=habilidad
+    await editarAnuncioFn(id, anuncio) 
+    console.log(anuncio) 
+    handleClose()
+}
   console.log(title)
   
   return (
@@ -114,8 +126,8 @@ const EditCard= (title,description) => {
               <Typography variant="h6" className={classee.titulo} align="center">
                 Editar Anuncio
               </Typography>
-              <Button autoFocus color="inherit" onClick={handleClose}>
-                Crear
+              <Button autoFocus color="inherit" onClick={() => editarAnuncio(j)}>
+                Editar
               </Button>
             </Toolbar>
           </AppBar>

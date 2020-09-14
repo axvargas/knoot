@@ -17,7 +17,9 @@ import { MuiPickersUtilsProvider,KeyboardDatePicker} from '@material-ui/pickers'
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import AnuncioContext from '../../context/anuncios/context'
+import { Autocomplete } from '@material-ui/lab';
 
+import axios from 'axios';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -87,6 +89,21 @@ const NewPost= () => {
   nombre:"Prueba mugrosa",descripcion:"alskdsald",categoria:"1",
   habilidad:[{id:1,nombre:"Programación"}],vacantes:"30"}
 
+  const [categories, setCategories] = useState([]);
+  const [filter, setFilter] = useState(null);
+ 
+  useEffect(() => {
+      const getCategories = async () => {
+          const URL = 'http://knoot1.pythonanywhere.com/Categorias'
+          const response = await axios.get(URL)
+          setCategories(response.data)
+      }
+      getCategories();
+      // eslint-disable-next-line
+  }, [])
+
+  
+  
   const [open, setOpen] = React.useState(false);
   const [post, setPost] = useState({});
 
@@ -363,8 +380,24 @@ const NewPost= () => {
                 />
                 
               </Grid>
+
             </MuiPickersUtilsProvider>
 
+           
+            {categories.length > 0 &&
+                <Autocomplete
+                    id="combo-box-demo"
+                    options={categories}
+                    getOptionLabel={(cat) => cat.nombre}
+                    value={filter}//filter.nombre
+                    onChange={(event, newValue) => {
+                        setFilter(newValue);
+                    }}
+                    style={{ width: 400 }}
+                    renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
+                />
+            }
+            
           </div>
 
           

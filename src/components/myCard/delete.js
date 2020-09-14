@@ -1,4 +1,4 @@
-import React, { Fragment }  from 'react';
+import React, { Fragment,useContext }  from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
@@ -11,6 +11,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import AnuncioContext from '../../context/anuncios/context'
 
 const useStyle = makeStyles((theme) => ({
     root: {
@@ -43,8 +44,13 @@ const useStyle = makeStyles((theme) => ({
 
 
 
-export default function DeleteOpcion() {
-  
+export default function DeleteOpcion({id}) {
+  const j= {fecha_inicio:"2020-09-14",fecha_termino:"2020-10-24",usuario:"5",
+  nombre:"Prueba mugrosa",descripcion:"alskdsald",categoria:"1",
+  habilidad:[{id:1,nombre:"Programación"}],vacantes:"30"}
+  const anuncioContext = useContext(AnuncioContext);
+
+  const { anuncios, eliminarAnuncioFn } = anuncioContext;
   const [open, setOpen] = React.useState(false);
   const classe = useStyle();
   const handleClickOpen = () => {
@@ -59,41 +65,12 @@ export default function DeleteOpcion() {
     console.info('Eliminando...');
   };
 
-  const eliminar =()=>{
-      var array = document.getElementsByClassName("MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2")
-      var cards = document.getElementsByClassName("MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4 MuiGrid-grid-lg-3 MuiGrid-grid-xl-2")
 
-      var arrayTags=[]
-     for(var element of array){
-        arrayTags.push(element.innerText)
-    }
-
-    if(arrayTags.length != 0){
-        for(var card of cards){
-            var titulo = card.getElementsByClassName("MuiCardContent-root")
-            var tagCards=[]
-            for(var titul of titulo){
-              if (titul.textContent === 'Titulo 1'){
-                  tagCards.push(titul.textContent)
-                }
-            }
-            for(var e of arrayTags){
-                if(!tagCards.includes(e)){
-                        card.style.display="none"
-                        break;
-                    }
-                } 
-            }
-            
-        }
-    else{
-        for(var card of cards){
-            card.style.display=""
-        }
-    }
-    handleClose();
-  }
-
+  const eliminarAnuncio = async(id) => {
+    await eliminarAnuncioFn(id) 
+    console.log("se elimino") 
+    handleClose()
+}
 
 
   return (
@@ -129,7 +106,7 @@ export default function DeleteOpcion() {
                     <Button onClick={handleClose} color="primary">
                         Cancelar
                     </Button>
-                    <Button onClick={eliminar} color="primary" autoFocus>
+                    <Button onClick={()=>eliminarAnuncio(id)} color="primary" autoFocus>
                         Eliminar
                     </Button>
                 </DialogActions>
