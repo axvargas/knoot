@@ -8,20 +8,18 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { Container,Chip ,Grid} from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
 import Badge from '@material-ui/core/Badge';
 import Tooltip from '@material-ui/core/Tooltip';
 import useStyles from './style';
-import MostrarAnuncio from '../../views/posts/MostrarAnuncio';
+import MostrarMisAnuncio from '../../views/posts/MostrarMisAnuncio';
 import EditCard from './EditCard';
 import DeleteOpcion from './delete';
-import Alert from '@material-ui/lab/Alert';
-import imgcarta from '../../recursos/challenge.png';
 
 
 
 
-const MediaCard = ({ title, description,views,tags,autor }) => {
+
+const MediaCard = ({ views,autor,title, description, banner,vacantes,likes, tags,fecha_inicio,fecha_termino}) => {
     const classes = useStyles();
     const tagsSplit = tags.split(" ")
 
@@ -44,7 +42,7 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
             >
                 <CardMedia
                     className={classes.media}
-                    image={imgcarta}
+                    image={banner}
                     title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -66,8 +64,6 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
                                 tagsSplit.map((tag) => {
                                     return(
                                             <Grid item><Chip 
-                                            //color="secondary" 
-                                            //variant="outlined"
                                             label={tag}/></Grid>
                                     )
                                     
@@ -104,16 +100,10 @@ const MediaCard = ({ title, description,views,tags,autor }) => {
                 </Container>
             </CardActions>
             
-            {/* <Steps
-                    enabled={stepsEnabled}
-                    //enabled={false}
-                    steps={steps}
-                    initialStep={initialStep}
-                /> */}
-             
+  
                     
-             <MostrarAnuncio open={open} handleClose={handleClose} title={title} description={description}
-                    views={views} tags={tags} autor={autor}/>   
+             <MostrarMisAnuncio open={open} handleClose={handleClose} title={title} description={description} banner={banner}
+                    vacantes={vacantes} likes={likes} tags={tags} fecha_inicio={fecha_inicio} fecha_termino={fecha_termino} />
         </Card>
         </div>
         

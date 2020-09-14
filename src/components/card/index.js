@@ -93,19 +93,7 @@ const MediaCard = ({ title, description, banner,vacantes,likes, tags,fecha_inici
                         </IconButton>
                     </Tooltip>
                     </Container>
-                 {/*   <Container className={classes.views}>
-                        <Tooltip title="Visualizaciones" arrow placement="bottom">
-                            <IconButton aria-label="share">
-                                <Badge badgeContent={views} color="primary" anchorOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'right',
-                                }}>
-                                    <VisibilityIcon className={classes.white}/>
-                                </Badge>
-                            </IconButton>
-
-                        </Tooltip>
-                    </Container>*/}
+                 
                 </CardActions>
                 <MostrarAnuncio open={open} handleClose={handleClose} title={title} description={description} banner={banner}
                     vacantes={vacantes} likes={likes} tags={tags} fecha_inicio={fecha_inicio} fecha_termino={fecha_termino} />

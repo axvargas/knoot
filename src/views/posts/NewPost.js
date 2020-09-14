@@ -116,6 +116,14 @@ const NewPost= () => {
 
   }
 
+  const handleChangeUsuario = (e) => {
+    setPost({
+      ...post,
+      ["usuario"]: e
+  })
+
+  }
+
   const handleNewPost = (e) => {
     console.log("NuevoPost")
     console.log(post)
@@ -173,6 +181,19 @@ const NewPost= () => {
       
         <div className={classee.form}>
         <Typography variant="h6">Información del anuncio: </Typography>
+        <TextField
+            style={{ margin: 10 }}
+              className={classee.textField}
+              id="usuario"
+              label="Usuario:"
+              placeholder="Usuario5"
+              fullWidth
+              required
+              multiline
+              variant="outlined"
+              onChange={handleChangePost}
+            />
+
           <TextField
             style={{ margin: 10 }}
               className={classee.textField}
@@ -199,6 +220,22 @@ const NewPost= () => {
             rows={10}
             onChange={handleChangePost}
           />
+         
+         <TextField
+            style={{ margin: 10 }}
+              className={classee.textField}
+              id="categoria"
+              label="Agregue el número de categoria:"
+              placeholder="Escriba un número aqui"
+              type="number"
+              required
+              InputLabelProps={{
+                shrink: true,
+              }}
+              fullWidth
+              variant="outlined"
+              onChange={handleChangePost}
+            />
 
           <ChipInput
             style={{ margin: 10 }}
