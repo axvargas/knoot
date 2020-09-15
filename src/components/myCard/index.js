@@ -14,7 +14,7 @@ import useStyles from './style';
 import MostrarMisAnuncio from '../../views/posts/MostrarMisAnuncio';
 import EditCard from './EditCard';
 import DeleteOpcion from './delete';
-
+ 
 
 
 
@@ -53,7 +53,7 @@ const MediaCard = ({ views,autor,title,id, description, banner,vacantes,likes, t
                     </div>
                     
                     <div className="descripcion">
-                        <Typography variant="body2" component="p" className={classes.typography}>
+                        <Typography variant="body2" component="p" className={classes.descripcion}>
                             {description}
                         </Typography>
                     </div>

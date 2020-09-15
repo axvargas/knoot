@@ -10,8 +10,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import AddIcon from '@material-ui/icons/Add';
 import TextField from '@material-ui/core/TextField';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import imagen from '../../recursos/placeholder.png';
 import ChipInput from 'material-ui-chip-input'
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import Grid from '@material-ui/core/Grid';

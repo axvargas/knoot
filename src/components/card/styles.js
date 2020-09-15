@@ -17,10 +17,10 @@ const useStyles = makeStyles({
         overflow: 'hidden',
         fontSize:'20px',
     },
-    
+     
     descripcion: {
         color: 'white',
-        maxHeight: '100px',
+        maxHeight: '60px',
         overflow: 'hidden',
     },
     views: {

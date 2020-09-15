@@ -16,9 +16,20 @@ const useStyles = makeStyles({
     },
     typography: {
         color: 'white',
+        maxHeight: '30px',
+        overflow: 'hidden',
+        fontSize:'20px',
+    },
+     
+    descripcion: {
+        color: 'white',
+        maxHeight: '60px',
+        overflow: 'hidden',
     },
     tagsContainer: {
         marginTop: 10,
+        height: '70px',
+        overflow: 'hidden',
     },
     white: {
         color: 'white',
