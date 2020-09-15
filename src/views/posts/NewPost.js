@@ -85,11 +85,6 @@ const NewPost = () => {
   const { anuncios, agregarAnuncioFn } = anuncioContext;
   const classee = useStylee();
 
-  const j = {
-    fecha_inicio: "2020-09-14", fecha_termino: "2020-10-24", usuario: "5",
-    nombre: "Prueba mugrosa", descripcion: "alskdsald", categoria: "1",
-    habilidad: [{ id: 1, nombre: "Programación" }], vacantes: "30"
-  }
 
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState(null);
@@ -120,7 +115,6 @@ const NewPost = () => {
       anuncio.banner = "https://blog.hotmart.com/wp-content/uploads/2020/03/BLOG_marketing-institucional.png"
     }
     anuncio.usuario = 5
-    // anuncio.categoria=2
     await agregarAnuncioFn(anuncio)
     console.log(anuncio)
     handleLimpiar()
@@ -137,6 +131,7 @@ const NewPost = () => {
 
   const handleClickOpen = (e) => {
     setOpen(true);
+    
     let datenow=new Date()
     let datefin=deadline
     const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: '2-digit', day: '2-digit' })
@@ -149,6 +144,8 @@ const NewPost = () => {
   ["fecha_inicio"]: actual,
   ["fecha_termino"]: fin,
   });
+  setSelectedDate(actual)
+  setSelectedDeadLineDate(fin)
   };
 
   const handleClose = () => {
@@ -194,7 +191,6 @@ const NewPost = () => {
 
 
   const handleChangecategoria = (id) => {
-    // console.log(filter.id)
     setPost({
       ...post,
       ["categoria"]: id
@@ -203,17 +199,25 @@ const NewPost = () => {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    let dateini=date
+    const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: '2-digit', day: '2-digit' })
+    const [{ value: month },,{ value: day },,{ value: year }]=dateTimeFormat.formatToParts(dateini) 
+    let actual=`${year}-${month}-${day}`
     setPost({
       ...post,
-      ["fecha_inicio"]: "2020-02-19"
+      ["fecha_inicio"]: actual
     })
   }
 
   const handleDeadLineDateChange = (date) => {
     setSelectedDeadLineDate(date);
+    let datefin=date
+    const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: '2-digit', day: '2-digit' })
+    const [{ value: month },,{ value: day },,{ value: year }]=dateTimeFormat.formatToParts(datefin) 
+    let fin=`${year}-${month}-${day}`
     setPost({
       ...post,
-      ["fecha_termino"]: "2020-02-12"
+      ["fecha_termino"]: fin
     })
   }
 
