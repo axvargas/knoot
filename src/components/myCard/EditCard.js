@@ -18,6 +18,7 @@ import { MuiPickersUtilsProvider,KeyboardDatePicker} from '@material-ui/pickers'
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import { Autocomplete } from '@material-ui/lab';
+import TablePaginationActions from '@material-ui/core/TablePagination/TablePaginationActions';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -91,25 +92,28 @@ const useStylee = makeStyles((theme) => ({
 }));
 
 
-const EditCard= ({id,tags,title,description,habilidad, banner, vacantes,fecha_inicio,fecha_termino}) => {
-  // const j= {
-  //   nombre:title,
-  // }
-  // console.log(j)
-
+const EditCard= ({id,title,description,habilidad, banner, vacantes,fecha_inicio,fecha_termino,categoria}) => {
   const anuncioContext = useContext(AnuncioContext);
+  console.log(habilidad)
+
   let arrayTags = []
   const splitHabilidades = () => {
     habilidad.map( h => arrayTags.push(h.nombre))
   }
   splitHabilidades();
 
+  const [Itemstags, setItemstags] = useState({
+    tags: [],
+  });
+  let { tags } = Itemstags;
+
   const { anuncios, editarAnuncioFn } = anuncioContext;
   const classee = useStylee();
 
   const [open, setOpen] = React.useState(false);
   const [post, setPost] = useState({});
-  // console.log(post)
+  
+  console.log(post)
 
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState(null);
@@ -120,7 +124,6 @@ const EditCard= ({id,tags,title,description,habilidad, banner, vacantes,fecha_in
           setCategories(response.data)
       }
       getCategories();
-      // eslint-disable-next-line
   }, [])
 
 
@@ -140,34 +143,69 @@ const EditCard= ({id,tags,title,description,habilidad, banner, vacantes,fecha_in
     setPost({
         ...post,
         [e.target.id]: e.target.value
-        
-        
     })
-    console.log(e.target.id + e.target.value)
 
   }
 
-  const handleChangeChip = (e) => {
+  const handleChangeChip = (habilidades) => {
+    habilidades.map((habilidad, i) => {
+      let tag = {
+        nombre: habilidad
+      };
+      tags.push(tag);
+    })
+
     setPost({
       ...post,
-      ["habilidad"]: [{"id":1, "nombre": "Programación"}]
-  })
-
+      ["habilidad"]: tags
+    })
   }
+
+  const [selectedDate, setSelectedDate] = React.useState(new Date(fecha_inicio));
+  const [selectedDeadLineDate, setSelectedDeadLineDate] = React.useState(new Date(fecha_termino));
+
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    let dateini=date
+    const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: '2-digit', day: '2-digit' })
+    const [{ value: month },,{ value: day },,{ value: year }]=dateTimeFormat.formatToParts(dateini) 
+    let actual=`${year}-${month}-${day}`
     setPost({
       ...post,
-      ["fecha_inicio"]: date
-  })}
+      ["fecha_inicio"]: actual
+    })
+  }
 
   const handleDeadLineDateChange = (date) => {
     setSelectedDeadLineDate(date);
+    let datefin=date
+    const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: '2-digit', day: '2-digit' })
+    const [{ value: month },,{ value: day },,{ value: year }]=dateTimeFormat.formatToParts(datefin) 
+    let fin=`${year}-${month}-${day}`
     setPost({
       ...post,
-      ["fecha_termino"]: date
-  })}
+      ["fecha_termino"]: fin
+    })
+  }
+
+
+  const handleChangecategoria = (id) => {
+    setPost({
+      ...post,
+      ["categoria"]: id
+    })
+  }
+
+  let nombreCategoria = undefined
+  const searchCategoria = (categorias,categoria) => {
+    categorias.map((c, i) => {
+      if (c.id == categoria){
+        nombreCategoria = c.nombre
+      }
+    })
+  }
+  searchCategoria(categories,categoria)
 
   const editarAnuncio = async(anuncio) => {
     console.log(habilidad)
@@ -178,14 +216,12 @@ const EditCard= ({id,tags,title,description,habilidad, banner, vacantes,fecha_in
 }
   console.log(title)
   
-  const today = new Date()
+  // const today = new Date()
 
-  const deadline = new Date(today.getFullYear(),today.getMonth()+1, today.getDate())
+  // const deadline = new Date(today.getFullYear(),today.getMonth()+1, today.getDate())
 
-  const [selectedDate, setSelectedDate] = React.useState(Date.now());
-  const [selectedDeadLineDate, setSelectedDeadLineDate] = React.useState(deadline);
-
-
+  
+  console.log(categories)
 
 
   return (
@@ -296,27 +332,6 @@ const EditCard= ({id,tags,title,description,habilidad, banner, vacantes,fecha_in
             />
           </div>
           
-         {/* <div >
-            <input
-              accept="image/*"
-              className={classee.input}
-              id="contained-button-file"
-              multiple
-              type="file"
-            />
-            <label htmlFor="contained-button-file">
-              <Button variant="contained" component="span">
-                Subir imagen
-              </Button>
-            </label>
-            <input accept="image/*" className={classee.input} id="icon-button-file" type="file" />
-            <label htmlFor="icon-button-file">
-              <IconButton aria-label="upload picture" component="span">
-                <PhotoCamera />
-              </IconButton>
-            </label>
-         </div>*/}
-          
           <div className={classee.dates}>
           <Typography variant="h6">Fecha de inicio y fin: </Typography>
 
@@ -356,46 +371,29 @@ const EditCard= ({id,tags,title,description,habilidad, banner, vacantes,fecha_in
           </div>
           <div className={classee.dates}>
           <Typography variant="h6">Categoría: </Typography>
+
             {categories.length > 0 &&
-                <Autocomplete
-                    id="combo-box-demo"
-                    options={categories}
-                    getOptionLabel={(cat) => cat.nombre}
-                    value={filter}//filter.nombre
-                    onChange={(event, newValue) => {
-                        setFilter(newValue);
-                    }}
-                    style={{ width: 400 }}
-                    renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
-                />
+              <Autocomplete
+              disabled
+                style={{ margin: 10 }}
+                fullWidth
+                id="categoria"
+                options={categories}
+                // getOptionLabel={(cat) => cat.nombre}
+                value={nombreCategoria}//filter.nombre
+                onChange={(event, newValue) => {
+                  setFilter(newValue);
+                  console.log(newValue)
+                  if (newValue != null) {
+                    handleChangecategoria(newValue.id)
+                  }
+                }}
+                renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
+              />
             }
           </div>
 
 
-        {/* <div className={classee.upload}>
-          <input
-            accept="image/*"
-            className={classee.input}
-            id="contained-button-file"
-            multiple
-            type="file"
-          />
-          <label htmlFor="contained-button-file">
-            <Button variant="contained"  component="span">
-              Subir imagen
-            </Button>
-          </label>
-          <input accept="image/*" className={classee.input} id="icon-button-file" type="file"  />
-          <label htmlFor="icon-button-file">
-            <IconButton aria-label="upload picture" component="span">
-              <PhotoCamera />
-            </IconButton>
-          </label>
-          
-          <div>
-          <img src={imagen} alt="imagen" className={classee.imageStyl} defaultValue={edimage}/>
-          </div>
-          */}
         </div>
       
       </div>
