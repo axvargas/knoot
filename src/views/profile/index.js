@@ -14,7 +14,8 @@ import imgPerfil from '../../recursos/desarrollador2.jpg';
 import imgmedi from '../../recursos/medalla.png';
 import clsx from 'clsx';
 import Footer from "../../components/footer";
-
+//import useStyles from '../styles';
+import AnuncioContext from '../../context/anuncios/context'
 const useStyle = makeStyles((theme) => ({
   /*..*/
 //Acerca de
@@ -128,8 +129,9 @@ button: {
 const Profile = () => {
   const classes = useStyles();
   const classe = useStyle();
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
+
+
   const post = 
         {
             nombres: "Jose Francisco", apellidos:"Morales Mendoza",

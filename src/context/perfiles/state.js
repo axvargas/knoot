@@ -24,8 +24,7 @@ const UsuarioState = props => {
     // Obtener los anuncios 
     const obtenerUsuariosFn = async () => {
         try {
-            const respuesta = await clienteAxios.get('/Usuarios/');
-
+            const respuesta = await clienteAxios.get('/Consumidores/');
             dispatch({
                 type: OBTENER_USUARIOS,
                 payload: respuesta.data

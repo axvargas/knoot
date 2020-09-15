@@ -7,7 +7,7 @@ export default (state, action) => {
         case OBTENER_USUARIOS:
             return {
                 ...state,
-                anuncios: payload
+                usuarios: payload
             }
         default:
             break;

@@ -1,56 +1,35 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import ProfileCard from "../../components/cardProfile";
 import { Grid } from '@material-ui/core';
 import useStyles from '../styles';
-
-
+import UsuarioContext from '../../context/perfiles/context'
 
 const Perfiles = () => {
     
     const classes = useStyles();
+    const usuarioContext = useContext(UsuarioContext);
+    const { usuarios, obtenerUsuariosFn } = usuarioContext
 
-    const posts = [
-        {
-            nombre: "Persona 1", description: `Cras mattis consectetur purus sit amet fermentum.
-        Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-        Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-        tags: "Texto1 Texto2 Texto3", imagen:"../../recursos/pf_placeholder.png"},
-        {
-            nombre: "Persona 2", description: `Cras mattis consectetur purus sit amet fermentum.
-        Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-        Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-        tags: "Texto1 Texto2 Texto3", imagen:"../../recursos/pf_placeholder.png"},
-        {
-            nombre: "Persona 3", description: `Cras mattis consectetur purus sit amet fermentum.
-        Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-        Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-        tags: "Texto1 Texto2 Texto3", imagen:"../../recursos/pf_placeholder.png"},
-        {
-            nombre: "Persona 4", description: `Cras mattis consectetur purus sit amet fermentum.
-        Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-        Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-        tags: "Texto1 Texto3", imagen:"../../recursos/pf_placeholder.png"},
-        {
-            nombre: "Persona 5", description: `Cras mattis consectetur purus sit amet fermentum.
-        Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-        Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-        tags: "Texto3 Texto4", imagen:"../../recursos/pf_placeholder.png"},
-    ]
+    useEffect(() => {
+        const cargarUsuarios = async () => {
+            await obtenerUsuariosFn()
+        }
+        cargarUsuarios();
+    }, []);
+
 
 
     return (
         <Grid container spacing={2}>
-            {
-                posts.map((post, i) => {
+                { usuarios &&
+                usuarios.map((post, i) => {
+                    var habilidades = "";
+                    post.habilidad.map(item => habilidades += item.nombre + " ")
+                    habilidades = habilidades.substring(0, habilidades.length - 1);
                     return (
                         <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-                            <ProfileCard key={i} nombre={post.nombre} description={post.description}
-                            tags={post.tags} imagen={post.imagen}
+                            <ProfileCard key={i} nombre={post.id.persona.nombre} description={post.descripcion}
+                            tags={habilidades} imagen={post.foto}
                             />
                         </Grid>
                     )

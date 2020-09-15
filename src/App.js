@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect, useMemo, useCallback } from 'react';
 import AnuncioState from './context/anuncios/state';
+import UsuarioState from './context/perfiles/state';
 import AuthState from './context/auth/state';
 import ResponsiveDrawer from './components/layout';
 import { IconButton, Grid, LinearProgress} from '@material-ui/core';
@@ -128,7 +129,8 @@ const App =()=> {
 				)}
 			>
 				<AuthContext.Provider value={authContext}>
-					<AnuncioState>
+					<UsuarioState>
+						<AnuncioState>
 							{loginState.userToken !== null ? (
 								<ResponsiveDrawer>
 									<Router />
@@ -140,7 +142,8 @@ const App =()=> {
 								)
 							}
 						
-					</AnuncioState>
+						</AnuncioState>
+					</UsuarioState>
 				</AuthContext.Provider>
 			</SnackbarProvider>
 		</BrowserRouter>

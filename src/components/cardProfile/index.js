@@ -35,12 +35,12 @@ const ProfileCard = ({ nombre, description,tags,imagen}) => {
             >
                 <CardMedia
                         className={classes.media}
-                        image={imagenn}
+                        image={imagen}
                         title={nombre}
                     />
                 <CardContent>
                     <div className={classes.nombre}>
-                        <Avatar/>
+                        <Avatar src={imagen} />
                         <Typography gutterBottom variant="h5" component="h2" className={classes.typography}>
                         
                         {nombre}
