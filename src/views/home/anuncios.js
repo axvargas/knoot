@@ -34,7 +34,7 @@ const Anuncios = () => {
                         <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
                             <MediaCard key={i} title={post.nombre} description={post.descripcion} banner={post.banner}
                                 vacantes={post.vacantes} likes={post.cant_interesados} tags={habilidades}  fecha_inicio={post.fecha_inicio}
-                                fecha_termino={post.fecha_termino}
+                                fecha_termino={post.fecha_termino} categoria={post.categoria}
                             />
                         </Grid>
                      

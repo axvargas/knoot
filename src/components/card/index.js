@@ -15,7 +15,7 @@ import useStyles from './styles';
 import MostrarAnuncio from '../../views/posts/MostrarAnuncio';
 
 
-const MediaCard = ({ title, description, banner,vacantes,likes, tags,fecha_inicio,fecha_termino}) => {
+const MediaCard = ({ title, description, banner,vacantes,likes, tags,fecha_inicio,fecha_termino,categoria}) => {
     const classes = useStyles();
 
     const tagsSplit = tags.split(" ")
@@ -96,7 +96,7 @@ const MediaCard = ({ title, description, banner,vacantes,likes, tags,fecha_inici
                  
                 </CardActions>
                 <MostrarAnuncio open={open} handleClose={handleClose} title={title} description={description} banner={banner}
-                    vacantes={vacantes} likes={likes} tags={tags} fecha_inicio={fecha_inicio} fecha_termino={fecha_termino} />
+                    vacantes={vacantes} likes={likes} tags={tags} fecha_inicio={fecha_inicio} fecha_termino={fecha_termino} categoria={categoria}/>
             </Card>
 
         

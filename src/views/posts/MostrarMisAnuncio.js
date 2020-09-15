@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import { makeStyles } from '@material-ui/core/styles';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -15,6 +15,7 @@ import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import EventBusyIcon from '@material-ui/icons/EventBusy';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
+import axios from 'axios';
 
 const useStyle = makeStyles((theme) => ({
   cont1: {
@@ -80,14 +81,32 @@ const useStyle = makeStyles((theme) => ({
   }
 
 }));
-const MostrarMisAnuncio= ({ open, handleClose,title, description,banner, vacantes,likes, tags,fecha_inicio,fecha_termino}) => {
+const MostrarMisAnuncio= ({ open, handleClose,title, description,banner, vacantes,likes, tags,fecha_inicio,fecha_termino,categoria}) => {
     const classe = useStyle();
 
     const tagsSplit = tags.split(" ")
 
-     const handleDelete = () => {
-    console.info('You clicked the delete icon.');
-  };
+    const [categories, setCategories] = useState([]);
+  useEffect(() => {
+      const getCategories = async () => {
+          const URL = 'http://knoot1.pythonanywhere.com/Categorias'
+          const response = await axios.get(URL)
+          setCategories(response.data)
+      }
+      getCategories();
+  }, [])
+
+  let nombreCategoria = undefined
+  const searchCategoria = (categorias,categoria) => {
+    categorias.map((c, i) => {
+      if (c.id == categoria){
+        nombreCategoria = c
+      }
+    })
+  }
+  searchCategoria(categories,categoria)
+
+
 
   const handleClick = () => {
     console.info('You clicked the Chip.');
@@ -157,6 +176,9 @@ const MostrarMisAnuncio= ({ open, handleClose,title, description,banner, vacante
                     
                     
                     <div >
+                    {nombreCategoria != undefined && <Typography gutterBottom variant="h6">
+                                  {nombreCategoria.nombre}
+                                </Typography>}
                       <List className={classe.fechas}>
                           <ListItem>
                             <ListItemAvatar>

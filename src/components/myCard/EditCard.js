@@ -18,7 +18,6 @@ import { MuiPickersUtilsProvider,KeyboardDatePicker} from '@material-ui/pickers'
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import { Autocomplete } from '@material-ui/lab';
-import TablePaginationActions from '@material-ui/core/TablePagination/TablePaginationActions';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -26,7 +25,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const useStylee = makeStyles((theme) => ({
   root: {
-    margin: theme.spacing(2),
+    margin: theme.spacing(5),
     display: 'flex',
     flexDirection: 'row',
   },
@@ -94,7 +93,7 @@ const useStylee = makeStyles((theme) => ({
 
 const EditCard= ({id,title,description,habilidad, banner, vacantes,fecha_inicio,fecha_termino,categoria}) => {
   const anuncioContext = useContext(AnuncioContext);
-  console.log(habilidad)
+  // console.log(habilidad)
 
   let arrayTags = []
   const splitHabilidades = () => {
@@ -112,11 +111,8 @@ const EditCard= ({id,title,description,habilidad, banner, vacantes,fecha_inicio,
 
   const [open, setOpen] = React.useState(false);
   const [post, setPost] = useState({});
-  
-  console.log(post)
 
   const [categories, setCategories] = useState([]);
-  const [filter, setFilter] = useState(null);
   useEffect(() => {
       const getCategories = async () => {
           const URL = 'http://knoot1.pythonanywhere.com/Categorias'
@@ -135,16 +131,11 @@ const EditCard= ({id,title,description,habilidad, banner, vacantes,fecha_inicio,
     setOpen(false);
   };
 
-  const handleDelete = () => {
-    console.info('You clicked the delete icon.');
-  };
-
   const handleChangePost = (e) => {
     setPost({
         ...post,
         [e.target.id]: e.target.value
     })
-
   }
 
   const handleChangeChip = (habilidades) => {
@@ -154,28 +145,16 @@ const EditCard= ({id,title,description,habilidad, banner, vacantes,fecha_inicio,
       };
       tags.push(tag);
     })
-
     setPost({
       ...post,
       ["habilidad"]: tags
     })
   }
+ 
 
   const [selectedDate, setSelectedDate] = React.useState(new Date(fecha_inicio));
   const [selectedDeadLineDate, setSelectedDeadLineDate] = React.useState(new Date(fecha_termino));
 
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    let dateini=date
-    const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: '2-digit', day: '2-digit' })
-    const [{ value: month },,{ value: day },,{ value: year }]=dateTimeFormat.formatToParts(dateini) 
-    let actual=`${year}-${month}-${day}`
-    setPost({
-      ...post,
-      ["fecha_inicio"]: actual
-    })
-  }
 
   const handleDeadLineDateChange = (date) => {
     setSelectedDeadLineDate(date);
@@ -201,27 +180,17 @@ const EditCard= ({id,title,description,habilidad, banner, vacantes,fecha_inicio,
   const searchCategoria = (categorias,categoria) => {
     categorias.map((c, i) => {
       if (c.id == categoria){
-        nombreCategoria = c.nombre
+        nombreCategoria = c
       }
     })
   }
   searchCategoria(categories,categoria)
 
   const editarAnuncio = async(anuncio) => {
-    console.log(habilidad)
-    anuncio.habilidad=habilidad
-    await editarAnuncioFn(id, anuncio) 
-    console.log(anuncio) 
+    anuncio.habilidad = tags
+    await editarAnuncioFn(id, anuncio)  
     handleClose()
 }
-  console.log(title)
-  
-  // const today = new Date()
-
-  // const deadline = new Date(today.getFullYear(),today.getMonth()+1, today.getDate())
-
-  
-  console.log(categories)
 
 
   return (
@@ -340,11 +309,12 @@ const EditCard= ({id,title,description,habilidad, banner, vacantes,fecha_inicio,
               {/* justify="space-around" */}
                 <KeyboardDatePicker
                   className={classee.textField}
+                  disabled
                   id="fecha_inicio"
                   label="Fecha de inicio: "
                   format="dd/MM/yyyy"
                   value={selectedDate}
-                  onChange={handleDateChange}
+                  // onChange={handleDateChange}
                   KeyboardButtonProps={{
                     'aria-label': 'change date',
                   }}
@@ -355,6 +325,8 @@ const EditCard= ({id,title,description,habilidad, banner, vacantes,fecha_inicio,
                   id="fecha_termino"
                   label="Fecha de termino"
                   format="dd/MM/yyyy"
+                  disabledPast
+                  minDate={fecha_inicio}
                   value={selectedDeadLineDate}
                   onChange={handleDeadLineDateChange}
                   KeyboardButtonProps={{
@@ -374,21 +346,19 @@ const EditCard= ({id,title,description,habilidad, banner, vacantes,fecha_inicio,
 
             {categories.length > 0 &&
               <Autocomplete
-              disabled
+                disabled
                 style={{ margin: 10 }}
                 fullWidth
                 id="categoria"
                 options={categories}
-                // getOptionLabel={(cat) => cat.nombre}
-                value={nombreCategoria}//filter.nombre
+                getOptionLabel={(cat) => cat.nombre}
+                defaultValue={nombreCategoria}
                 onChange={(event, newValue) => {
-                  setFilter(newValue);
-                  console.log(newValue)
                   if (newValue != null) {
                     handleChangecategoria(newValue.id)
                   }
                 }}
-                renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
+                renderInput={(params) => <TextField {...params} label="Seleccione la categoría: " defaultValue={nombreCategoria} variant="outlined" />}
               />
             }
           </div>

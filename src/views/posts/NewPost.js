@@ -96,7 +96,7 @@ const NewPost = () => {
       const URL = 'http://knoot1.pythonanywhere.com/Categorias'
       const response = await axios.get(URL)
       setCategories(response.data)
-      console.log(response.data)
+      // console.log(response.data)
     }
     getCategories();
     // eslint-disable-next-line
@@ -114,7 +114,7 @@ const NewPost = () => {
     }
     anuncio.usuario = 5
     await agregarAnuncioFn(anuncio)
-    console.log(anuncio)
+    // console.log(anuncio)
     handleLimpiar()
     handleClose()
   }
@@ -312,26 +312,10 @@ const NewPost = () => {
               onChange={handleChangePost}
             />
 
-            {categories.length > 0 &&
-              <Autocomplete
-                style={{ margin: 10 }}
-                fullWidth
-                id="categoria"
-                options={categories}
-                getOptionLabel={(cat) => cat.nombre}
-                value={filter}//filter.nombre
-                onChange={(event, newValue) => {
-                  setFilter(newValue);
-                  console.log(newValue)
-                  if (newValue != null) {
-                    handleChangecategoria(newValue.id)
-                  }
-                }}
 
+          
 
-                renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
-              />
-            }
+          
           </div>
 
           <div className={classee.right} >
@@ -344,7 +328,7 @@ const NewPost = () => {
                 className={classee.textField}
                 id="banner"
                 label="banner de anuncio URL:"
-                placeholder="https://blog.hotmart.com/wp-content/uploads/2020/03/BLOG_marketing-institucional.png"
+                value="https://blog.hotmart.com/wp-content/uploads/2020/03/BLOG_marketing-institucional.png"
                 fullWidth
                 required
                 multiline
@@ -353,7 +337,7 @@ const NewPost = () => {
                 onChange={handleChangePost}
               />
             </div>
-
+            
 
 
             <div className={classee.dates}>
@@ -380,6 +364,7 @@ const NewPost = () => {
                     label="Fecha de termino"
                     format="yyyy-MM-dd"
                     value={selectedDeadLineDate}
+                    minDate={post.fecha_inicio}
                     onChange={handleDeadLineDateChange}
                     KeyboardButtonProps={{
                       'aria-label': 'change date',
@@ -395,6 +380,30 @@ const NewPost = () => {
 
             </div>
 
+
+            <div className={classee.dates}>
+          <Typography variant="h6">Categoría: </Typography>
+            {categories.length > 0 &&
+              <Autocomplete
+                style={{ margin: 10 }}
+                fullWidth
+                id="categoria"
+                options={categories}
+                getOptionLabel={(cat) => cat.nombre}
+                value={filter}//filter.nombre
+                onChange={(event, newValue) => {
+                  setFilter(newValue);
+                  console.log(newValue)
+                  if (newValue != null) {
+                    handleChangecategoria(newValue.id)
+                  }
+                }}
+
+
+                renderInput={(params) => <TextField {...params} label="Seleccione la categoría:" variant="outlined" />}
+              />
+            }
+          </div>
 
           </div>
 

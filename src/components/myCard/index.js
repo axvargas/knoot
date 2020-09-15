@@ -105,7 +105,7 @@ const MediaCard = ({ views,autor,title,id, description, banner,vacantes,likes, t
   
                     
              <MostrarMisAnuncio open={open} handleClose={handleClose} id={id} title={title} description={description} banner={banner}
-                    vacantes={vacantes} likes={likes} tags={tags} fecha_inicio={fecha_inicio} fecha_termino={fecha_termino} />
+                    vacantes={vacantes} likes={likes} tags={tags} fecha_inicio={fecha_inicio} fecha_termino={fecha_termino} categoria={categoria}/>
         </Card>
         </div>
         
