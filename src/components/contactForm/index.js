@@ -119,7 +119,7 @@ const ContactForm = () => {
                 <TextField
                     required
                     type="date"
-                    value={form.nombre || ""}
+                    value={form.fechaNacimiento || ""}
                     name="fechaNacimiento"
                     id="fechaNacimiento"
                     label="Fecha de nacimiento"

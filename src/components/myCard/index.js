@@ -80,7 +80,7 @@ const MediaCard = ({ views,autor,title,id, description, banner,vacantes,likes, t
             <CardActions>
 
                 <EditCard id={id} title={title} habilidad={habilidad} description={description}
-                    views={views} tags={tags} autor={autor}/>
+                    banner={banner} vacantes={vacantes} fecha_inicio={fecha_inicio} fecha_termino={fecha_termino}/>
                     
                 <DeleteOpcion id={id}/>
                 
