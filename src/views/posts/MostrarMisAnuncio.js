@@ -1,19 +1,20 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import { makeStyles } from '@material-ui/core/styles';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Chip from '@material-ui/core/Chip';
 import { Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import Disponible from '../../components/AvailableChip/Disponible'
-import GitHubIcon from '@material-ui/icons/GitHub';
-import WhatsAppIcon from '@material-ui/icons/WhatsApp';
-import TelegramIcon from '@material-ui/icons/Telegram';
-import NoDisponible from '../../components/AvailableChip/NoDisponible'
-
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import EventAvailableIcon from '@material-ui/icons/EventAvailable';
+import EventBusyIcon from '@material-ui/icons/EventBusy';
+import Divider from '@material-ui/core/Divider';
+import List from '@material-ui/core/List';
 
 const useStyle = makeStyles((theme) => ({
   cont1: {
@@ -23,7 +24,7 @@ const useStyle = makeStyles((theme) => ({
   cont2: {
       alignItems: 'center',
       textAlign: 'justify',
-      margin: theme.spacing(5,0,5,0),
+      margin: theme.spacing(2,0,3,0),
   },
   cont3: {
       
@@ -50,7 +51,8 @@ const useStyle = makeStyles((theme) => ({
     justifyContent: 'flex-end',
   },
   tagsContainer: {
-        marginTop: 2,
+      marginTop: 2,
+      width: '30%',
     },
 
   etiquetas: {
@@ -61,6 +63,21 @@ const useStyle = makeStyles((theme) => ({
     width: theme.spacing(3),
     height: theme.spacing(3),
   },
+  cuadro: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  fechas: {
+    justifyContent: 'flex-end',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+  mid: {
+    width: '50%',
+  },
+  tagItems: {
+    width: '100%',
+  }
 
 }));
 const MostrarMisAnuncio= ({ open, handleClose,title, description,banner, vacantes,likes, tags,fecha_inicio,fecha_termino}) => {
@@ -92,56 +109,80 @@ const MostrarMisAnuncio= ({ open, handleClose,title, description,banner, vacante
                     <img src={banner} alt="banner" className={classe.imageStyl}/>
                   </Grid>
                   <div style={{paddingLeft: '40px',paddingRight: '40px'}}>
-                  <Grid >
+                    <Grid style={{paddingTop: '20px', paddingBottom: '20px'}}>
                           <Typography gutterBottom variant="h7" >
-                          A {likes} les gusta esta publicación
+                            A {likes} les gusta esta publicación
                           </Typography>
                     </Grid>
-                    <Grid >
-                          <Typography gutterBottom variant="h7" className={classe.pies}>
-                          Fecha Inicio: {fecha_inicio}
-                          </Typography>
-                    </Grid>
-                    <Grid >
-                          <Typography gutterBottom variant="h7" className={classe.pies}>
-                            Fecha termino: {fecha_termino}
-                            {/* <Avatar className={classe.small}>H</Avatar> */}
-                          </Typography>
-                    </Grid>
-                    <Grid >
-                          <Typography gutterBottom variant="h7" className={classe.pies}>
-                            Se solicitan: {vacantes}
-                          </Typography>
-                    </Grid>
-                  </div>
-                  <Disponible/>
-                  <div className={classe.etiquetas}>
+                    
+                  </div> 
+                  <div className={classe.cuadro}>
+                    <div>
+                      <Disponible/>
+                      <div className={classe.etiquetas}>
+                        <Typography gutterBottom variant="h6">
+                                Etiquetas:
+                              </Typography>
+                        <Grid container spacing={1} alignItems='stretch' direction='column' className={classe.tagsContainer}>
+                          {
+                            tagsSplit.map((tag) => {
+                                return (
+                                  <Grid item className={classe.tagItems}><Chip 
+                                      color="secondary" 
+                                      variant="outlined"
+                                      label={tag}/></Grid>
+                                )
+
+                            })
+                          }
+                        </Grid>
+                    </div>
+                    
+                    </div >
+                          
+                    <div className={classe.mid}>
+                      <Grid>
                     <Typography gutterBottom variant="h6">
-                            Etiquetas:
+                                  Descripción:
+                                </Typography>
+                          <Typography color="textSecondary" variant="body2" className={classe.cont2}>
+                            {description}
                           </Typography>
-                    <Grid container spacing={1}  className={classe.tagsContainer}>
-                      
-                      {
-                        tagsSplit.map((tag) => {
-                            return (
-                              <Grid item><Chip 
-                                  color="secondary" 
-                                  variant="outlined"
-                                  label={tag}/></Grid>
-                            )
+                      </Grid>
 
-                        })
-                      }
-
-
-                    </Grid>
+                      <Typography gutterBottom variant="h6">
+                                  Vacantes: {vacantes}
+                                </Typography>
+                    </div>
+                    
+                    
+                    <div >
+                      <List className={classe.fechas}>
+                          <ListItem>
+                            <ListItemAvatar>
+                              <Avatar color="secondary" >
+                                <EventAvailableIcon />
+                              </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary="Fecha Inicio" secondary={fecha_inicio} />
+                          </ListItem>
+                          <Divider variant="inset" component="li" />
+                          <ListItem>
+                            <ListItemAvatar>
+                              <Avatar color="secondary" >
+                                <EventBusyIcon />
+                              </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary="Fecha Termino" secondary={fecha_termino}/>
+                          </ListItem>
+                          <Divider variant="inset" component="li" />
+                          
+                        </List>
+                    </div>
                   </div>
                   
-                   <Grid>
-                         <Typography color="textSecondary" variant="body2" className={classe.cont2}>
-                          {description}
-                         </Typography>
-                    </Grid>
+                
+                   
                     
                      
                 </DialogContent>
