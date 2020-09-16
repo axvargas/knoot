@@ -112,7 +112,7 @@ const NewPost = () => {
     if (anuncio.banner == undefined) {
       anuncio.banner = "https://blog.hotmart.com/wp-content/uploads/2020/03/BLOG_marketing-institucional.png"
     }
-    anuncio.usuario = 5
+    anuncio.usuario = 12
     await agregarAnuncioFn(anuncio)
     // console.log(anuncio)
     handleLimpiar()
@@ -328,7 +328,7 @@ const NewPost = () => {
                 className={classee.textField}
                 id="banner"
                 label="banner de anuncio URL:"
-                value="https://blog.hotmart.com/wp-content/uploads/2020/03/BLOG_marketing-institucional.png"
+                // value="https://blog.hotmart.com/wp-content/uploads/2020/03/BLOG_marketing-institucional.png"
                 fullWidth
                 required
                 multiline
