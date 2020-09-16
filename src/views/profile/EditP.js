@@ -7,7 +7,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import ChipInput from 'material-ui-chip-input';
+import { Chip } from '@material-ui/core';
+import {Grid} from '@material-ui/core';
 
 const useStyle = makeStyles((theme) => ({
     cont1: {
@@ -33,14 +34,14 @@ const useStyle = makeStyles((theme) => ({
     },
   },
 }));
-const EditarPerfil = ({ open, handleClose,nombres,apellidos,email,ciudad,facultad,descripcion}) => {
+const EditarPerfil = ({ open, handleClose,nombres,apellidos,habilidades,numero,email,ciudad,facultad,descripcion}) => {
     const defaultProps = {
           options: facultades,
           getOptionLabel: (option) => option.Facultad
         };
     const classe = useStyle();
     const [value, setValue] = React.useState(null);
-    
+    const tagsSplit = habilidades.split(" ")
     return (
     
         <Dialog 
@@ -142,11 +143,15 @@ const EditarPerfil = ({ open, handleClose,nombres,apellidos,email,ciudad,faculta
                         <div>
                           
                            
-                            <ChipInput
-                              fullWidth
-                              defaultValue={['Angular', 'jQuery', 'Polymer', 'React', 'Vue.js']}
-                              placeholder='Ingrese tus habilidades'
-                                />
+                        {
+                        tagsSplit.map((tag) => {
+                          return (
+                            <Chip
+                              label={tag} />
+                          )
+
+                        })
+                      }
 
 
                         </div>  
