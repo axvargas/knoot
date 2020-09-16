@@ -4,7 +4,8 @@ import UsuarioContext from './context';
 import UsuarioReducer from './reducer';
 
 import {
-    OBTENER_USUARIOS
+    OBTENER_USUARIOS,
+    OBTENER_USUARIO_PERFIL
 } from '../../types';
 
 import { useSnackbar } from 'notistack';
@@ -14,6 +15,7 @@ const UsuarioState = props => {
 
     const initialState = {
         usuarios: [],
+        perfilUsuario: [],
         msg: null
     }
     // Dispatch para ejecutar las acciones mediante types
@@ -24,7 +26,7 @@ const UsuarioState = props => {
     // Obtener los anuncios 
     const obtenerUsuariosFn = async () => {
         try {
-            const respuesta = await clienteAxios.get('/Consumidores/');
+            const respuesta = await clienteAxios.get(`/Consumidores/`);
             dispatch({
                 type: OBTENER_USUARIOS,
                 payload: respuesta.data
@@ -32,12 +34,28 @@ const UsuarioState = props => {
             enqueueSnackbar("Usuarios cargados",
                 { variant: 'success', preventDuplicate: true });
         } catch (error) {
-            console.log(error);
             enqueueSnackbar("Error cargar los usuarios",
                 { variant: 'error', preventDuplicate: true });
         }
 
     }
+
+    const obtenerUsuarioPerfil = async (id) => {
+        try {
+            const respuesta = await clienteAxios.get(`/Consumidores/${id}/`);
+            dispatch({
+                type: OBTENER_USUARIO_PERFIL,
+                payload: respuesta.data
+            })
+            enqueueSnackbar("Perfil cargado",
+                { variant: 'success', preventDuplicate: true });
+        } catch (error) {
+            enqueueSnackbar("Error al cargar perfil.",
+                { variant: 'error', preventDuplicate: true });
+        }
+
+    }
+
 
    
     
@@ -45,9 +63,11 @@ const UsuarioState = props => {
         <UsuarioContext.Provider
             value={{
                 usuarios: state.usuarios,
+                perfilUsuario: state.perfilUsuario,
                 msg: state.msg,
 
-                obtenerUsuariosFn
+                obtenerUsuariosFn,
+                obtenerUsuarioPerfil
             }}
         >
             {props.children}

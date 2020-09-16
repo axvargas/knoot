@@ -18,7 +18,6 @@ const Anuncios = () => {
             await obtenerAnunciosFn()  
         }
         cargarAnuncios();
-        // eslint-disable-next-line
     }, []);
 
     return (

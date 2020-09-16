@@ -7,10 +7,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import {Chip,Grid} from '@material-ui/core';
 import useStyles from './styles';
-import imagenn from '../../recursos/pf_placeholder.png';
 import MostrarPerfil from'../showProfile/MostrarPerfil';
 import Avatar from '@material-ui/core/Avatar';
-import imgcarta from '../../recursos/public.jpg';
 
 
 const ProfileCard = ({ nombre, description,tags,imagen}) => {
@@ -68,7 +66,7 @@ const ProfileCard = ({ nombre, description,tags,imagen}) => {
             </CardActionArea>
 
             <MostrarPerfil open={open} handleClose={handleClose} nombre={nombre} description={description}
-                    tags={tags}/>
+                tags={tags} imagen={imagen}/>
             
         </Card>
     );

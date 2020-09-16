@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import useStyles from '../styles';
 import {Box,
   Typography,
@@ -12,10 +12,8 @@ import Chips from "../../components/chips";
 import EditTwoToneIcon from '@material-ui/icons/EditTwoTone';
 import imgPerfil from '../../recursos/desarrollador2.jpg';
 import imgmedi from '../../recursos/medalla.png';
-import clsx from 'clsx';
-import Footer from "../../components/footer";
-//import useStyles from '../styles';
-import AnuncioContext from '../../context/anuncios/context'
+import UsuarioContext from '../../context/perfiles/context'
+import axios from 'axios';
 const useStyle = makeStyles((theme) => ({
   /*..*/
 //Acerca de
@@ -123,95 +121,116 @@ button: {
 }));
 
 
-
-
-
 const Profile = () => {
-  const classes = useStyles();
-  const classe = useStyle();
+    const classes = useStyles();
+    const classe = useStyle();
     const [open, setOpen] = React.useState(false);
 
+    const usuarioContext = useContext(UsuarioContext);
+   // const [perfil, setPerfil] = React.useState([]);
+    const { perfilUsuario, obtenerUsuarioPerfil } = usuarioContext
 
-  const post = 
-        {
-            nombres: "Jose Francisco", apellidos:"Morales Mendoza",
-        email: "ltvargas@espol.edu.ec ",numero:"0934682738", ciudad: "Guayaquil", facultad:"Facultad de Ingenieria Electrica y Computacion", descripcion:"Desarrollo de Aplicaciones Web y Moviles. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,totam rem aperiam, eaque ipsa "
-        };
+    useEffect(() => {
+        const cargarUsuario = async (id) => {
+            await obtenerUsuarioPerfil(id)
+        }
+        cargarUsuario(5);
         
-    
+    }, []);
 
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
 
-  return (
+    const handleClose = () => {
+        setOpen(false);
+    };
 
-    <main className={classes.content}>
-      <div className={classes.toolbar} id="back-to-top-anchor"/>
-        <Box borderBottom={1}>
-          <Typography align="center" m={2} variant="h5"  component="p" spacing={3} style={{paddingBottom: '20px'}}> 
-           <b>Lo que las personas ven acerca de ti</b></Typography> 
-        </Box>
-      <div style={{paddingTop: '20px'}}>
-      <Button className={classe.button}  onClick={handleClickOpen}>
-        <EditTwoToneIcon/> Editar Perfil
-      </Button>
-      </div>
-      <Grid container className={classe.container} direction="row-reverse" justify="space-between"  >
-        <Grid items xs={12} sm={5} md={5} lg={5} style={{textAlign:"center"}}  >
-          <Card  className={classe.cardStyle}  >
-            <Grid  container className={classe.container1} >
-              <div className={classe.decorediv}  />
-                <div  elevation={0} className={classe.paper} >
-                  <img   src={imgPerfil} alt="Perfil" className={classe.imageStyl}/>
-                    <div  className={classe.box} >
-                      <h2>{post.nombres}{post.apellidos}</h2>
-                      <h3>
-                        {post.email}<br/>
-                        {post.numero}<br/>
-                        {post.ciudad}<br/>
-                         {post.facultad}
-                        <p style={{textAlign:"justify", padding:'20px'}}>
-                          {post.descripcion}
-                        </p>
-                      </h3>
-                    </div>
-                </div>
-            </Grid>
-          </Card>
-        </Grid>
 
-      <Grid items xs={12} sm={6} md={6} lg={6}   >
-        <Card  className={classe.cardStyle} className={classe.paper2} >
-       
-            <div  style={{ position: 'relative',  background: '#E5E9F2'}} >
-              <div style={{ position: 'absolute',paddingTop:'20px',paddingLeft:'20px'}}>
-              <Typography variant="h5"   spacing={5} >
-                Habilidades          
-              </Typography>
-              </div>
-              <div >
-              <img   src={imgmedi} alt="Medalla" className={classe.imgicom}/>
-              </div>
+    return (
+        <main className={classes.content}>
+            <div className={classes.toolbar} id="back-to-top-anchor" />
+            <Box borderBottom={1}>
+                <Typography align="center" m={2} variant="h5" component="p" spacing={3} style={{ paddingBottom: '20px' }}>
+                    <b>Lo que las personas ven acerca de ti</b></Typography>
+            </Box>
+            <div style={{ paddingTop: '20px' }}>
+                <Button className={classe.button} onClick={handleClickOpen}>
+                    <EditTwoToneIcon /> Editar Perfil
+                            </Button>
             </div>
-            <div  style={{paddingTop:'50px', height: 'auto', alignItems: 'center',paddingLeft:'50px',paddingRight:'50px', paddingBottom:'50px'}}>
-              <Chips style={{ alignItems: 'center'}}/>
-            </div>
-         
-        </Card>
-      </Grid>
 
-    </Grid>
-       
-    <EditarPerfil open={open} handleClose={handleClose} nombres={post.nombres} apellidos={post.apellidos}
-        email={post.email} numero={post.numero} ciudad={post.ciudad} facultad={post.facultad} descripcion={post.descripcion}/>
-    </main>
+            {
+                
+                perfilUsuario &&
+                perfilUsuario.map((post, i) => {
+                    console.log(post);
+                    var habilidades = "";
+                    post.habilidad.map(item => habilidades += item.nombre + " ")
+                    habilidades = habilidades.substring(0, habilidades.length - 1);
+                    return (
+                            <Grid container className={classe.container} direction="row-reverse" justify="space-between"  >
+                                <Grid items xs={12} sm={5} md={5} lg={5} style={{ textAlign: "center" }}  >
+                                    <Card className={classe.cardStyle}  >
+                                        <Grid container className={classe.container1} >
+                                            <div className={classe.decorediv} />
+                                            <div elevation={0} className={classe.paper} >
+                                                <img src={post.foto} alt="Perfil" className={classe.imageStyl} />
+                                                <div className={classe.box} >
+                                                    <h2>{post.id.persona.nombre}{post.id.persona.apellido}</h2>
+                                                    <h3>
+                                                        {post.id.email}<br />
+                                                        {post.id.persona.telefono}<br />
+                                                        {post.id.persona.lugar_origen}<br />
+                                                        {post.facultad.nombre}
+                                                        <p style={{ textAlign: "justify", padding: '20px' }}>
+                                                            {post.descripcion}
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </Grid>
+                                    </Card>
+                                </Grid>
 
-    );
+                                <Grid items xs={12} sm={6} md={6} lg={6}   >
+                                    <Card className={classe.cardStyle} className={classe.paper2} >
+                                        <div style={{ position: 'relative', background: '#E5E9F2' }} >
+                                            <div style={{ position: 'absolute', paddingTop: '20px', paddingLeft: '20px' }}>
+                                                <Typography variant="h5" spacing={5} >
+                                                    Habilidades
+                                             </Typography>
+                                            </div>
+                                            <div >
+                                                <img src={imgmedi} alt="Medalla" className={classe.imgicom} />
+                                            </div>
+                                        </div>
+                                        <div style={{ paddingTop: '50px', height: 'auto', alignItems: 'center', paddingLeft: '50px', paddingRight: '50px', paddingBottom: '50px' }}>
+                                            <Chips style={{ alignItems: 'center' }} />
+                                        </div>
+                                    </Card > 
+                                </Grid>
+                        </Grid>
+
+                       // <main>
+                        //    <EditarPerfil open={open} handleClose={handleClose} nombres={post.id.persona.nombre} apellidos={post.id.persona.apellido}
+                         //       email={post.id.email} numero={post.id.persona.telefono} ciudad={post.id.persona.lugar_origen} facultad={post.facultad} descripcion={post.descripcion} />
+                        // </main>
+                    );
+
+
+                })}
+
+            
+                           
+                 </main> 
+            )
+
+        
+        
+          
+          
   }
   export default Profile;

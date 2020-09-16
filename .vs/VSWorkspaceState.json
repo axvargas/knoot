@@ -2,15 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\components",
     "\\src\\context",
     "\\src\\context\\anuncios",
     "\\src\\context\\perfiles",
     "\\src\\types",
     "\\src\\views",
-    "\\src\\views\\home",
-    "\\src\\views\\logIn",
-    "\\src\\views\\profile"
+    "\\src\\views\\home"
   ],
-  "SelectedNode": "\\src\\views\\home\\perfiles.js",
+  "SelectedNode": "\\src\\views\\profile",
   "PreviewInSolutionExplorer": false
 }

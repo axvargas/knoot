@@ -12,9 +12,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import Disponible from '../AvailableChip/Disponible'
-import NoDisponible from '../AvailableChip/NoDisponible'
-
-
+import CardMedia from '@material-ui/core/CardMedia';
 
 const useStyle = makeStyles((theme) => ({
   cont1: {
@@ -36,7 +34,11 @@ const useStyle = makeStyles((theme) => ({
       display: 'flex',
       padding: 0,
 
-  },
+    },
+
+    media: {
+        height: 140,
+    },
   imageStyl: {
       flexGrow:1,
       width:"50%",
@@ -68,9 +70,8 @@ const useStyle = makeStyles((theme) => ({
   }
 
 }));
-const MostrarPerfil= ({ open, handleClose, nombre,description,tags}) => {
+const MostrarPerfil= ({ open, handleClose, nombre,description,tags, imagen}) => {
     const classe = useStyle();
-
     const tagsSplit = tags.split(" ")
 
     return (
@@ -86,13 +87,18 @@ const MostrarPerfil= ({ open, handleClose, nombre,description,tags}) => {
             <div className={classe.cont1} >
                 <DialogTitle id="alert-dialog-title"  className={classe.textcenter}>
                     <div className={classe.nombres} > 
-                        <Avatar/>
+                        <Avatar src={imagen}/>
                         {<h2>{nombre}</h2>}
                     </div>
                 
                     
                     
                 </DialogTitle>
+                <CardMedia
+                    className={classe.media}
+                    image={imagen}
+                    title={nombre}
+                />
                 <DialogContent >
                   <Disponible/>
                   <div className={classe.etiquetas}>
