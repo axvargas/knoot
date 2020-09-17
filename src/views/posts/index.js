@@ -4,13 +4,15 @@ import MediaCard from "../../components/myCard";
 import { Grid } from '@material-ui/core';
 import NewPost from "./NewPost";
 import Footer from "../../components/footer";
-
+import UsuarioContext from '../../context/perfiles/context'
 import AnuncioContext from '../../context/anuncios/context'
 const Posts = () => {
     const classes = useStyles();
-    
+    const usuarioContext = useContext(UsuarioContext);
     const anuncioContext = useContext(AnuncioContext);
     const { anuncios, obtenerAnunciosFn } = anuncioContext;
+    const { usuarioActual, obtenerUsuarioId } = usuarioContext
+   // const { anuncios,  } = anuncioContext;
     
     
     useEffect(() => {
@@ -40,16 +42,19 @@ const Posts = () => {
                  var habilidades="";
                  post.habilidad.map(item => habilidades+=item.nombre+" " )
                  habilidades = habilidades.substring(0, habilidades.length - 1);
-                 return (
-                     
-                     <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-                         <MediaCard key={i} id={post.id} title={post.nombre} description={post.descripcion} banner={post.banner}
-                             vacantes={post.vacantes} likes={post.cant_interesados} tags={habilidades} habilidad={post.habilidad} fecha_inicio={post.fecha_inicio}
-                             fecha_termino={post.fecha_termino} categoria={post.categoria}
-                         />
-                     </Grid>
-                  
-                 )
+                 if (post.usuario == usuarioActual.id.id) {
+                     return (
+
+                         <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+                             <MediaCard key={i} id={post.id} title={post.nombre} description={post.descripcion} banner={post.banner}
+                                 vacantes={post.vacantes} likes={post.cant_interesados} tags={habilidades} habilidad={post.habilidad} fecha_inicio={post.fecha_inicio}
+                                 fecha_termino={post.fecha_termino} categoria={post.categoria}
+                             />
+                         </Grid>
+
+                     ) 
+                 }
+                 
              })
              
          }

@@ -9,17 +9,18 @@ const Perfiles = () => {
     const classes = useStyles();
     const usuarioContext = useContext(UsuarioContext);
     const { usuarios, obtenerUsuariosFn } = usuarioContext
+    const { usuarioActual, obtenerUsuarioId } = usuarioContext
 
     useEffect(() => {
         const cargarUsuarios = async () => {
             await obtenerUsuariosFn()
         }
         cargarUsuarios();
+        obtenerUsuarioId(localStorage.getItem('userName'));
     }, []);
 
-
-
     return (
+        
         <Grid container spacing={2}>
                 { usuarios &&
                 usuarios.map((post, i) => {

@@ -11,6 +11,7 @@ import Router from './routes/Router';
 import AuthContext  from './context/auth/context';
 import BaseRouter from './routes/BaseRouter';
 import clienteAxios from './config/axios'
+import { useSnackbar } from 'notistack';
 const App =()=> {
 	const notistackRef = React.createRef();
 	const sessionStorage = window.localStorage;
@@ -70,7 +71,8 @@ const App =()=> {
 				userToken = respuesta.data.key
 				userToken = await sessionStorage.setItem('userToken', userToken)
 				userName = await sessionStorage.setItem('userName', userName)
-				} catch (e) {
+			} catch (e) {
+					alert('Usuario no existe')
 					console.log(e)
 				}
 			dispatch({ type: 'LOGIN', id: userName, token: userToken })
