@@ -40,7 +40,7 @@ const Posts = () => {
                  var habilidades="";
                  post.habilidad.map(item => habilidades+=item.nombre+" " )
                  habilidades = habilidades.substring(0, habilidades.length - 1);
-                 if(post.usuario=="12"){
+                
                  return (
                      
                      <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
@@ -50,7 +50,7 @@ const Posts = () => {
                          />
                      </Grid>
                    
-                 ) }
+                 ) 
              })
              
          }
