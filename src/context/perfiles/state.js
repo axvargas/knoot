@@ -5,7 +5,8 @@ import UsuarioReducer from './reducer';
 
 import {
     OBTENER_USUARIOS,
-    OBTENER_USUARIO_PERFIL
+    OBTENER_USUARIO_PERFIL,
+    OBTENER_USUARIO_ID
 } from '../../types';
 
 import { useSnackbar } from 'notistack';
@@ -16,6 +17,7 @@ const UsuarioState = props => {
     const initialState = {
         usuarios: [],
         perfilUsuario: [],
+        usuarioActual: [],
         msg: null
     }
     // Dispatch para ejecutar las acciones mediante types
@@ -56,6 +58,13 @@ const UsuarioState = props => {
 
     }
 
+    const obtenerUsuarioId = correo => {
+        dispatch({
+            type: OBTENER_USUARIO_ID,
+            payload: correo
+        })
+    }
+
 
    
     
@@ -64,10 +73,12 @@ const UsuarioState = props => {
             value={{
                 usuarios: state.usuarios,
                 perfilUsuario: state.perfilUsuario,
+                usuarioActual: state.usuarioActual,
                 msg: state.msg,
 
                 obtenerUsuariosFn,
-                obtenerUsuarioPerfil
+                obtenerUsuarioPerfil,
+                obtenerUsuarioId
             }}
         >
             {props.children}

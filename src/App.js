@@ -67,9 +67,9 @@ const App =()=> {
 			const respuesta = await clienteAxios.post('/credenciales/login/', data); 
 			console.log(respuesta)
 			try {
-
 				userToken = respuesta.data.key
 				userToken = await sessionStorage.setItem('userToken', userToken)
+				userName = await sessionStorage.setItem('userName', userName)
 				} catch (e) {
 					console.log(e)
 				}
@@ -79,6 +79,9 @@ const App =()=> {
 		signOut: async () => {
 			try {
 				await sessionStorage.removeItem('userToken')
+				await sessionStorage.removeItem('userName')
+				await sessionStorage.removeItem('id')
+
 			} catch (e) {
 				console.log(e)
 			}

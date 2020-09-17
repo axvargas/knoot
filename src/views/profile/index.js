@@ -127,14 +127,14 @@ const Profile = () => {
     const [open, setOpen] = React.useState(false);
 
     const usuarioContext = useContext(UsuarioContext);
-   // const [perfil, setPerfil] = React.useState([]);
     const { perfilUsuario, obtenerUsuarioPerfil } = usuarioContext
 
     useEffect(() => {
         const cargarUsuario = async (id) => {
             await obtenerUsuarioPerfil(id)
         }
-        cargarUsuario(5);
+        cargarUsuario(12)
+        
         
     }, []);
 
@@ -163,7 +163,6 @@ const Profile = () => {
             </div>
 
             {
-                
                 perfilUsuario &&
                 perfilUsuario.map((post, i) => {
                     console.log(post);

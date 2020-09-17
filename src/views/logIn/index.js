@@ -23,7 +23,6 @@ import useStyles from './styles';
 const LogIn = ({ history }) => {
     const classes = useStyles();
     const { signIn } = React.useContext(AuthContext);
-
     const [username, setUserName] = React.useState(null)
     const [password, setPassword] = React.useState(null)
 
@@ -31,6 +30,7 @@ const LogIn = ({ history }) => {
         e.preventDefault()
         await signIn(username, password)
         history.push("./")
+      //  localStorage.setItem('id', usuarioActual.id)
     }
 
      const handleUserName = (e) => {
